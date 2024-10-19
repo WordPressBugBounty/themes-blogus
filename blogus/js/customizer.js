@@ -72,13 +72,6 @@
 		} );
 	} );
 	
-	// Site Background Color.
-	// wp.customize( 'background_color', function( value ) {
-	// 	value.bind( function( newVal ) {
-	// 		$( 'body.custom-background .wrapper' ).css( { 'background-color': newVal, } );
-	// 	} );
-	// } );
-	
 	// Site Title Font Size.
 	wp.customize( 'blogus_title_font_size', function( value ) {
 		value.bind( function( newVal ) {

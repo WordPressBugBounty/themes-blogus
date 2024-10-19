@@ -75,7 +75,7 @@ $wp_customize->add_control(
 class Blogus_social_section_upgrade extends WP_Customize_Control {
     public function render_content() { ?>
         <h3 class="customizer_blogus_social_upgrade_to_pro" style="display: none;">
-<?php esc_html_e('To add More Social Icon? Then','blogus'); ?><a href="<?php echo esc_url( 'https://themeansar.com/blogus-pro' ); ?>" target="_blank">
+            <?php esc_html_e('To add More Social Icon? Then','blogus'); ?><a href="<?php echo esc_url( 'https://themeansar.com/blogus-pro' ); ?>" target="_blank">
             <?php esc_html_e('Upgrade to Pro','blogus'); ?> </a>  
         </h3>
     <?php

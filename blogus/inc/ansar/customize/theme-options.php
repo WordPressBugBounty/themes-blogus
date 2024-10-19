@@ -873,7 +873,7 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'blog
     'settings' => 'blogus_footer_widget_background',
 ) ) );
 
-//Bqckground Overlay 
+//Background Overlay 
 $wp_customize->add_setting(
     'blogus_footer_overlay_color', array( 
         'sanitize_callback' => 'blogus_sanitize_alpha_color',

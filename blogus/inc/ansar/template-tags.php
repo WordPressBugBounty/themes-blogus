@@ -8,18 +8,14 @@
  */
 
 if (!function_exists('blogus_post_categories')) :
-    function blogus_post_categories($separator = '&nbsp')
-    {
+    function blogus_post_categories($separator = '&nbsp') {
         $global_show_categories = blogus_get_option('global_show_categories');
         if ($global_show_categories == 'no') {
             return;
         }
-
         // Hide category and tag text for pages.
         if ('post' === get_post_type()) {
-
-            global $post;
-            ?>
+            global $post; ?>
             <div class="bs-blog-category">
             <?php $post_categories = get_the_category($post->ID);
             if ($post_categories) {
@@ -32,13 +28,13 @@ if (!function_exists('blogus_post_categories')) :
                     $term_meta = get_option($color_id);
                     $color_class = ($term_meta) ? $term_meta['color_class_term_meta'] : 'category-color-1';
 
-                    $output .= '<a class="blogus-categories ' . esc_attr($color_class) . '" href="' . esc_url(get_category_link($post_category)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'blogus'), $post_category->name)) . '"> 
-                                 ' . esc_html($post_category->name) . '
-                                </a>';
+                    $output .= '
+                    <a class="blogus-categories ' . esc_attr($color_class) . '" href="' . esc_url(get_category_link($post_category)) . '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'blogus'), $post_category->name)) . '"> 
+                        ' . esc_html($post_category->name) . '
+                    </a>';
                 }
                 $output .= '';
                 echo $output;
-
             }
             ?>
         </div>
@@ -46,11 +42,8 @@ if (!function_exists('blogus_post_categories')) :
     }
 endif;
 
-
-
 if (!function_exists('blogus_get_category_color_class')) :
-    function blogus_get_category_color_class($term_id)
-    {
+    function blogus_get_category_color_class($term_id) {
         $color_id = "category_color_" . $term_id;
         // retrieve the existing value(s) for this meta field. This returns an array
         $term_meta = get_option($color_id);
@@ -91,9 +84,7 @@ if (!function_exists('blogus_post_meta')) :
 endif; 
 
 if (!function_exists('blogus_menu_search')) :
-
     function blogus_menu_search() { $blogus_menu_search  = get_theme_mod('blogus_menu_search','true'); 
-    
         if($blogus_menu_search == true) { ?>
             <a class="msearch ml-auto"  data-bs-target="#exampleModal"  href="#" data-bs-toggle="modal">
                 <i class="fa fa-search"></i>
@@ -103,7 +94,6 @@ if (!function_exists('blogus_menu_search')) :
 endif; 
 
 if (!function_exists('blogus_menu_subscriber')) :
-
     function blogus_menu_subscriber() { 
         $blogus_menu_subscriber  = get_theme_mod('blogus_menu_subscriber','true');
         $blogus_subsc_link = get_theme_mod('blogus_subsc_link', '#'); 
@@ -116,9 +106,7 @@ if (!function_exists('blogus_menu_subscriber')) :
 endif; 
 
 if (!function_exists('blogus_lite_dark_switcher')) :
-
     function blogus_lite_dark_switcher() { $blogus_lite_dark_switcher = get_theme_mod('blogus_lite_dark_switcher', true);
-
         if($blogus_lite_dark_switcher == true){  
             if ( isset( $_COOKIE["blogus-site-mode-cookie"] ) ) {
                 $blogus_skin_mode = $_COOKIE["blogus-site-mode-cookie"];
@@ -143,8 +131,7 @@ endif;
 
 if (!function_exists('get_archive_title')) :
 
-    function get_archive_title($title)
-    {
+    function get_archive_title($title) {
         if (class_exists('WooCommerce')) {
             if (is_shop()) {
                 $title = 'Shop';

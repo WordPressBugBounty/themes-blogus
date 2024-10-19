@@ -337,8 +337,7 @@ add_action('customize_preview_init', 'blogus_customize_preview_js');
 function blogus_rt_post_callback ( $control ) {
     if( true == $control->manager->get_setting ('blogus_enable_related_post')->value()){
         return true;
-    }
-    else {
+    } else {
         return false;
     }       
 }
