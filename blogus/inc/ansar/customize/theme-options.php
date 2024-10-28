@@ -456,6 +456,7 @@ $wp_customize->add_setting('blogus_single_post_category',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_single_post_category', 
@@ -471,6 +472,7 @@ $wp_customize->add_setting('blogus_single_post_admin_details',
 array(
     'default' => true,
     'sanitize_callback' => 'blogus_sanitize_checkbox',
+    'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_single_post_admin_details', 
@@ -486,6 +488,7 @@ $wp_customize->add_setting('blogus_single_post_date',
 array(
     'default' => true,
     'sanitize_callback' => 'blogus_sanitize_checkbox',
+    'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_single_post_date', 
@@ -501,6 +504,7 @@ $wp_customize->add_setting('blogus_single_post_tag',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_single_post_tag', 
@@ -518,6 +522,7 @@ $wp_customize->add_setting('single_show_featured_image',
         'default' => $blogus_default['single_show_featured_image'],
         'capability' => 'edit_theme_options',
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'single_show_featured_image', 
@@ -534,6 +539,7 @@ $wp_customize->add_setting('single_show_share_icon',
         'default' => $blogus_default['single_show_share_icon'],
         'capability' => 'edit_theme_options',
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'single_show_share_icon', 

@@ -231,6 +231,30 @@ function blogus_customize_register($wp_customize) {
 			'selector'        => '.single-class > .container > .row',
 			'render_callback' => 'blogus_customize_partial_single_layout',
 		));
+		$wp_customize->selective_refresh->add_partial('blogus_single_post_category', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_single_post_admin_details', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_single_post_date', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_single_post_tag', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('single_show_featured_image', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('single_show_share_icon', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
 	}
 
     $default = blogus_get_default_theme_options();
@@ -313,6 +337,10 @@ function blogus_customize_partial_right_nav() {
 
 function blogus_customize_partial_header_social_icons() {
 	return do_action('blogus_action_header_social_section');
+}
+
+function blogus_customize_partial_single_page() {
+	return do_action('blogus_action_main_single_content');
 }
 
 function blogus_customize_partial_page_layout() {
