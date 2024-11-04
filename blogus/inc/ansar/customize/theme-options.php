@@ -573,6 +573,7 @@ $wp_customize->add_setting('blogus_enable_single_admin_details',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_enable_single_admin_details', 
@@ -606,6 +607,7 @@ $wp_customize->add_setting('blogus_enable_related_post',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_enable_related_post', 
@@ -638,6 +640,7 @@ $wp_customize->add_setting('blogus_enable_single_post_category',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_enable_single_post_category', 
@@ -653,6 +656,7 @@ $wp_customize->add_setting('blogus_enable_single_post_date',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_enable_single_post_date', 
@@ -668,6 +672,7 @@ $wp_customize->add_setting('blogus_enable_single_post_admin_details',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_enable_single_post_admin_details', 
@@ -683,6 +688,7 @@ $wp_customize->add_setting('blogus_enable_single_post_comments',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_enable_single_post_comments', 

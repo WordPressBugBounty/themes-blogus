@@ -255,6 +255,30 @@ function blogus_customize_register($wp_customize) {
 			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
 			'render_callback' => 'blogus_customize_partial_single_page',
 		));
+		$wp_customize->selective_refresh->add_partial('blogus_enable_single_admin_details', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_enable_related_post', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_enable_single_post_category', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_enable_single_post_date', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_enable_single_post_admin_details', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
+		$wp_customize->selective_refresh->add_partial('blogus_enable_single_post_comments', array(
+			'selector'        => '.single-class .row .col-lg-9, .single-class .row .col-lg-12',
+			'render_callback' => 'blogus_customize_partial_single_page',
+		));
 	}
 
     $default = blogus_get_default_theme_options();
