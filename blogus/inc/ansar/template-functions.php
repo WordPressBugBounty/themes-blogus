@@ -379,7 +379,16 @@ if($blogus_drop_caps_enable == 'true'){ ?>
 } add_action('wp_head','blogus_dropcap'); 
 
 function blogus_custom_header_background() { 
-    $color = get_theme_mod( 'background_color', get_theme_support( 'custom-background', 'default-color' ) ); ?>
+    $color = get_theme_mod( 'background_color', get_theme_support( 'custom-background', 'default-color' ) );
+    $image = get_theme_mod( 'background_image','' );
+    if(!empty($image)){ ?>
+        <style>
+            .wrapper {
+                background-color: transparent;
+            }
+        </style>
+    <?php }
+    ?>
     <style type="text/css" id="custom-background-css">
         :root {
             --wrap-color: <?php echo esc_attr($color); ?>

@@ -195,6 +195,13 @@
 	// 		} );
 	// 	} );
 	// } );
+	wp.customize('background_image', function(value) {
+        value.bind(function(newImage) {
+            if (newImage) {
+                $('.wrapper').css('background-color', 'transparent');
+            }
+        });
+    });
 	function customizePreviewStyle(settingId, target, property, unit = '') {
 		wp.customize(settingId, function(value) {
 			value.bind(function(newVal) {
