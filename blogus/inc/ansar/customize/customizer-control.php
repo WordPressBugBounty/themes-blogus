@@ -147,7 +147,7 @@ class Blogus_Dropdown_Taxonomies_Control extends WP_Customize_Control {
             <?php endif; ?>
             <select <?php $this->link(); ?>>
                 <?php
-                printf( '<option value="%s" %s>%s</option>', 0, selected( $this->value(), '', false ), esc_attr( 'All', 'blogus' )  );
+               printf( '<option value="%s" %s>%s</option>', 0, selected( $this->value(), '', false ), esc_html( __( 'All', 'blogus' ) ) );
                 ?>
                 <?php if ( ! empty( $all_taxonomies ) ) :  ?>
                     <?php foreach ( $all_taxonomies as $key => $tax ) :  ?>
