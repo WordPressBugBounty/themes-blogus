@@ -125,3 +125,13 @@ border: 1px solid #2271b1;
   padding: 0;
   background-color: transparent;
 }
+#customize-controls .control-section > h3.accordion-section-title {
+  display: flex;
+}
+#customize-controls li#accordion-section-blogus_pro_upsell .accordion-section-title{ 
+  justify-content: space-between;
+  align-items: center;
+}
+#customize-controls li#accordion-section-blogus_pro_upsell .accordion-section-title::after{
+  content: ''; 
+}
