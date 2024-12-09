@@ -81,6 +81,7 @@ $wp_customize->add_setting('featured_post_one_btn_txt',
         'default' => $blogus_default['featured_post_one_btn_txt'],
         'capability' => 'edit_theme_options',
         'sanitize_callback' => 'sanitize_text_field',
+        'transport' => 'postMessage',
     )
 );
 $wp_customize->add_control('featured_post_one_btn_txt',
