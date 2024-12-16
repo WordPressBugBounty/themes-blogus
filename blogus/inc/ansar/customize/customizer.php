@@ -280,15 +280,15 @@ function blogus_customize_register($wp_customize) {
 			'render_callback' => 'blogus_customize_partial_single_page',
 		));
 		$wp_customize->selective_refresh->add_partial('featured_post_one_btn_txt', array(
-			'selector'        => '.bs-widget.one.promo h5 a',
+			'selector'        => '.one .bs-widget.promo h5 a',
 			'render_callback' => 'blogus_customize_partial_featured_post_one',
 		));
 		$wp_customize->selective_refresh->add_partial('featured_post_two_btn_txt', array(
-			'selector'        => '.bs-widget.two.promo h5 a',
+			'selector'        => '.two .bs-widget.promo h5 a',
 			'render_callback' => 'blogus_customize_partial_featured_post_two',
 		));
 		$wp_customize->selective_refresh->add_partial('featured_post_three_btn_txt', array(
-			'selector'        => '.bs-widget.three.promo h5 a',
+			'selector'        => '.three .bs-widget.promo h5 a',
 			'render_callback' => 'blogus_customize_partial_featured_post_three',
 		));
 	}
@@ -478,26 +478,20 @@ function blogus_theme_option( $wp_customize ) {
     $wp_customize->add_setting(
         'blogus_skin_mode', array(
         'default'           => 'defaultcolor',
-        'sanitize_callback' => 'blogus_sanitize_radio'
+        'sanitize_callback' => 'blogus_sanitize_radio',
+        // 'transport' => 'postMessage',
     ) );
-    $wp_customize->add_control(
-        new Blogus_Radio_Image_Control( 
-            // $wp_customize object
-            $wp_customize,
-            // $id
-            'blogus_skin_mode',
-            // $args
-            array(
-                'settings'      => 'blogus_skin_mode',
-                'section'       => 'colors',
-                'priority' => 20,
-                'choices'       => array(
-                    'defaultcolor'    => get_template_directory_uri() . '/images/color/white.png',
-                    'dark' => get_template_directory_uri() . '/images/color/black.png',
-                )
+    $wp_customize->add_control(new Blogus_Radio_Image_Control( $wp_customize, 'blogus_skin_mode',
+        array(
+            'settings'      => 'blogus_skin_mode',
+            'section'       => 'colors',
+            'priority' => 20,
+            'choices'       => array(
+                'defaultcolor'    => get_template_directory_uri() . '/images/color/white.png',
+                'dark' => get_template_directory_uri() . '/images/color/black.png',
             )
         )
-    );
+    ));
 
     $wp_customize->add_setting('blogus_primary_menu_color',
         array(

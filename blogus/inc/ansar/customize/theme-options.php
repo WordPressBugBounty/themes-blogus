@@ -734,7 +734,6 @@ $wp_customize->add_control( 'blogus_site_breadcrumb_type', array(
 ));
 
 //========== Sidebar Stickey Settings ===============//
-
 $wp_customize->add_setting('blogus_sidebar_stickey',
     array(
         'default' => true,

@@ -33,48 +33,18 @@ function blogus_featured_ads_section() {
         <div class="container">
           <div class="row">  
             <!-- /promo box -->        
-            <div class="col-md-4">
-              <div class="bs-widget promo one bshre" style="background-image: url('<?php echo esc_url($fatured_post_image_one); ?>');">
-                <div class="inner-content">
-                  <div class="text">
-                    <h5>
-                      <?php if (!empty($featured_post_one_btn_txt)) {
-                        echo '<a '. esc_attr($featured_post_one_url_new_tab).' href="'. esc_url($featured_post_one_url).'">'. esc_html($featured_post_one_btn_txt).'</a>';
-                      } ?>
-                    </h5>
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-4 one">
+              <?php blogus_featured_ads_list ($fatured_post_image_one, $featured_post_one_url_new_tab, $featured_post_one_url ,$featured_post_one_btn_txt); ?>
             </div>
             <!-- /promo box -->
-            <!-- promo box -->
-            <div class="col-md-4">
-              <div class="bs-widget promo two bshre" style="background-image: url('<?php echo esc_url($fatured_post_image_two); ?>');">
-                <div class="inner-content">
-                  <div class="text">    
-                    <h5>
-                      <?php if (!empty($featured_post_two_btn_txt)) {
-                        echo '<a '. esc_attr($featured_post_two_url_new_tab).' href="'. esc_url($featured_post_two_url).'">'. esc_html($featured_post_two_btn_txt).'</a>';
-                      } ?>
-                    </h5>
-                  </div>
-                </div>
-              </div>
+            <!-- /promo box -->        
+            <div class="col-md-4 two">
+              <?php blogus_featured_ads_list ($fatured_post_image_two, $featured_post_two_url_new_tab, $featured_post_two_url ,$featured_post_two_btn_txt); ?>
             </div>
             <!-- /promo box -->
-            <!-- promo box -->
-            <div class="col-md-4">
-              <div class="bs-widget promo three bshre" style="background-image: url('<?php echo esc_url($fatured_post_image_three); ?>');">
-                <div class="inner-content">
-                  <div class="text">
-                  <h5>
-                      <?php if (!empty($featured_post_three_btn_txt)) {
-                        echo '<a '. esc_attr($featured_post_three_url_new_tab).' href="'. esc_url($featured_post_three_url).'">'. esc_html($featured_post_three_btn_txt).'</a>';
-                      } ?>
-                    </h5>
-                  </div>
-                </div>
-              </div>
+            <!-- /promo box -->        
+            <div class="col-md-4 three">
+              <?php blogus_featured_ads_list ($fatured_post_image_three, $featured_post_three_url_new_tab, $featured_post_three_url ,$featured_post_three_btn_txt); ?>
             </div>
             <!-- /promo box -->
           </div><!-- /row -->
@@ -86,3 +56,28 @@ function blogus_featured_ads_section() {
 }
 endif;
 add_action('blogus_action_featured_ads_section', 'blogus_featured_ads_section', 5);
+
+
+if (!function_exists('blogus_featured_ads_list')) :
+  /**
+   *  Header
+   *
+   * @since Blogus
+   *
+   */
+  function blogus_featured_ads_list($image, $target , $link ,$text  ) { ?>
+    <div class="bs-widget promo three bshre" style="background-image: url('<?php echo esc_url($image); ?>');">
+      <div class="inner-content">
+        <div class="text">
+        <h5>
+            <?php if (!empty($text)) {
+              echo '<a '. esc_attr($target).' href="'. esc_url($link).'">'. esc_html($text).'</a>';
+            } ?>
+          </h5>
+        </div>
+      </div>
+    </div>
+    <?php
+  }
+endif;
+add_action('blogus_action_featured_ads_list', 'blogus_featured_ads_list', 5);
