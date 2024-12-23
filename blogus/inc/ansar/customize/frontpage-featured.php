@@ -9,10 +9,10 @@
 $blogus_default = blogus_get_default_theme_options();
 
 /**
- * Frontpage options section
- *
- * @package blogus
- */
+* Frontpage options section
+*
+* @package blogus
+*/
 
 //Editor Choice
 $wp_customize->add_section('blogus_featured_links_section',
@@ -63,6 +63,7 @@ array(
     'default' => '',
     'capability' => 'edit_theme_options',
     'sanitize_callback' => 'esc_url_raw',
+        'transport' => 'postMessage',
     )
 );
 $wp_customize->add_control(
@@ -151,6 +152,7 @@ $wp_customize->add_setting('fatured_post_image_two',
         'default' => $blogus_default['fatured_post_image_two'],
         'capability' => 'edit_theme_options',
         'sanitize_callback' => 'esc_url_raw',
+        'transport' => 'postMessage',
     )
 );
 $wp_customize->add_control(
@@ -240,6 +242,7 @@ $wp_customize->add_setting('fatured_post_image_three',
         'default' => $blogus_default['fatured_post_image_three'],
         'capability' => 'edit_theme_options',
         'sanitize_callback' => 'esc_url_raw',
+        'transport' => 'postMessage',
     )
 );
 $wp_customize->add_control(
