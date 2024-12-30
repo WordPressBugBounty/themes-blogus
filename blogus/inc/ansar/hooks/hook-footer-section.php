@@ -101,7 +101,7 @@ if( ! function_exists( 'blogus_footer_copyright' ) ) :
     $hide_copyright = esc_attr(get_theme_mod('hide_copyright',true));
     $blogus_footer_copyright = get_theme_mod( 'blogus_footer_copyright','Copyright &copy; All rights reserved' );
     if ($hide_copyright == true ) { ?>
-      <div class="bs-footer-copyright">
+      <div class="bs-footer-overlay-copyright">
           <div class="container">
               <div class="row">
                 <?php  if ( has_nav_menu( 'footer' ) ) { ?>

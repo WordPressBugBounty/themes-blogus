@@ -265,7 +265,7 @@
 
 	// For a normal CSS property
 	customizePreviewStyle('blogus_slider_overlay_text_color', '.bs-slide .inner .title a', 'color', '');
-	customizePreviewStyle('blogus_footer_copy_bg', 'footer .bs-footer-copyright', 'background-color','');
+	customizePreviewStyle('blogus_footer_copy_bg', 'footer .bs-footer-copyright .bs-footer-overlay-copyright', 'background-color','');
 	customizePreviewStyle('blogus_footer_copy_text', 'footer .bs-footer-copyright p, footer .bs-footer-copyright a', 'color','');
 	customizePreviewStyle('blogus_slider_title_font_size', '.homemain .bs-slide .inner .title', 'font-size','px');
 	customizePreviewStyle('primary_menu_bg_color', 'header.bs-default .navbar-collapse ul, .navbar-wp .dropdown-menu > li > a:hover, .navbar-wp .dropdown-menu > li > a:focus', 'background', '');

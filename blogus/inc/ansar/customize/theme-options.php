@@ -986,6 +986,7 @@ $wp_customize->add_setting('hide_copyright',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport'=> 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'hide_copyright', 

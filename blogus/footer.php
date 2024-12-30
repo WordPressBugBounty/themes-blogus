@@ -14,7 +14,9 @@ do_action('blogus_action_footer_missed_section'); ?>
       <div class="overlay" style="background-color: <?php echo esc_html($blogus_footer_overlay_color);?>;">
         <?php do_action('blogus_footer_widget_area_content'); ?>
         <?php do_action('blogus_footer_bottom_area_content'); ?>
-        <?php do_action('blogus_footer_copyright_content'); ?>
+        <div class="bs-footer-copyright">
+          <?php do_action('blogus_footer_copyright_content'); ?>
+        </div>
       </div>
       <!--/overlay-->
     </footer>

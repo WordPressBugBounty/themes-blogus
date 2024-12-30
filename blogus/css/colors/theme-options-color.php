@@ -39,7 +39,7 @@ body.dark .site-title a, body.dark .site-description{
 footer .bs-footer-copyright p, footer .bs-footer-copyright a {
 	color: <?php echo esc_attr(blogus_get_option('blogus_footer_copy_text')); ?>;
 }
-footer .bs-footer-copyright {
+footer .bs-footer-copyright .bs-footer-overlay-copyright{
 	background: <?php echo esc_attr(blogus_get_option('blogus_footer_copy_bg')); ?>;
 }
 

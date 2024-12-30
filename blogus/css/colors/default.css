@@ -724,7 +724,7 @@ footer .bs-widget .calendar_wrap table thead th, footer .bs-widget .calendar_wra
     color: #f2f7fd;
 	border-color: #eee;
 }
-footer .bs-footer-copyright {
+footer .bs-footer-copyright .bs-footer-overlay-copyright{
 	background: #000;
 }
 footer .bs-footer-copyright, footer .bs-footer-copyright p, footer .bs-footer-copyright a {
