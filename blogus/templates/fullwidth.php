@@ -14,9 +14,9 @@
 get_header(); ?>
 <main id="content" class="full-width-class content">
   <div class="container">
+    <!--==================== breadcrumb section ====================-->
+    <?php do_action('blogus_action_archive_page_title'); ?>
     <div class="row">
-      <!--==================== breadcrumb section ====================-->
-      <?php do_action('blogus_breadcrumb_content'); ?>
       <div class="col-md-12">
         <div class="bs-card-box padding-20"> <?php 
           while ( have_posts() ) : the_post(); 
