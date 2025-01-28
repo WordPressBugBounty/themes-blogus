@@ -51,7 +51,12 @@ function blogus_deprecated_hook_admin_notice() {
                         </div>
                     </div>
                     <div class="blogus-notice_image">
-                        <img class="blogus-screenshot" src="<?php echo esc_url( get_theme_file_uri() . '/images/blogus.customize.jpg' ); ?>" alt="<?php esc_attr_e( 'Blogus', 'blogus' ); ?>" />
+                    <?php 
+                    $image_url = get_theme_file_uri( '/images/blogus.customize.jpg' );
+                    // Check if the file exists
+                    if ( file_exists( get_theme_file_path( '/images/blogus.customize.jpg' ) ) ) { ?>
+                        <img class="blogus-screenshot" src="<?php echo esc_url( $image_url ); ?>" alt="<?php esc_attr_e( 'Blogus', 'blogus' ); ?>" />
+                    <?php } ?>
                     </div>
                 </div>
             </div>
