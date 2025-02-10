@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.3.4
+Version: 2.3.5
 Tested up to: 6.7
 Requires PHP: 7.4
 Requires at least: 5.4
@@ -1787,7 +1787,7 @@ header .navbar-nav:not(.sm-collapsible) .dropdown-item.has-submenu {
 .small-post .img-small-post {
 	width: 20%;
 	height: 85px;
-	margin-left: 25px;
+	margin-right: 25px;
 	overflow: hidden;
 	position: relative;
 	border-radius: 0;
@@ -1803,6 +1803,35 @@ header .navbar-nav:not(.sm-collapsible) .dropdown-item.has-submenu {
     line-height: 1.2;
 }
 /*----- Featured-post -----*/
+.featured-widget.wd-back{
+	margin-bottom: 30px;
+}
+.featured-widget-content .small-post {
+    padding: 0;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.featured-widget-content .small-post:nth-last-child(1) {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+.featured-widget-content .small-post .img-small-post {
+    width: 25%; 
+}
+.featured-widget-content .bs-blog-post:hover{
+	box-shadow: var(--bxsh);
+}
+.single-class .featured-widget-content .bs-blog-thumb.lg {
+    height: 350px;
+}
+.single-class .featured-widget-content .small-post .img-small-post {
+	width: 30%;
+    height: 75px;
+    margin-right: 15px;
+}
 .bs-widget .small-post-content .title{
 	font-weight: 600;
     line-height: 1.2;
@@ -3162,7 +3191,7 @@ blockquote.right {
 }
 .gallery-item {
 	margin: 0;
-	float: left;
+	float: right;
 	padding: 0.5em;
 }
 .gallery-item img {

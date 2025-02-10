@@ -9,7 +9,7 @@ class featured_post_Widget extends WP_Widget {
 			'classname'   => 'featured_post_Widget',
 			'description' => __( 'Featured Posts List', 'blogus' ),
 		);
-		parent::__construct( 'featured_post_Widget', __( 'Featured Posts List', 'blogus' ), $widget_options );
+		parent::__construct( 'featured_post_Widget', __( 'AR: Featured Posts List', 'blogus' ), $widget_options );
 	
 	}
 
@@ -136,10 +136,4 @@ class featured_post_Widget extends WP_Widget {
 
 }
 
-function featured_post_register_widget() {
-
- 	register_widget( 'featured_post_Widget' );
-  
-}
-add_action( 'widgets_init', 'featured_post_register_widget' );
 ?>
