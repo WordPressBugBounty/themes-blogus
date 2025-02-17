@@ -35,7 +35,7 @@
 								</a>				
 							</figure>
 						<?php }
-					}		
+					}
 					the_content();
 					blogus_edit_link();
 					
