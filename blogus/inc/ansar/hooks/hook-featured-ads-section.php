@@ -68,6 +68,9 @@ if (!function_exists('blogus_featured_ads_list')) :
   function blogus_featured_ads_list($image, $target , $link ,$text  ) { ?>
     <div class="bs-widget promo three bshre" style="background-image: url('<?php echo esc_url($image); ?>');">
       <div class="inner-content">
+      <?php if (!empty($link)) {
+        echo '<a '. esc_attr($target).' href="'. esc_url($link).'" class="link-div"></a>';
+      } ?>
         <div class="text">
         <h5>
             <?php if (!empty($text)) {

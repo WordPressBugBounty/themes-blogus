@@ -20,15 +20,16 @@ get_header(); ?>
       <div class="col-md-12">
         <div class="bs-card-box padding-20"> <?php 
           while ( have_posts() ) : the_post();
-					if(has_post_thumbnail()) { ?>
-							<figure class="post-thumbnail">
-								<a href="<?php the_permalink(); ?>" >
-									<?php the_post_thumbnail('full'); ?>
-								</a>				
-							</figure>
-						<?php
-					}
-            the_content(); 
+            if(has_post_thumbnail()) { ?>
+                <figure class="post-thumbnail">
+                  <a href="<?php the_permalink(); ?>" >
+                    <?php the_post_thumbnail('full'); ?>
+                  </a>				
+                </figure>
+              <?php
+            }
+            the_content();
+            blogus_edit_link();
 
             // If comments are open or we have at least one comment, load up the comment template.
             if ( comments_open() || get_comments_number() ) :
