@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.3.7
+Version: 2.3.8
 Tested up to: 6.7
 Requires PHP: 7.4
 Requires at least: 5.4
@@ -226,6 +226,12 @@ ins, mark { text-decoration: none; padding: 0 3px; }
 code {
     color: #444444;
 }
+.content table, .single table {
+    border-collapse: collapse;
+    margin: 0 0 24px;
+    width: 100%;
+    word-wrap: break-word;
+}
 legend {
   	color: #000;
   	padding: 5px 10px;
@@ -355,7 +361,7 @@ blockquote {
 blockquote::before {
 	content: "\f10d";
 	display: table;
-	float: left;
+	float: right;
 	font-family: 'Font Awesome 5 Free';
 	font-size: 28px;
 	margin-top: 6px;
@@ -374,7 +380,7 @@ blockquote p {
     display: flex;
 }
 .wp-block-quote{
-    border-width: 0 0 0 5px;
+    border-width: 0 5px 0 0;
     border-style: solid;
 }
 .bshre{
@@ -2028,7 +2034,7 @@ header .navbar-nav:not(.sm-collapsible) .dropdown-item.has-submenu {
 }
 /*----- blog-post single -----*/
 .bs-blog-post.single {
-	text-align: start;
+	text-align: right;
 }
 .bs-blog-post.single .bs-header .title {
     font-size: 38px;
@@ -3331,7 +3337,7 @@ blockquote.right {
     content: "";
     height: 3px;
     width: 25%;
-    bottom: -1px;
+    bottom: -2px;
     right: 0; 
 }
 .widget_block .wp-block-search__label {
