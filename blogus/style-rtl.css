@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.3.8
+Version: 2.3.9
 Tested up to: 6.7
 Requires PHP: 7.4
 Requires at least: 5.4
@@ -364,7 +364,7 @@ blockquote::before {
 	float: right;
 	font-family: 'Font Awesome 5 Free';
 	font-size: 28px;
-	margin-top: 6px;
+	margin-top: -10px;
 	font-weight: 900;
 	width: 6%;
 	transform: rotateY(180deg);
@@ -2039,6 +2039,7 @@ header .navbar-nav:not(.sm-collapsible) .dropdown-item.has-submenu {
 .bs-blog-post.single .bs-header .title {
     font-size: 38px;
     font-weight: 800;
+	word-break: break-all;
 }
 .bs-blog-post .single .nav-links{
 	padding: 2rem;
@@ -3174,6 +3175,18 @@ blockquote.right {
 .size-large {}
 .size-medium {}
 .size-thumbnail {}
+/* table */
+.content td, .single td {
+    padding: 8px 11.2px;
+}
+table, th, td {
+    border: 1px solid #e9e9e9;
+}
+th {
+    background: #f6f6f6;
+    color: #01012f;
+    padding: 8px 11px;
+}
 /*Contact Form 7*/
 .wpcf7-form { margin-bottom: 50px; }
 .wpcf7-form label {display: block;}
