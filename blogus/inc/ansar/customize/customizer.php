@@ -295,6 +295,10 @@ function blogus_customize_register($wp_customize) {
 			'selector'        => '.three .bs-widget.promo h5 a',
 			'render_callback' => 'blogus_customize_partial_featured_post_three',
 		));
+		$wp_customize->selective_refresh->add_partial('you_missed_enable', array(
+			'selector'        => 'div.missed',
+			'render_callback' => 'blogus_customize_partial_you_missed_enable',
+		));
 	}
 
     $default = blogus_get_default_theme_options();
@@ -385,6 +389,10 @@ function blogus_customize_partial_header_social_icons() {
 
 function blogus_customize_partial_single_page() {
 	return do_action('blogus_action_main_single_content');
+
+}
+function blogus_customize_partial_you_missed_enable() {
+	return do_action('blogus_action_footer_missed_section');
 }
 
 function blogus_customize_partial_featured_post_one() {

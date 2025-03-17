@@ -5,8 +5,12 @@
  * Contains the closing of the #content div and all content after.
  *
  * @package Blogus
- */
-do_action('blogus_action_footer_missed_section'); ?>
+ */ ?>
+<!--==================== Missed ====================-->
+<div class="missed">
+  <?php do_action('blogus_action_footer_missed_section'); ?>
+</div> 
+<!-- end missed -->
 <!--==================== FOOTER AREA ====================-->
 <?php $blogus_footer_bg = get_theme_mod('blogus_footer_widget_background');
   $blogus_footer_overlay_color = get_theme_mod('blogus_footer_overlay_color'); ?>

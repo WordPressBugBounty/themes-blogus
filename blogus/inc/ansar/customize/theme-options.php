@@ -753,6 +753,7 @@ $wp_customize->add_setting('you_missed_enable',
     array(
         'default' => true,
         'sanitize_callback' => 'blogus_sanitize_checkbox',
+        'transport' => 'postMessage',
     )
 );
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'you_missed_enable', 

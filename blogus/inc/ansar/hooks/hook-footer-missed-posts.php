@@ -11,8 +11,6 @@ $you_missed_enable = get_theme_mod('you_missed_enable',true);
 $you_missed_title = get_theme_mod('you_missed_title',esc_html__('You Missed','blogus'));
 if($you_missed_enable == 'true')
 { ?>
-<!--==================== Missed ====================-->
-<div class="missed">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -40,8 +38,6 @@ if($you_missed_enable == 'true')
       </div><!-- end col12 -->
     </div><!-- end row -->
   </div><!-- end container -->
-</div> 
-<!-- end missed -->
 <?php 
 } }
 endif;
