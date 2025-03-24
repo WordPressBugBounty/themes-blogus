@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.4.0
+Version: 2.4.1
 Tested up to: 6.7
 Requires PHP: 7.4
 Requires at least: 5.4
@@ -17,6 +17,7 @@ Text Domain: blogus
   --bxsh:0 1px 3px rgb(0 0 0 / 15%);
   --bxshover: 0 4px 60px 0 rgba(0,0,0,0.2);
   --bstras: 0 4px 60px 0 rgba(0,0,0,0.2);
+  --headFont: 'Josefin Sans', sans-serif;
 }
 /*---------------------------------------
 	Body & Global    
@@ -359,7 +360,7 @@ h6, .h6 {
 	font-size: 16px;
 }
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: var(--headFont);
 	font-weight: 800; 
 	color: var(--head-color);
 	font-feature-settings: "lnum";
@@ -788,7 +789,7 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link{
 }
 .site-title {
     line-height: 1.2;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--headFont);
 }
 .navbar-brand .site-description {
 	font-size: 13px;
@@ -799,7 +800,6 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link{
 	padding: 0 12px;
 	margin-right: 0;
 	font-size: 16px;
-
 	letter-spacing: 0.5px;
 	-webkit-transition: all .25s ease-out;
 	-moz-transition: all .25s ease-out;
@@ -807,7 +807,7 @@ pre.wp-block-code a, #cancel-comment-reply-link, .comment-reply-link{
 	margin-bottom: 0px;
 	font-weight: 600;
 	display: block;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: var(--headFont);
 }
 .navbar-nav {
     justify-content: center;
@@ -2179,7 +2179,7 @@ ol.wp-block-latest-comments a{
 }
 .wp-block-latest-posts__list .wp-block-latest-posts__featured-image + .wp-block-latest-posts__post-title{
 	font-weight: 600;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: var(--headFont);
 }
 /* --------------------------------------
 =========================================
@@ -2213,7 +2213,7 @@ footer .site-title {
 }
 footer .site-branding-text .site-title-footer a {
 	font-size: 30px;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: var(--headFont);
 	font-weight: 600;
 }
 footer .site-branding-text .site-title-footer {
@@ -2853,7 +2853,7 @@ table, th, td {
     border-style: solid;
     border-width: 0 0 1px 0;
     margin-bottom: 15px;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: var(--headFont);
 	display: block;
 }
 .wp-block-search__label:before {

@@ -25,7 +25,7 @@ body.dark .site-title a, body.dark .site-description{
 }
 
 /*=================== Slider Color ===================*/
-.homemain .bs-slide.overlay:before{
+.bs .bs-slide.overlay:before{
 	background-color: <?php echo esc_attr($blogus_slider_overlay_color); ?>;
 } 
 .bs-slide .inner .title a{
