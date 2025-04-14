@@ -13,9 +13,10 @@
 <!-- end missed -->
 <!--==================== FOOTER AREA ====================-->
 <?php $blogus_footer_bg = get_theme_mod('blogus_footer_widget_background');
-  $blogus_footer_overlay_color = get_theme_mod('blogus_footer_overlay_color'); ?>
-    <footer class="footer<?php if($blogus_footer_bg != '') { ?> back-img" style="background-image:url('<?php echo esc_url($blogus_footer_bg);?>');" <?php } else{ echo'"';} ?>>
-      <div class="overlay" style="background-color: <?php echo esc_html($blogus_footer_overlay_color);?>;">
+  $blogus_footer_overlay_color = get_theme_mod('blogus_footer_overlay_color');
+  $fBgColor = !empty($blogus_footer_overlay_color) ? " style='background-color:".esc_attr($blogus_footer_overlay_color)."'" : ""; ?>
+    <footer class="footer<?php if($blogus_footer_bg != '') { ?> back-img" style="background-image:url('<?php echo esc_url($blogus_footer_bg);?>');" <?php } else { echo'"';} ?>>
+      <div class="overlay"<?php echo $fBgColor;?>>
         <?php do_action('blogus_footer_widget_area_content'); ?>
         <?php do_action('blogus_footer_bottom_area_content'); ?>
         <div class="bs-footer-copyright">

@@ -43,7 +43,7 @@ footer .bs-footer-copyright .bs-footer-overlay-copyright{
 	background: <?php echo esc_attr(blogus_get_option('blogus_footer_copy_bg')); ?>;
 }
 
-footer .bs-widget p, .site-title-footer a, .site-title-footer a:hover, .site-description-footer, .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6 {
+footer .bs-widget p, .site-title-footer a, .site-title-footer a:hover, .site-description-footer, .site-description-footer:hover, footer .bs-widget h6, footer .mg_contact_widget .bs-widget h6, footer .bs-widget ul li a {
 	color: <?php echo esc_attr(blogus_get_option('blogus_footer_text_color')); ?>;
 }
 @media (max-width: 991px){

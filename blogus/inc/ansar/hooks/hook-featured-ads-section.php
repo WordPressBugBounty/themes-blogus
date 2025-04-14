@@ -32,17 +32,17 @@ function blogus_featured_ads_section() {
       <div class="promoss mb-4">
         <div class="container">
           <div class="row">  
-            <!-- /promo box -->        
+            <!-- promo box -->
             <div class="col-md-4 one">
               <?php blogus_featured_ads_list ($fatured_post_image_one, $featured_post_one_url_new_tab, $featured_post_one_url ,$featured_post_one_btn_txt); ?>
             </div>
             <!-- /promo box -->
-            <!-- /promo box -->        
+            <!-- promo box -->
             <div class="col-md-4 two">
               <?php blogus_featured_ads_list ($fatured_post_image_two, $featured_post_two_url_new_tab, $featured_post_two_url ,$featured_post_two_btn_txt); ?>
             </div>
+            <!-- promo box -->
             <!-- /promo box -->
-            <!-- /promo box -->        
             <div class="col-md-4 three">
               <?php blogus_featured_ads_list ($fatured_post_image_three, $featured_post_three_url_new_tab, $featured_post_three_url ,$featured_post_three_btn_txt); ?>
             </div>
