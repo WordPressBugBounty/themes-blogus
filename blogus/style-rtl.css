@@ -4,10 +4,10 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.4.4
-Tested up to: 6.7
+Version: 2.4.5
+Tested up to: 6.8
 Requires PHP: 7.4
-Requires at least: 5.4
+Requires at least: 6.6
 Tags: two-columns, three-columns, left-sidebar, right-sidebar, translation-ready, custom-background, custom-logo, featured-images, footer-widgets, full-width-template, blog, e-commerce, entertainment
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -1249,7 +1249,45 @@ header .navbar-nav:not(.sm-collapsible) .dropdown-item.has-submenu {
 =========================================
 	General
 =========================================
------------------------------------------*/
+-----------------------------------------*/html {
+    font-size: 100%;
+}
+/*
+  ##Device = Most of the screen
+  ##Screen = 1200px and under.
+*/
+@media only screen and (max-width: 1200px) {
+    html {
+        font-size: 95%;
+    }
+}
+/* 
+  ##Device = Most of the tablets
+  ##Screen = 991px and under.
+*/
+@media screen and (max-width: 991px) {
+    html {
+        font-size: 90%; 
+    }
+}
+/* 
+  ##Device = Most of the tablets
+  ##Screen = 767px and under.
+*/
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 85%; 
+    }
+}
+/* 
+  ##Device = Most of the smartphones (portrait)
+  ##Screen = 575px and under.
+*/
+@media screen and (max-width: 575px) {
+    html {
+        font-size: 80%; 
+    }
+}
 .site-branding-text .site-title {
 	font-weight: 700;
 	font-size: 60px;
@@ -3509,9 +3547,6 @@ form.search-form .search-submit{
 	}
 }
 @media (max-width: 767.98px) {
-	html { 
-		font-size: 13px; 
-	}
 	.bs-headtwo .navbar-wp {
 	    height: 70px;
 	} 
