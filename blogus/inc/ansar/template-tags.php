@@ -372,7 +372,11 @@ if( ! function_exists( 'blogus_search_main' ) ) :
                                 <div class="bs-sec-top-post py-3 col">
                                     <?php blogus_post_categories(); ?>
                                     <h4 class="entry-title title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h4>
-                                    <?php blogus_post_meta(); ?>
+                                    <!-- Show meta for posts and other types, hide for pages in search results -->
+                                    <?php if ( is_search() && get_post_type() === 'page' ) {}
+                                        else {
+                                            blogus_post_meta();
+                                        } ?>
                                     <div class="bs-content">
                                         <p><?php echo wp_trim_words( get_the_excerpt(), 20 ); ?></p>
                                     </div>
