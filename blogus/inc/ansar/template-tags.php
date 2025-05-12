@@ -165,6 +165,9 @@ if (!function_exists('get_archive_title')) :
             $title = post_type_archive_title('', false);
         } elseif (is_single()) {
             $title = '';
+        } elseif(is_search()){   
+            /* translators: %s: search term */
+            $title = sprintf( esc_html__( 'Search Results for: %s', 'blogus' ), esc_html( get_search_query() ) );
         } else {
             $title = get_the_title();
         }
@@ -181,8 +184,14 @@ if (!function_exists('blogus_archive_page_title')) :
     function blogus_archive_page_title($title) { ?>
         <div class="bs-card-box page-entry-title">
             <?php if(!empty(get_the_archive_title())){ ?>
-            <h1 class="entry-title title mb-0"><?php echo get_the_archive_title();?></h1>
-            <?php } do_action('blogus_breadcrumb_content'); ?>
+                <div class="page-entry-title-box">
+                <h1 class="entry-title title mb-0"><?php echo get_the_archive_title();?></h1>
+                <?php if(is_search()) {
+                    blogus_search_count();
+                }
+                echo '</div>';
+            }
+            do_action('blogus_breadcrumb_content'); ?>
         </div>
     <?php
     }
@@ -410,3 +419,26 @@ if( ! function_exists( 'blogus_search_main' ) ) :
     <?php }
 endif;
 add_action( 'blogus_search_main_content', 'blogus_search_main' );
+
+if ( ! function_exists( 'blogus_search_count' ) ) :
+    function blogus_search_count() { 
+        global $wp_query;
+        $total_results = $wp_query->found_posts;
+        ?>
+        <!-- Results Count -->
+        <p class="search-results-count">
+            <?php
+            if ( $total_results > 0 ) {
+                // Translators: %s is the number of found results.
+                echo sprintf(
+                    _n( '%s result found', '%s results found', $total_results, 'blogus' ),
+                    number_format_i18n( $total_results )
+                );
+            } else {
+                echo esc_html__( 'No results found', 'blogus' );
+            }
+            ?>
+        </p>
+        <?php
+    }
+endif;

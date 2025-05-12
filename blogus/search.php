@@ -10,10 +10,10 @@ get_header(); ?>
 <div id="content">
     <!--container-->
     <div class="container">
+        <!--==================== Breadcrumb section ====================-->
+       <?php do_action('blogus_action_archive_page_title'); ?>
         <!--row-->
         <div class="row">
-            <!--==================== Breadcrumb section ====================-->
-            <?php do_action('blogus_breadcrumb_content'); ?>
             <?php do_action('blogus_search_main_content'); ?>
         </div>
         <!--/row-->
