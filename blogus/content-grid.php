@@ -8,7 +8,7 @@ $layout = esc_attr(get_theme_mod('blogus_content_layout','grid-right-sidebar')) 
 <div id="grid" class="row">
     <?php while(have_posts()){ the_post(); ?>
     <div class="<?php echo $layout?>">
-        <div id="post-<?php the_ID(); ?>" <?php post_class('bs-blog-post'); ?>> 
+        <div id="post-<?php the_ID(); ?>" <?php post_class('bs-blog-post grid'); ?>> 
             <?php blogus_post_image_display_type($post); ?>
             <article class="small">
                 <?php $blogus_global_category_enable = get_theme_mod('blogus_global_category_enable','true');
