@@ -572,3 +572,6 @@ Added Page Title For Woocommerce.
 
 = Version 2.4.8
 1. Fixed Styling Issue.
+
+= Version 2.4.9
+1. Fixed Search Page Styling Issue.

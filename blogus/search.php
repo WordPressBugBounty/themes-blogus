@@ -7,7 +7,7 @@
 
 get_header(); ?>
 <!--==================== main content section ====================-->
-<div id="content">
+<div id="content" class="search-class">
     <!--container-->
     <div class="container">
         <!--==================== Breadcrumb section ====================-->
