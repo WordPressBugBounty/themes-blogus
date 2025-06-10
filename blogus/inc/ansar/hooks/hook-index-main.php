@@ -100,7 +100,7 @@ if (!function_exists('blogus_single_content')) :
                 <?php if($single_show_featured_image == true) {
                     if (has_post_thumbnail()) {
                         echo '<div class="bs-blog-thumb">';
-                        the_post_thumbnail('', array('class' => 'img-fluid'));
+                        the_post_thumbnail('', array('class' => 'img-fluid attachment-full size-full'));
                         echo '</div>';
                     
                         $thumbnail_id = get_post_thumbnail_id();

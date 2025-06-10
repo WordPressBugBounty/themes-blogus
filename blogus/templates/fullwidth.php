@@ -23,7 +23,7 @@ get_header(); ?>
             if(has_post_thumbnail()) { ?>
                 <figure class="post-thumbnail">
                   <a href="<?php the_permalink(); ?>" >
-                    <?php the_post_thumbnail('full'); ?>
+                    <?php the_post_thumbnail('full', array('class' => 'img-fluid attachment-full size-full')); ?>
                   </a>				
                 </figure>
               <?php
