@@ -4,8 +4,8 @@ Author: Themeansar
 Requires PHP: 7.4
 Requires at least: 6.7
 Tested up to: 6.8
-Stable tag: 2.5.1
-Version: 2.5.1
+Stable tag: 2.5.2
+Version: 2.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -37,6 +37,16 @@ https://github.com/twbs/bootstrap/blob/master/LICENSE
 * Bootstrap navwalker
 * Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
 https://github.com/twittem/wp-bootstrap-navwalker
+
+
+* Google Fonts  
+* Josefin Sans
+    License: [Google Fonts Licensing](https://fonts.google.com/knowledge/glossary/licensing)  
+    Source: [Josefin Sans on Google Fonts](https://fonts.google.com/specimen/Josefin+Sans)
+
+* Rubik
+    License: [Google Fonts Licensing](https://fonts.google.com/knowledge/glossary/licensing)  
+    Source: [Rubik on Google Fonts](https://fonts.google.com/specimen/Rubik)
 
 == Font Awesome license ==
 ======================================
@@ -581,3 +591,6 @@ Added Page Title For Woocommerce.
 
 = Version 2.5.1
 1. Fixed Styling Issues of Sidebar Widgets.
+
+= Version 2.5.2
+1. Added Google Fonts Licence
