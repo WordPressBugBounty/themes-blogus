@@ -4,7 +4,7 @@
       e.preventDefault();
       $( this ).html( 'Processing.. Please wait' ).addClass( 'updating-message' );
       $.post(blogus_ajax_object.ajax_url, { 'action' : 'install_act_plugin' }, function( response ){
-        location.href = 'themes.php?page=ansar-demo-import';
+        location.href = 'admin.php?page=ansar-demo-import';
       } );
     } );
   } );
