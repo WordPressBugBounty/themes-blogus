@@ -135,28 +135,28 @@ border: 1px solid #2271b1;
 }
 
 .blogus-notice_text .panel-column-6{
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
 .panel-column-6 .blogus-notice-buttons{
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
 .panel-column-6 .blogus-notice-links {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .blogus-notice-link{ 
   display:inline;
-  color: #222;
+  color: #2271b1;
 }
 .admin-bar .blogus-btn-get-started, .admin-bar .blogus-btn-get-started-customize{
   display: flex;
