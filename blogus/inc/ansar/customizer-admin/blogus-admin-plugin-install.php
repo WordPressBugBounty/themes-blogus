@@ -1,4 +1,5 @@
-<?php /**
+<?php 
+/**
  * AJAX handler to store the state of dismissible notices.
  */
 function blogus_ajax_notice_handler() {
@@ -35,7 +36,19 @@ function blogus_deprecated_hook_admin_notice() {
                             printf( esc_html__('Welcome to %1$s', 'blogus'), esc_html( $theme_info->Name ), esc_html( $theme_info->Version ) ); ?>
                         </h1>
                         
-                        <p><?php esc_html_e("Thank you for choosing Blogus theme. To take full advantage of the complete features of the theme click the Starter Sites and Install and Activate the", "blogus");?> <a href="https://wordpress.org/plugins/ansar-import"><?php esc_html_e("Ansar Import", "blogus");?></a> <?php esc_html_e("plugin then use the demo importer and install the Blogus Demo according to your need.", "blogus"); ?></p>
+                        <p>
+                        <?php
+                            echo wp_kses_post( sprintf(
+                                __(
+                                    'Thank you for choosing %1$s theme. To take full advantage of the complete features of the theme, click Get Started and install and activate the %2$s plugin, then use the demo importer and install the %3$s demo according to your need.',
+                                    'blogus'
+                                ),
+                                esc_html($theme_info->Name),
+                                '<a href="https://wordpress.org/plugins/ansar-import" target="_blank">' . esc_html__('Ansar Import', 'blogus') . '</a>',
+                                esc_html($theme_info->Name)
+                            ) );
+                            ?>
+                        </p>
 
                         <div class="panel-column-6">
                             <div class="blogus-notice-buttons">
