@@ -4,8 +4,8 @@ Author: Themeansar
 Requires PHP: 7.4
 Requires at least: 6.7
 Tested up to: 6.8
-Stable tag: 2.5.8
-Version: 2.5.8
+Stable tag: 2.5.9
+Version: 2.5.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -612,3 +612,6 @@ Added Page Title For Woocommerce.
 
 = Version 2.5.8
 1. Fixed Sidebar Comments Styling.
+
+= Version 2.5.9
+1. Fixed Footer List Styling Issues.

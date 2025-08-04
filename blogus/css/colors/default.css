@@ -704,6 +704,7 @@ footer .bs-widget .title, footer .consultup_contact_widget .bs-widget .title {
 }
 footer .bs-widget ul li {
 	color: #bbb;
+	border-color: rgba(255,255,255, 0.4);
 }
 footer .text-input button.sub-link  a{
 	color: var(--bg-color);
