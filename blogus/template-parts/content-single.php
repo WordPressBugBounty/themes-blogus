@@ -1,7 +1,7 @@
 <?php
 /**
  * The template for displaying the Single content.
- * @package Newsair
+ * @package Blogus
  */
 ?>
 <!--==================== breadcrumb section ====================-->

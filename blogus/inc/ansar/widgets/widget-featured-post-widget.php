@@ -46,14 +46,14 @@ class featured_post_Widget extends WP_Widget {
 					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 					<?php 
 					$postID = $query->post->ID;
-					$featured_img_url = get_the_post_thumbnail_url($postID, 'full');  
+					$featured_img_url = get_the_post_thumbnail_url($postID, 'full');
 					$author_id = get_post_field ('post_author', $postID);
 					$display_name = get_the_author_meta( 'display_name' , $author_id );
 					?>
 					<?php if($i == 1){  ?>
 					 	
 						<div class="bs-blog-post mb-4"> 
-							<div class="bs-blog-thumb lg back-img" style="background-image: url('<?php echo $featured_img_url; ?>');">
+							<div class="bs-blog-thumb lg back-img bg-dark" style="background-image: url('<?php echo $featured_img_url; ?>');">
 								<a href="<?php echo get_permalink($postID); ?>" class="link-div"></a>
 							</div>
 							<div class="inner py-4 px-4">
@@ -75,10 +75,12 @@ class featured_post_Widget extends WP_Widget {
 								</div>
 							</div>
 							<!-- // small-post-content -->
-							<div class="img-small-post back-img hlgr" style="background-image: url('<?php echo $featured_img_url; ?>');">
-								<a href="<?php echo get_permalink($postID); ?>" class="link-div"></a>
-							</div>
-							<!-- // img-small-post -->
+							<?php if (!empty($featured_img_url)) { ?>
+								<div class="img-small-post back-img hlgr" style="background-image: url('<?php echo $featured_img_url; ?>');">
+									<a href="<?php echo get_permalink($postID); ?>" class="link-div"></a>
+								</div>
+								<!-- // img-small-post -->
+							<?php } ?>
 						</div>
 					<?php } ?>	
 				<?php $i++; endwhile; ?>
