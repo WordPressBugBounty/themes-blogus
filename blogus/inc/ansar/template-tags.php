@@ -70,20 +70,9 @@ if (!function_exists('blogus_post_meta')) :
             blogus_author_content();
 
         } elseif($global_post_date =='hide-date-author') { }
-        if($blogus_global_comment_enable == true) { ?>
-            <span class="comments-link"> 
-                <a href="<?php the_permalink(); ?>">
-                <span>
-                    <?php if ( get_comments_number() == 0 ) {
-                        esc_html_e(  __('No Comments', 'blogus') );
-                    } else {
-                        echo get_comments_number() . ' ';
-                        esc_html_e( get_comments_number() == 1 ? __('Comment', 'blogus') : __('Comments', 'blogus') );
-                    } ?>
-                </span>
-            </a> 
-            </span>
-        <?php } 
+        if($blogus_global_comment_enable == true) { 
+            blogus_comments_content();
+        } 
         blogus_edit_link(); ?>
         </div>
     <?php
@@ -233,6 +222,24 @@ if ( ! function_exists( 'blogus_author_content' ) ) :
             <a class="auth" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"> 
             <?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?><?php the_author(); ?>
             </a> 
+        </span>
+    <?php }
+endif;
+
+
+if ( ! function_exists( 'blogus_comments_content' ) ) :
+    function blogus_comments_content() { ?>
+        <span class="comments-link"> 
+            <a href="<?php the_permalink(); ?>">
+            <span>
+                <?php if ( get_comments_number() == 0 ) {
+                    esc_html_e(  __('No Comments', 'blogus') );
+                } else {
+                    echo get_comments_number() . ' ';
+                    esc_html_e( get_comments_number() == 1 ? __('Comment', 'blogus') : __('Comments', 'blogus') );
+                } ?>
+            </span>
+        </a> 
         </span>
     <?php }
 endif;
