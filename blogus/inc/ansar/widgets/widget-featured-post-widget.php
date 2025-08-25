@@ -19,17 +19,16 @@ class featured_post_Widget extends WP_Widget {
 		
 		$title = apply_filters( 'widget_title', $instance['title'] );
 		$cat = $instance['cat'];
-		$args =  array(
+		$loop =  array(
 			'posts_per_page' => 5,
 			'post_type' => array('post'),
 			'post__not_in' => get_option('sticky_posts'),
 			'cat' => $instance['cat'] // Insert category ID here
 		);	
-		$query = new WP_Query( $args );
+		$query = new WP_Query( $loop );
 		
 		// before and after widget arguments are defined by themes
-		echo isset($args['before_widget']) ? $args['before_widget'] :'';	
-		
+		echo $args['before_widget'];
 
 		?>
 		
@@ -94,7 +93,8 @@ class featured_post_Widget extends WP_Widget {
 			</div>
         </div>
 		<?php
-		echo isset($args['after_widget']) ? $args['after_widget'] :'';
+
+		echo $args['after_widget'];
 	}
 
 	public function form( $instance ) {
@@ -127,15 +127,10 @@ class featured_post_Widget extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		 $instance = $old_instance;
-		 $instance['title'] = strip_tags( $new_instance['title'] );
-		 $instance['cat'] = strip_tags( $new_instance['cat'] );
-		
-		 return $instance;           
-
+		$instance = $old_instance;
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['cat'] = strip_tags( $new_instance['cat'] );
+	
+		return $instance;
 	}
-
-
 }
-
-?>

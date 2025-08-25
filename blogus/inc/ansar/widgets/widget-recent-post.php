@@ -51,8 +51,8 @@ class blogus_featured_latest_news extends WP_Widget {
 			endif; ?>
 		</div>	
 		<?php
-			
-		echo $args['after_widget']; 	
+
+		echo $args['after_widget'];
 	}
 
 	public function form( $instance ) {
