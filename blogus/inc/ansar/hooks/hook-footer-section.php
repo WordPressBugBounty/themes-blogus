@@ -117,7 +117,7 @@ if( ! function_exists( 'blogus_footer_copyright' ) ) :
                     <?php wp_nav_menu( array(
                         'theme_location' => 'footer',
                         'container'  => 'nav-collapse collapse navbar-inverse-collapse',
-                        'menu_class' => 'info-right',
+                        'menu_class' => 'info-right justify-content-center justify-content-md-end',
                         'fallback_cb' => 'blogus_fallback_page_menu',
                         'walker' => new blogus_nav_walker()
                       ) );  ?>
