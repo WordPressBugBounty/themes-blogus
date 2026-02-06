@@ -308,6 +308,9 @@ function blogus_customize_register($wp_customize) {
     require get_template_directory().'/inc/ansar/customize/header-options.php';
 
 	require get_template_directory().'/inc/ansar/customize/theme-options.php';
+    
+    /*theme general layout panel*/
+	require get_template_directory().'/inc/ansar/customize/customize-global.php';
 
 	/*theme general layout panel*/
 	require get_template_directory().'/inc/ansar/customize/theme-layout.php';

@@ -396,3 +396,69 @@ function blogus_custom_header_background() {
     </style>
 <?php }
 add_action('wp_head','blogus_custom_header_background');
+
+if ( class_exists( 'WooCommerce' ) ) {
+
+    // Display product categories before title
+    if ( ! function_exists( 'blogus_show_product_category_before_title' ) ) {
+        function blogus_show_product_category_before_title() {
+            global $product;
+
+            if ( ! $product ) {
+                return;
+            }
+
+            echo wc_get_product_category_list(
+                $product->get_id(),
+                ', ',
+                '<div class="woocommerce-loop-product__categories">', 
+                '</div>'
+            );
+        }
+    }
+
+    // Remove default product title
+    remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+
+    // Add product category before title
+    add_action( 'woocommerce_shop_loop_item_title', 'blogus_show_product_category_before_title', 5 );
+
+    // Add clickable product title back
+    add_action( 'woocommerce_shop_loop_item_title', 'custom_clickable_product_title', 10 );
+    function custom_clickable_product_title() {
+        echo '<h2 class="woocommerce-loop-product__title"><a href="' . esc_url( get_permalink() ) . '">' . get_the_title() . '</a></h2>';
+    }
+
+    function blogus_custom_woo_slider_icons( $options ) {
+        // 1. Force Arrows ON
+        $options['directionNav'] = true;
+
+        // 2. Inject FontAwesome HTML directly
+        // Make sure to use single quotes '' for the PHP string and double quotes "" for HTML classes
+        $options['prevText'] = '<i class="fa fa-angle-left"></i>';
+        $options['nextText'] = '<i class="fa fa-angle-right"></i>';
+
+        return $options;
+    }
+    add_filter( 'woocommerce_single_product_carousel_options', 'blogus_custom_woo_slider_icons' );
+
+    /* Change WooCommerce Gallery Thumbnails to 5 Columns */
+    function blogus_change_product_gallery_columns() {
+        return 5; 
+    }
+    add_filter( 'woocommerce_product_thumbnails_columns', 'blogus_change_product_gallery_columns' );
+
+    /* Change Pagination Arrows to FontAwesome Icons */
+    function blogus_custom_pagination_icons( $args ) {
+        // Replace text with FontAwesome icons
+        
+        $prev_text =  (is_rtl()) ? "right" : "left";
+        $next_text =  (is_rtl()) ? "left" : "right";
+
+        $args['prev_text'] = '<i class="fa fa-angle-'.$prev_text.'"></i>'; 
+        $args['next_text'] = '<i class="fa fa-angle-'.$next_text.'"></i>';
+        
+        return $args;
+    }
+    add_filter( 'woocommerce_pagination_args', 'blogus_custom_pagination_icons' );
+}

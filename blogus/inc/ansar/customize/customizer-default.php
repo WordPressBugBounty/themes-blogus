@@ -67,6 +67,16 @@ function blogus_get_default_theme_options() {
     $defaults['blogus_footer_copy_bg'] = '';
     $defaults['blogus_footer_text_color'] = '';
     
+    // Schema Markup
+    $defaults['blogus_enable_schema'] = false;
+    
+    // Cursor Dot
+    $defaults['blogus_enable_cursor_dot'] = false;
+    
+    // Preloader
+    $defaults['blogus_enable_preloader'] = false;
+    $defaults['preloader_ad_image'] = '';
+
     $defaults = apply_filters('blogus_filter_default_theme_options', $defaults);
     // filter.
 

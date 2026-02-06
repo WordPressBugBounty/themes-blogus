@@ -70,9 +70,8 @@ if (!function_exists('blogus_post_meta')) :
             blogus_author_content();
 
         } elseif($global_post_date =='hide-date-author') { }
-        if($blogus_global_comment_enable == true) { 
             blogus_comments_content();
-        } 
+
         blogus_edit_link(); ?>
         </div>
     <?php
@@ -196,7 +195,7 @@ if ( ! function_exists( 'blogus_posted_content' ) ) :
             if(( 'align-content-right' == $content_layout ) || ( 'full-width-content' == $content_layout ) || ( 'align-content-left' == $content_layout )){
                 $blogus_excerpt = blogus_the_excerpt( absint( 30 ) );
             } else {
-                $blogus_excerpt = blogus_the_excerpt( absint( 20 ) );
+                $blogus_excerpt = blogus_the_excerpt( absint( 22 ) );
             } 
             if ( !empty( $blogus_excerpt ) ) :                   
                 echo wp_kses_post( wpautop( $blogus_excerpt ) );
@@ -228,7 +227,9 @@ endif;
 
 
 if ( ! function_exists( 'blogus_comments_content' ) ) :
-    function blogus_comments_content() { ?>
+    function blogus_comments_content() { 
+        $blogus_global_comment_enable = get_theme_mod('blogus_global_comment_enable','true');
+        if($blogus_global_comment_enable == true) { ?>
         <span class="comments-link"> 
             <a href="<?php the_permalink(); ?>">
             <span>
@@ -241,7 +242,8 @@ if ( ! function_exists( 'blogus_comments_content' ) ) :
             </span>
         </a> 
         </span>
-    <?php }
+    <?php } 
+    }
 endif;
 
 if ( ! function_exists( 'blogus_the_excerpt' ) ) :
@@ -376,7 +378,7 @@ if ( ! function_exists( 'blogus_page_pagination' ) ) :
 endif;
 
 if( ! function_exists( 'blogus_search_main' ) ) :
-    function blogus_search_main() { ?>
+    function blogus_search_main() {  ?>
         <div class="col-lg-<?php echo ( !is_active_sidebar( 'sidebar-1' ) ? '12' :'8' ); ?>">
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <?php if ( have_posts() ) { /* Start the Loop */
@@ -389,7 +391,9 @@ if( ! function_exists( 'blogus_search_main' ) ) :
                                     <?php blogus_post_categories(); ?>
                                     <h4 class="entry-title title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h4>
                                     <!-- Show meta for posts and other types, hide for pages in search results -->
-                                    <?php if ( is_search() && get_post_type() === 'page' ) {}
+                                    <?php 
+                                    $post_type = get_post_type(); 
+                                    if ( is_search() && ($post_type === 'page' || $post_type === 'product') ) {}
                                         else {
                                             blogus_post_meta();
                                         } ?>

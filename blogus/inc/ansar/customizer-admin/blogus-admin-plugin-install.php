@@ -97,28 +97,40 @@ add_action( 'admin_notices', 'blogus_deprecated_hook_admin_notice' );
 add_action( 'wp_ajax_install_act_plugin', 'blogus_admin_info_install_plugin' );
 
 function blogus_admin_info_install_plugin() {
-    /**
-     * Install Plugin.
-     */
-    include_once ABSPATH . '/wp-admin/includes/file.php';
+    // Check user capability
+    if ( ! current_user_can( 'install_plugins' ) ) {
+        wp_send_json_error( array( 'message' => __( 'Sorry, you are not allowed to access this page.', 'blogus' ) ), 403 );
+    }
+
+    // Security Nonce verification
+    check_ajax_referer( 'blogus_install_plugin_nonce', 'security' );
+
+    include_once ABSPATH . 'wp-admin/includes/file.php';
     include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
     include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-    if ( ! file_exists( WP_PLUGIN_DIR . '/ansar-import' ) ) {
+    $plugin_slug = 'ansar-import';
+    $plugin_slug = sanitize_key( $plugin_slug );
+
+    if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_slug ) ) {
         $api = plugins_api( 'plugin_information', array(
-            'slug'   => sanitize_key( wp_unslash( 'ansar-import' ) ),
-            'fields' => array(
-                'sections' => false,
-            ),
+            'slug'   => $plugin_slug,
+            'fields' => array( 'sections' => false ),
         ) );
-
+        if ( is_wp_error( $api ) ) {
+            wp_send_json_error( array( 'message' => __( 'Failed to fetch plugin information.', 'blogus' ) ) );
+        }
         $skin     = new WP_Ajax_Upgrader_Skin();
         $upgrader = new Plugin_Upgrader( $skin );
         $result   = $upgrader->install( $api->download_link );
-    }
 
-    // Activate plugin.
-    if ( current_user_can( 'activate_plugin' ) ) {
-        $result = activate_plugin( 'ansar-import/ansar-import.php' );
+        if ( is_wp_error( $result ) ) {
+            wp_send_json_error( array( 'message' => __( 'Plugin installation failed.', 'blogus' ) ) );
+        }
     }
+    if ( current_user_can( 'activate_plugins' ) ) {
+        activate_plugin( 'ansar-import/ansar-import.php' );
+    }
+    wp_send_json_success( array( 'message' => __( 'Plugin installed and activated successfully.', 'blogus' ) ) );
 }

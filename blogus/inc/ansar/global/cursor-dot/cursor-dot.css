@@ -1,0 +1,22 @@
+.blogus-cursor-dot-outline {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background-color: var(--pri-color);
+    opacity: 0.5;
+    transform: translate(calc(var(--cursor-x) - 50%), calc(var(--cursor-y) - 50%));
+    /* The lag effect is created by this transition duration */
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
+}
+body.blogus-cursor-hover .blogus-cursor-dot-outline {
+    width: 80px;
+    height: 80px;
+    background-color: transparent; 
+    border-color: transparent; 
+}

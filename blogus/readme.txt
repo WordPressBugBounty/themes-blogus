@@ -3,9 +3,9 @@ Contributors: Themeansar
 Author: Themeansar
 Requires PHP: 7.4
 Requires at least: 6.7
-Tested up to: 6.8
-Stable tag: 2.6.7
-Version: 2.6.7
+Tested up to: 6.9
+Stable tag: 2.8.4
+Version: 2.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -639,3 +639,56 @@ Added Page Title For Woocommerce.
 
 = Version 2.6.7
 1. Fixed Footer menus Styling Issues.
+
+= Version 2.6.8
+1. Fixed Inputs RTL Styling Issues.
+
+= Version 2.6.9
+1. Fixed Category Count Styling.
+
+= Version 2.7.0
+1. Fixed Security Issues.
+
+= Version 2.7.1
+* Added Theme Support Function.
+
+= Version 2.7.2
+* Fixed Inputs Color Issue on Dark Mode.
+
+= Version 2.7.3
+* Added Woocommerce Category on Products.
+
+= Version 2.7.4
+* Fixed Product Meta Issue on Search Page
+
+= Version 2.7.5
+* Fixed WooCommerce Product Page Styling Issues.
+
+= Version 2.7.6
+* Added Navigation On Product Featured Image.
+
+= Version 2.7.7
+* Fixed WooCommerce Styling Issues.
+
+= Version 2.7.8
+* Fixed WooCommerce Product Price Color Issues.
+
+= Version 2.7.9
+* Fixed Shop Page Pagination Styling.
+
+= Version 2.8.0
+* Fixed Post Except Lines Issue.
+
+= Version 2.8.1
+* Added Theme Color Variable.
+
+= Version 2.8.2
+* Added Cursor Dot
+* Added Preloader 
+* Added Schema Markup
+
+= Version 2.8.3
+* Fixed Color Variable Issue.
+
+= Version 2.8.4
+* Fixed Dropdown Icons Issue on Responsive.
