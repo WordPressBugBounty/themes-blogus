@@ -205,23 +205,23 @@ if (!function_exists('blogus_single_related_box')) :
                             <!-- blog -->
                             <div class="col-md-4">
                                 <div class="bs-blog-post three md back-img bshre mb-md-0" <?php if(has_post_thumbnail()) { ?> style="background-image: url('<?php echo esc_url($url); ?>');" <?php } ?>>
-                                <a class="link-div" href="<?php the_permalink(); ?>"></a>
-                                    <div class="inner">
-                                        <?php if($blogus_enable_single_post_category == true) { blogus_post_categories(); } ?>
-                                        <h4 class="title sm mb-0">
-                                            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
-                                                <?php the_title(); ?>
-                                            </a>
-                                        </h4> 
-                                        <div class="bs-blog-meta">
-                                            <?php if($blogus_enable_single_post_admin_details == true){ 
+                                <div class="inner">
+                                    <?php if($blogus_enable_single_post_category == true) { blogus_post_categories(); } ?>
+                                    <h4 class="title sm mb-0">
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => 'Permalink to: ','after'  => '') ); ?>">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h4> 
+                                    <div class="bs-blog-meta">
+                                        <?php if($blogus_enable_single_post_admin_details == true){ 
                                             blogus_author_content();
                                             } 
                                             if($blogus_enable_single_post_date == true) { 
                                                 blogus_date_content(); 
-                                            } 
-                                            ?>
+                                                } 
+                                                ?>
                                         </div>
+                                        <a class="link-div" href="<?php the_permalink(); ?>"></a>
                                     </div>
                                 </div>
                             </div>
