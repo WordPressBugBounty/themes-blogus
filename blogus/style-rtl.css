@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.8.5
+Version: 2.8.6
 Tested up to: 6.9
 Requires PHP: 7.4
 Requires at least: 6.7
@@ -2246,7 +2246,7 @@ html {
 }
 
 .list-blog .bs-blog-category {
-	justify-content: flex-start;
+	justify-content: center;
 }
 
 .list-blog.right .bs-blog-thumb {
@@ -4597,6 +4597,10 @@ a,
 	.nav.navbar-nav:not(.sm-collapsible) .menu-item-has-children .nav-link:before, .nav-link.has-submenu:before {
 		display: none;
 	}
+	nav .navbar-nav.sm-collapsible .has-submenu {
+		padding-left: 3em;
+		padding-right: 8px;
+	}
 }
 
 @media (max-width: 767.98px) {
@@ -4668,7 +4672,7 @@ a,
 		justify-content: start;
 	}
 	.bs-blog-post .bs-blog-meta {
-		justify-content: center;
+		justify-content: start;
 	}
 	.bs-blog-post.single .bs-blog-meta {
 		justify-content: start;
