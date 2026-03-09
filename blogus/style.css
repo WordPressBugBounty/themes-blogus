@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.8.8
+Version: 2.8.9
 Tested up to: 6.9
 Requires PHP: 7.4
 Requires at least: 6.7
@@ -465,48 +465,31 @@ fieldset p {
 /*---------------------------------------
 	Typography        
 -----------------------------------------*/
-h1,
-.h1 {
+h1, .h1 {
 	font-size: 34px;
 }
 
-h2,
-.h2 {
+h2, .h2 {
 	font-size: 32px;
 }
 
-h3,
-.h3 {
+h3, .h3 {
 	font-size: 28px;
 }
 
-h4,
-.h4 {
+h4, .h4 {
 	font-size: 24px;
 }
 
-h5,
-.h5 {
+h5, .h5 {
 	font-size: 20px;
 }
 
-h6,
-.h6 {
+h6, .h6 {
 	font-size: 16px;
 }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	font-family: var(--headFont);
 	font-weight: 800;
 	color: var(--head-color);
@@ -1158,63 +1141,50 @@ pre.wp-block-code a,
 	animation: growDown 300ms ease-in-out forwards;
 	transform-origin: top center;
 }
-
 @-moz-keyframes growDown {
 	0% {
 		transform: scaleY(0);
 	}
-
 	80% {
 		transform: scaleY(1.1);
 	}
-
 	100% {
 		transform: scaleY(1);
 	}
 }
-
 @-webkit-keyframes growDown {
 	0% {
 		transform: scaleY(0);
 	}
-
 	80% {
 		transform: scaleY(1.1);
 	}
-
 	100% {
 		transform: scaleY(1);
 	}
 }
-
 @-o-keyframes growDown {
 	0% {
 		transform: scaleY(0);
 	}
-
 	80% {
 		transform: scaleY(1.1);
 	}
-
 	100% {
 		transform: scaleY(1);
 	}
 }
-
 @keyframes growDown {
 	0% {
 		transform: scaleY(0);
 	}
-
 	80% {
 		transform: scaleY(1.1);
 	}
-
 	100% {
 		transform: scaleY(1);
 	}
 }
-
 .navbar-wp .dropdown-menu>li,
 .navbar-wp .dropdown-menu>li:last-child {
 	border: 0
@@ -1368,7 +1338,6 @@ html {
 		font-size: 95%;
 	}
 }
-
 /* 
   ##Device = Most of the tablets
   ##Screen = 991px and under.
@@ -1378,7 +1347,6 @@ html {
 		font-size: 90%;
 	}
 }
-
 /* 
   ##Device = Most of the tablets
   ##Screen = 767px and under.
@@ -1388,7 +1356,6 @@ html {
 		font-size: 85%;
 	}
 }
-
 /* 
   ##Device = Most of the smartphones (portrait)
   ##Screen = 575px and under.
@@ -1398,7 +1365,6 @@ html {
 		font-size: 80%;
 	}
 }
-
 .site-branding-text .site-title {
 	font-weight: 700;
 	font-size: 60px;
@@ -3952,7 +3918,6 @@ a,
 		max-width: 1270px;
 	}
 }
-
 @media (min-width: 992px) {
 	.bs-sidebar {
 		padding-right: 20px;
@@ -3966,7 +3931,6 @@ a,
 		padding-right: 0px;
 	}
 }
-
 @media (min-width: 991.98px) and (max-width: 1199px) {
 	.col-lg-3 .wp-block-search__inside-wrapper {
 		flex-wrap: wrap;
@@ -3977,7 +3941,6 @@ a,
 		margin-top: 5px;
 	}
 }
-
 @media (max-width: 991.98px) {
 	#menu-primary li.active.home {
 		display: none;
@@ -4038,7 +4001,6 @@ a,
 		display: none;
 	}
 }
-
 @media (max-width: 767.98px) {
 	.navbar-brand img {
 		max-width: 100%;
@@ -4104,7 +4066,6 @@ a,
 		grid-template-columns: repeat(1, minmax(0, 1fr));
 	}
 }
-
 @media (max-width: 575.98px) {
 	.bs-blog-post.single .bs-header .title {
 		font-size: 32px;
@@ -4112,7 +4073,6 @@ a,
 	.page-entry-title {
 		flex-direction: column;
 	}
-
 	/* comments  */
 	.comment-list .children {
 		margin-left: 1.5rem;

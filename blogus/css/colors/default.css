@@ -693,6 +693,9 @@ input[type="search"]::placeholder {
 footer .overlay {
 	background: #0F1012;
 }
+footer[style*="background-image"] .overlay {
+    background: #0f1012bf;
+}
 footer .widget_block h2, footer .wp-block-heading {
 	color: #fff;
 }
