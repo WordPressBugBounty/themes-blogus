@@ -52,7 +52,11 @@ function blogus_deprecated_hook_admin_notice() {
 
                         <div class="panel-column-6">
                             <div class="blogus-notice-buttons">
-                                <a class="blogus-btn-get-started button button-primary button-hero blogus-button-padding" href="#" data-name="" data-slug=""><span aria-hidden="true" class="dashicons dashicons-images-alt"></span><?php esc_html_e( 'Get Started', 'blogus' ) ?></a>
+                                <?php if ( is_plugin_active( 'ansar-import/ansar-import.php' ) ) : ?>
+                                <a class="blogus-btn-get-started button button-primary button-hero blogus-button-padding" href="<?php echo esc_url(admin_url( 'admin.php?page=ansar-demo-import' )); ?>" data-name="" data-slug=""><span aria-hidden="true" class="dashicons dashicons-images-alt"></span><?php esc_html_e( 'Get Started', 'blogus' ) ?></a>
+                                <?php else : ?>
+                                    <a class="blogus-btn-get-started load button button-primary button-hero blogus-button-padding" href="#" data-name="" data-slug=""><span aria-hidden="true" class="dashicons dashicons-images-alt"></span><?php esc_html_e( 'Get Started', 'blogus' ) ?></a>
+                                <?php endif; ?>
                                 <a class="blogus-btn-get-started-customize button button-secondary button-hero blogus-button-padding" href="<?php echo esc_url( admin_url( '/customize.php' ) ); ?>" data-name="" data-slug=""><span aria-hidden="true" class="dashicons dashicons-welcome-widgets-menus"></span><?php esc_html_e( 'Customize Site', 'blogus' ) ?></a>
                             </div>
                             <div class="blogus-notice-links">

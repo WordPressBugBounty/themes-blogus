@@ -1,6 +1,6 @@
 (function ($) {
   $(document).ready(function () {
-    $('.blogus-btn-get-started').on('click', function (e) {
+    $('.blogus-btn-get-started.load').on('click', function (e) {
       e.preventDefault();
       if (!blogus_ajax_object.can_install) {
         alert('Sorry, you are not allowed to access this page.');
