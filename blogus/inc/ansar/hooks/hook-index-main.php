@@ -157,7 +157,12 @@ if (!function_exists('blogus_single_author_box')) :
             <a class="bs-author-pic mb-3" href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php echo get_avatar( get_the_author_meta( 'ID') , 150); ?></a>
             <div class="flex-grow-1">
               <h4 class="title"><?php esc_html_e('By','blogus'); ?> <a href ="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) ));?>"><?php the_author(); ?></a></h4>
-              <p><?php the_author_meta( 'description' ); ?></p>
+            <?php
+            $authorDesc = get_the_author_meta('description');
+            if (!empty($authorDesc)) {
+                echo '<p class="bs-author-desc">' . $authorDesc . '</p>';
+            }
+            ?>
             </div>
         </div>
         <?php }
