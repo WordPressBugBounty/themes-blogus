@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.9.5
+Version: 2.9.6
 Tested up to: 6.9
 Requires PHP: 7.4
 Requires at least: 6.7
@@ -3325,7 +3325,7 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 	display: none;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li.active {
-	border-width: 0 0 1px 0;
+	border-width: 0 0 2px 0;
 	border-style: solid;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
@@ -3340,6 +3340,25 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 .woocommerce div.product .woocommerce-tabs .panel h2 {
 	font-size: 22px;
 	line-height: 25px;
+}
+.woocommerce div.product .product_meta>span {
+    display: block;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a:focus{
+	outline: none;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a:focus-visible{
+	outline-offset: none;
+}
+.woocommerce table.shop_attributes th{
+	text-align: center;
+}
+.woocommerce table.shop_attributes td p{
+	padding: 8px 12px;
+}
+.woocommerce div.product .woocommerce-tabs .panel h2{
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
 }
 .related.products {
 	text-align: center;
