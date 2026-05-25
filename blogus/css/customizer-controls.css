@@ -156,11 +156,15 @@ border: 1px solid #2271b1;
 }
 .blogus-notice-link{ 
   display:inline;
-  color: #2271b1;
+  color: var(--wp-admin-theme-color);
 }
 .admin-bar .blogus-btn-get-started, .admin-bar .blogus-btn-get-started-customize{
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+.admin-bar .blogus-notice-buttons :is( .blogus-btn-get-started, .blogus-btn-get-started-customize) .dashicons {
+    line-height: 1.2;
+    color: inherit !important;
 }
