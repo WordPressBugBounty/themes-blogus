@@ -168,3 +168,7 @@ border: 1px solid #2271b1;
     line-height: 1.2;
     color: inherit !important;
 }
+#customize-controls li#accordion-section-blogus_pro_upsell .accordion-section-title .alignright{
+  color: #fff;
+  border-color: #fff;
+}

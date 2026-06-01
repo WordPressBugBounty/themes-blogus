@@ -77,6 +77,12 @@ function blogus_get_default_theme_options() {
     $defaults['blogus_enable_preloader'] = false;
     $defaults['preloader_ad_image'] = '';
 
+    $defaults['blogus_logo_margin'] =  array(
+            'desktop' => array('top' => '', 'right' => '', 'bottom' => '', 'left' => '', 'unit' => 'px'),
+            'tablet'  => array('top' => '',  'right' => '', 'bottom' => '',  'left' => '', 'unit' => 'px'),
+            'mobile'  => array('top' => '',  'right' => '', 'bottom' => '',  'left' => '', 'unit' => 'px'),
+        );
+
     $defaults = apply_filters('blogus_filter_default_theme_options', $defaults);
     // filter.
 

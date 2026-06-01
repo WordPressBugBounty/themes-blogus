@@ -1,0 +1,192 @@
+/**
+ * Blogus Dimension Control
+*/
+.customize-control-dimensions {
+    position: relative;
+} 
+.customize-control-dimensions input::-webkit-outer-spin-button,
+.customize-control-dimensions input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+} 
+.customize-control-dimensions input[type=number] {
+    -moz-appearance: textfield;
+}
+/* ── Outer card ── */
+.customize-control-dimensions .blogus-dimension-wrapper {
+    overflow: hidden;
+}
+/* ── Header band ── */
+.customize-control-dimensions .dimension-label-unit-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0px;
+} 
+.customize-control-dimensions .dimension-label-unit-wrapper .label-switcher-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+/* ── Device switcher ── */
+.customize-control-dimensions .responsive-switchers {
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+} 
+.customize-control-dimensions .responsive-switchers button.switch-device {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 2px 3px;
+    line-height: 1;
+    color: #a7aaad;
+    transition: color 0.1s;
+} 
+.customize-control-dimensions .responsive-switchers button.switch-device .dashicons {
+    font-size: 13px;
+    width: 13px;
+    height: 13px;
+    line-height: 1;
+} 
+.customize-control-dimensions .responsive-switchers button.switch-device:hover,
+.customize-control-dimensions .responsive-switchers button.switch-device.active {
+    color: var(--wp-admin-theme-color);
+}
+/* ── Unit select + reset ── */
+.customize-control-dimensions .unit-wrapper .input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+} 
+.customize-control-dimensions .unit-wrapper .input-wrapper select.dimension-unit {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 0.5px solid #dcdcde;
+    border-radius: 4px;
+    padding: 2px 4px;
+    background: #fff;
+    color: #3c434a;
+    appearance: none;
+    -webkit-appearance: none;
+    height: auto;
+    min-height: unset;
+    line-height: 1.4;
+    cursor: pointer;
+} 
+.customize-control-dimensions .unit-wrapper .input-wrapper select.dimension-unit:focus {
+    box-shadow: none;
+    border-color: var(--wp-admin-theme-color);
+    outline: none;
+} 
+.customize-control-dimensions .unit-wrapper .input-wrapper .blogus-dimensions-reset {
+    display: flex;
+    align-items: center;
+} 
+.customize-control-dimensions .unit-wrapper .input-wrapper .blogus-dimensions-reset .dashicons-image-rotate {
+    font-size: 13px;
+    width: 13px;
+    height: 13px;
+    line-height: 1;
+    color: #a7aaad;
+    cursor: pointer;
+    transition: color 0.1s;
+} 
+.customize-control-dimensions .unit-wrapper .input-wrapper .blogus-dimensions-reset .dashicons-image-rotate:hover {
+    color: var(--wp-admin-theme-color);
+}
+/* ── Toggle visibility architecture ── */
+.customize-control-dimensions .wrapper,
+.customize-control-dimensions .dimension-unit {
+    display: none !important;
+} 
+.customize-control-dimensions .wrapper.active-device {
+    display: block !important;
+} 
+.customize-control-dimensions .dimension-unit.active-device {
+    display: inline-block !important;
+}
+/* ── Control row ── */
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 5px;
+}
+/* ── Side labels ── */
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+/* ── Pill inputs ── */
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control label input[type="number"] {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 4px;
+    border: 0.5px solid #dcdcde;
+    border-radius: 6px;
+    background: #fff;
+    color: #1e1e1e;
+    outline: none;
+    box-sizing: border-box;
+    height: auto;
+    transition: border-color 0.1s, background 0.1s, box-shadow 0.1s;
+} 
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control label input[type="number"]:focus {
+    border-color: var(--wp-admin-theme-color);
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.15);
+}
+/* ── Side name text ── */
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control label h5 {
+    margin: 0;
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #a7aaad;
+    text-align: center;
+}
+/* ── Link / binding button ── */
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control .blogus-binding {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f6f7f7;
+    border: 0.5px solid #dcdcde;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 1px;
+    transition: border-color 0.1s, color 0.1s, background 0.1s;
+    color: #a7aaad;
+} 
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control .blogus-binding:hover {
+    border-color: var(--wp-admin-theme-color);
+    color: var(--wp-admin-theme-color);
+} 
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control .blogus-binding.active {
+    background: var(--wp-admin-theme-color);
+    border-color: var(--wp-admin-theme-color);
+    color: #fff;
+} 
+.customize-control-dimensions .blogus-dimension-wrapper .wrapper .control .blogus-binding svg {
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    fill: currentColor;
+}
+/* ── Description ── */
+.customize-control-dimensions .blogus-dimension-wrapper .description {
+    display: block;
+    padding: 0 10px 8px;
+    font-size: 11px;
+    color: #a7aaad;
+}

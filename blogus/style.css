@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 2.9.7
+Version: 2.9.8
 Tested up to: 7.0
 Requires PHP: 7.4
 Requires at least: 6.7
@@ -872,9 +872,6 @@ pre.wp-block-code a,
 .bs-default .navbar-header {
 	height: auto;
 }
-.bs-default .navbar-brand {
-	margin-right: unset;
-}
 .bs-default .navbar-header img {
 	width: 100%;
 	height: 100%;
@@ -908,14 +905,12 @@ pre.wp-block-code a,
 	align-items: center;
 	flex-wrap: wrap;
 	flex-direction: column;
+	gap: 10px;
 }
 .bs-default .bs-header-main .inner {
 	height: auto;
 	padding: 70px 0 0;
 	position: relative;
-}
-.bs-default .navbar-brand {
-	height: 100px;
 }
 .bs-default .navbar-brand img {
 	width: 100%;
@@ -925,6 +920,8 @@ pre.wp-block-code a,
 .bs-default .navbar-brand {
 	margin-right: unset;
 	padding-top: 0;
+	height: auto;
+	display: block;
 }
 .bs-default .navbar-wp {
 	margin: 0;
@@ -1798,7 +1795,12 @@ html {
 
 /*----- Featured-post -----*/
 .featured-widget.wd-back {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	padding: 0;
+	box-shadow: none;
+}
+.featured-widget.wd-back .bs-blog-thumb.lg {
+    height: 300px;
 }
 .featured-widget-content .small-post {
 	padding: 0;
@@ -1819,7 +1821,7 @@ html {
 	box-shadow: var(--bxsh);
 }
 .single-class .featured-widget-content .bs-blog-thumb.lg {
-	height: 350px;
+	height: 250px;
 }
 .single-class .featured-widget-content .small-post .img-small-post {
 	width: 30%;

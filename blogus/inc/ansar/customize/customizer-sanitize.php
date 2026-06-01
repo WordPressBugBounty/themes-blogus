@@ -153,3 +153,51 @@ if ( ! function_exists( 'blogus_sanitize_alpha_color' ) ) :
         return '';
     }
 endif;
+
+if ( ! function_exists( 'blogus_sanitize_dimension' ) ) {
+
+    function blogus_sanitize_dimension( $value ) {
+
+        // Decode if saved as JSON string
+        if ( is_string( $value ) && ! empty( $value ) ) {
+            $decoded = json_decode( $value, true );
+            if ( json_last_error() === JSON_ERROR_NONE ) {
+                $value = $decoded;
+            }
+        }
+
+        if ( ! is_array( $value ) ) {
+            return array();
+        }
+
+        $allowed_units = array( 'px', 'em', 'rem', '%', 'vh', 'vw' );
+        $devices       = array( 'desktop', 'tablet', 'mobile' );
+        $sides         = array( 'top', 'right', 'bottom', 'left' );
+        $sanitized     = array();
+
+        foreach ( $devices as $device ) {
+
+            if ( ! isset( $value[ $device ] ) || ! is_array( $value[ $device ] ) ) {
+                continue;
+            }
+
+            $device_data = $value[ $device ];
+
+            // Sanitize each side — must be numeric or empty
+            foreach ( $sides as $side ) {
+                $side_val = isset( $device_data[ $side ] ) ? $device_data[ $side ] : '';
+                if ( $side_val !== '' && is_numeric( $side_val ) ) {
+                    $sanitized[ $device ][ $side ] = (string) floatval( $side_val );
+                } else {
+                    $sanitized[ $device ][ $side ] = '';
+                }
+            }
+
+            // Sanitize unit — must be in allowed list
+            $unit = isset( $device_data['unit'] ) ? $device_data['unit'] : 'px';
+            $sanitized[ $device ]['unit'] = in_array( $unit, $allowed_units, true ) ? $unit : 'px';
+        }
+
+        return $sanitized;
+    }
+}

@@ -74,3 +74,41 @@ function custom_typography_function() { ?>
 }
 </style>
 <?php }
+
+
+function blogus_customize_options() {
+
+    // Initialize string
+    $blogus_custom_css = '';
+
+	$all_defaults = blogus_get_default_theme_options();
+
+	/**
+	 * Define the Padding and Border Radius Configuration
+	 * Structure: 'Selector' => array( array( 'key' => 'mod_id', 'property' => 'css-property', 'default' => '' ) ),
+	 */
+	$cssValue = array(
+		'.bs-default .site-logo a.navbar-brand' => array(
+			array('key' => 'blogus_logo_margin', 'property' => 'margin')
+		),
+	);
+	
+	foreach ( $cssValue as $selector => $properties ) {
+		
+		// Loop through each dimension setting for this selector
+		foreach ( $properties as $settings ) {
+			$key      = $settings['key'];
+			$property = $settings['property'];
+			
+			$current_val = blogus_get_option( $key );
+			$default_val = isset( $all_defaults[$key] ) ? $all_defaults[$key] : array();
+
+			// Accumulate the dimension CSS
+			$blogus_custom_css .= blogus_dimension_css( $selector, $default_val, $current_val, $property );
+		}
+	}
+	
+    if ( ! empty( $blogus_custom_css ) ) {
+        wp_add_inline_style( 'blogus-style', $blogus_custom_css );
+    }
+}

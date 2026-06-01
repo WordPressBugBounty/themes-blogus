@@ -398,6 +398,70 @@ function blogus_custom_header_background() {
 <?php }
 add_action('wp_head','blogus_custom_header_background');
 
+if ( ! function_exists( 'blogus_dimension_css' ) ) {
+
+    function blogus_dimension_css( $selector, $default_value, $output_value, $property ) {
+
+        if ( empty( $selector ) || empty( $property ) ) {
+            return '';
+        }
+
+        if ( ! is_array( $output_value ) ) {
+            $output_value = json_decode( $output_value, true );
+        }
+        if ( ! is_array( $default_value ) ) {
+            $default_value = json_decode( $default_value, true );
+        }
+
+        $breakpoints = array(
+            'desktop' => '',
+            'tablet'  => '@media (max-width: 991px)',
+            'mobile'  => '@media (max-width: 767px)',
+        );
+
+        $css = '';
+
+        foreach ( $breakpoints as $device => $media_query ) {
+
+            $device_value   = isset( $output_value[ $device ] ) && is_array( $output_value[ $device ] ) ? $output_value[ $device ] : array();
+            $device_default = isset( $default_value[ $device ] ) && is_array( $default_value[ $device ] ) ? $default_value[ $device ] : array();
+            $values         = wp_parse_args( $device_value, $device_default );
+
+            $t = isset( $values['top'] )    && $values['top']    !== '' ? esc_attr( $values['top'] )    : '';
+            $r = isset( $values['right'] )  && $values['right']  !== '' ? esc_attr( $values['right'] )  : '';
+            $b = isset( $values['bottom'] ) && $values['bottom'] !== '' ? esc_attr( $values['bottom'] ) : '';
+            $l = isset( $values['left'] )   && $values['left']   !== '' ? esc_attr( $values['left'] )   : '';
+
+            if ( $t === '' && $r === '' && $b === '' && $l === '' ) {
+                continue;
+            }
+
+            $unit = isset( $values['unit'] ) && $values['unit'] !== '' ? $values['unit'] : 'px';
+
+            if ( $t === $r && $r === $b && $b === $l ) {
+                $shorthand = $t . $unit;
+            } elseif ( $t === $b && $r === $l ) {
+                $shorthand = $t . $unit . ' ' . $r . $unit;
+            } elseif ( $r === $l ) {
+                $shorthand = $t . $unit . ' ' . $r . $unit . ' ' . $b . $unit;
+            } else {
+                $shorthand = $t . $unit . ' ' . $r . $unit . ' ' . $b . $unit . ' ' . $l . $unit;
+            }
+
+            $rule = $selector . ' { ' . $property . ': ' . $shorthand . ' !important; }';
+
+            if ( ! empty( $media_query ) ) {
+                $css .= $media_query . ' { ' . $rule . ' } ';
+            } else {
+                $css .= $rule . ' ';
+            }
+        }
+
+        return $css;
+    }
+}
+
+
 if ( class_exists( 'WooCommerce' ) ) {
 
     // Display product categories before title

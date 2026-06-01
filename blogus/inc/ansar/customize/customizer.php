@@ -442,8 +442,26 @@ function blogus_theme_option( $wp_customize ) {
     function blogus_sanitize_text( $input ) {
         return wp_kses_post( force_balance_tags( $input ) );
     }
+    $blogus_default = blogus_get_default_theme_options();
 
-    /*--- Site title Font size **/
+    // Logo Margin
+    $wp_customize->add_setting('blogus_logo_margin', 
+        array(
+            'default' => $blogus_default['blogus_logo_margin'],
+            'capability' => 'edit_theme_options',
+            'sanitize_callback' => 'blogus_sanitize_dimension',
+            'transport' => 'postMessage'
+        )
+    );
+    $wp_customize->add_control( new Dimension_Custom_Control ( $wp_customize, 'blogus_logo_margin', array(
+
+        'label' => esc_html__('Logo Margin', 'blogus'),
+        'section' => 'title_tagline',
+        'type' => 'dimensions',
+        'size_unit'    => array( 'px', '%', 'em', 'rem' ),
+        'priority' => 9,
+    )));
+        /*--- Site title Font size **/
     $wp_customize->add_setting('blogus_title_font_size',
         array(
             'default'           => 60,

@@ -270,4 +270,119 @@
 	customizePreviewStyle('blogus_slider_title_font_size', '.homemain .bs-slide .inner .title', 'font-size','px');
 	customizePreviewStyle('primary_menu_bg_color', 'header.bs-default .navbar-collapse ul, .navbar-wp .dropdown-menu > li > a:hover, .navbar-wp .dropdown-menu > li > a:focus', 'background', '');
 
+	/**
+     * Build a CSS shorthand value string from a device's dimension data.
+     *
+     * @param {Object} deviceData  { top, right, bottom, left, unit }
+     * @returns {string|null}      e.g. "20px 10px" or null if all sides empty
+     */
+    function buildShorthand( deviceData ) {
+        if ( ! deviceData ) return null;
+ 
+        var unit = deviceData.unit || 'px';
+        var t    = deviceData.top    !== undefined && deviceData.top    !== '' ? deviceData.top    : null;
+        var r    = deviceData.right  !== undefined && deviceData.right  !== '' ? deviceData.right  : null;
+        var b    = deviceData.bottom !== undefined && deviceData.bottom !== '' ? deviceData.bottom : null;
+        var l    = deviceData.left   !== undefined && deviceData.left   !== '' ? deviceData.left   : null;
+ 
+        // All sides empty — nothing to output
+        if ( t === null && r === null && b === null && l === null ) {
+            return null;
+        }
+ 
+        // Fill nulls with '0' only when at least one side has a value
+        t = t !== null ? t : '0';
+        r = r !== null ? r : '0';
+        b = b !== null ? b : '0';
+        l = l !== null ? l : '0';
+ 
+        // Shorthand compression
+        if ( t === r && r === b && b === l ) {
+            return t + unit;
+        } else if ( t === b && r === l ) {
+            return t + unit + ' ' + r + unit;
+        } else if ( r === l ) {
+            return t + unit + ' ' + r + unit + ' ' + b + unit;
+        } else {
+            return t + unit + ' ' + r + unit + ' ' + b + unit + ' ' + l + unit;
+        }
+    }
+ 
+    /**
+     * Inject or update a <style> tag in the preview frame head.
+     *
+     * @param {string} styleId   Unique ID for the <style> tag
+     * @param {string} css       Full CSS string to inject
+     */
+    function injectStyle( styleId, css ) {
+        var $style = $( '#' + styleId );
+        if ( $style.length ) {
+            $style.html( css );
+        } else {
+            $( 'head' ).append( '<style id="' + styleId + '">' + css + '</style>' );
+        }
+    }
+ 
+    /**
+     * Register a single dimension control for live preview.
+     *
+     * @param {string} settingId   The wp.customize setting key e.g. 'pages_desk_padding'
+     * @param {string} selector    CSS selector e.g. '.bs-card-box.padding-20'
+     * @param {string} property    CSS property e.g. 'padding' or 'border-radius'
+     */
+    function blogus_dimension_preview( settingId, selector, property ) {
+ 
+        wp.customize( settingId, function( setting ) {
+            setting.bind( function( newValue ) {
+ 
+                var data = newValue;
+ 
+                // Decode JSON string if needed
+                if ( typeof data === 'string' ) {
+                    try {
+                        data = JSON.parse( data );
+                    } catch (e) {
+                        console.warn( 'Blogus Preview: could not parse dimension value for ' + settingId );
+                        return;
+                    }
+                }
+ 
+                if ( typeof data !== 'object' || data === null ) return;
+ 
+                var css      = '';
+                var styleId  = 'blogus-preview-' + settingId.replace( /_/g, '-' );
+ 
+                // Desktop — base styles, no media query wrapper
+                var desktopShorthand = buildShorthand( data.desktop );
+                if ( desktopShorthand ) {
+                    css += selector + ' { ' + property + ': ' + desktopShorthand + ' !important; } ';
+                }
+ 
+                // Tablet
+                var tabletShorthand = buildShorthand( data.tablet );
+                if ( tabletShorthand ) {
+                    css += '@media (max-width: 991px) { ';
+                    css += selector + ' { ' + property + ': ' + tabletShorthand + ' !important; } ';
+                    css += '} ';
+                }
+ 
+                // Mobile
+                var mobileShorthand = buildShorthand( data.mobile );
+                if ( mobileShorthand ) {
+                    css += '@media (max-width: 576px) { ';
+                    css += selector + ' { ' + property + ': ' + mobileShorthand + ' !important; } ';
+                    css += '} ';
+                }
+ 
+                injectStyle( styleId, css );
+            } );
+        } );
+    }
+ 
+    // -------------------------------------------------------------------------
+    // Register all your dimension controls below
+    // -------------------------------------------------------------------------
+ 
+    blogus_dimension_preview( 'blogus_logo_margin', '.bs-default .site-logo a.navbar-brand', 'margin' );
+
 } )( jQuery );

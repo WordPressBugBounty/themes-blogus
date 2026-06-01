@@ -46,6 +46,7 @@
 
 	wp_enqueue_script('jquery-cookie', get_template_directory_uri() . '/js/jquery.cookie.min.js', array('jquery'));
 
+	blogus_customize_options();
 }
 add_action('wp_enqueue_scripts', 'blogus_scripts');
 function blogus_admin_enqueue( $hook ) {
