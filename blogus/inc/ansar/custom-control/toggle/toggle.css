@@ -49,17 +49,17 @@
     transform: translate3d(0, -50%, 0) scale(3);
 }
 .customize-control-toggle input:checked + .switch {
-    background: rgba(52, 152, 222, 0.3); 
+    background: rgba(var(--wp-admin-theme-color--rgb),0.3);
 }
 .customize-control-toggle input:checked + .switch:before {
-    background: rgba(52, 152, 222, 0.075);
+    background: rgba(var(--wp-admin-theme-color--rgb),0.075);
     transform: translate3d(100%, -50%, 0) scale(1); 
 }
 .customize-control-toggle input:checked + .switch:after {
-    background: #3498DE;
+    background: var(--wp-admin-theme-color);
     transform: translate3d(100%, -50%, 0); 
 }
 .customize-control-toggle input:checked + .switch:active:before {
-    background: rgba(52, 152, 222, 0.075);
+    background: rgba(var(--wp-admin-theme-color--rgb),0.075);
     transform: translate3d(100%, -50%, 0) scale(3); 
 }

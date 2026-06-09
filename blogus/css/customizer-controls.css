@@ -74,7 +74,7 @@ li.customize-control-color .wp-picker-container .wp-color-result.button {
   display: none;
 }
 #customize-control-header_menu_layout img{margin-bottom: 25px;
-border: 1px solid #2271b1;
+border: 1px solid var(--wp-admin-theme-color);
 }
 #customize-control-header_menu_layout .ui-checkboxradio-checked img, #customize-control-blog_layout .ui-checkboxradio-checked img,  
 #customize-control-blogus_footer_layout img .ui-checkboxradio-checked img, #customize-control-blogus_slider_layout img 
@@ -82,7 +82,7 @@ border: 1px solid #2271b1;
   border: 4px solid #00d084;
 }
 #customize-controls img {
-  border: 1px solid #2271b1;
+  border: 1px solid var(--wp-admin-theme-color);
 }
 #customize-controls .ui-checkboxradio-checked img {
   border: 4px solid #00d084;
@@ -99,11 +99,11 @@ border: 1px solid #2271b1;
 
 .blogus-notice_text .notice p, .notice-title, div.updated p, div.error p, .form-table td .notice p  {padding-right: 25px; font-size: 15px;}
 .dashicons-external:before {
-  color: #2271b1;
+  color: var(--wp-admin-theme-color);
 }
 
 #customize-controls .ui-checkboxradio-checked img {
-  border: 4px solid #0025ff;
+  border: 4px solid var(--wp-admin-theme-color);
 }
 #customize-control-blogus_skin_mode label, #customize-control-blogus_content_layout label,
 #customize-control-blogus_single_page_layout label, #customize-control-blogus_page_layout label, 
