@@ -710,11 +710,64 @@ array(
 $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'breadcrumb_settings', 
     array(
         'label' => esc_html__('Hide/Show Breadcrumb', 'blogus'),
+        'description' => __('Hide/Show on', 'blogus'),
         'type' => 'toggle',
         'section' => 'blogus_breadcrumb_settings',
     )
 ));
+$wp_customize->add_setting('enable_archive_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogus_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_archive_bcrumb',
+    array(
+        'label' => esc_html__('Archive Pages', 'blogus'),
+        'section' => 'blogus_breadcrumb_settings',
+        'type' => 'checkbox',
 
+    )
+);
+$wp_customize->add_setting('enable_single_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogus_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_single_bcrumb',
+    array(
+        'label' => esc_html__('Single Pages', 'blogus'),
+        'section' => 'blogus_breadcrumb_settings',
+        'type' => 'checkbox',
+    )
+);
+$wp_customize->add_setting('enable_search_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogus_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_search_bcrumb',
+    array(
+        'label' => esc_html__('Search', 'blogus'),
+        'section' => 'blogus_breadcrumb_settings',
+        'type' => 'checkbox',
+    )
+);
+$wp_customize->add_setting('enable_pages_bcrumb',
+    array(
+        'default' => true,
+        'sanitize_callback' => 'blogus_sanitize_checkbox',
+    )
+);
+$wp_customize->add_control('enable_pages_bcrumb',
+    array(
+        'label' => esc_html__('Pages', 'blogus'),
+        'section' => 'blogus_breadcrumb_settings',
+        'type' => 'checkbox',
+    )
+);
 //Type Of Bredcrumb 
 $wp_customize->add_setting( 'blogus_site_breadcrumb_type', array(
     'sanitize_callback' => 'blogus_sanitize_select',

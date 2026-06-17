@@ -4,8 +4,8 @@ Author: Themeansar
 Requires PHP: 7.4
 Requires at least: 6.7
 Tested up to: 7.0
-Stable tag: 2.9.9
-Version: 2.9.9
+Stable tag: 3.0.0
+Version: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -77,6 +77,9 @@ License: CC0 Public Domain
 == Post Image ==
 
 License: CC0 Public Domain
+License URI: https://stocksnap.io/license
+License URI: https://pxhere.com/en/license
+
 * https://pxhere.com/en/photo/1588583
 * https://pxhere.com/en/photo/1363072
 * https://pxhere.com/en/photo/1262676
@@ -86,6 +89,9 @@ License: CC0 Public Domain
 * https://pxhere.com/en/photo/1574895
 * https://pxhere.com/en/photo/32966
 * https://pxhere.com/en/photo/525075
+* https://pxhere.com/en/photo/857626
+* https://pxhere.com/en/photo/72451
+* https://stocksnap.io/photo/colorful-buildings-QJTRQQWWL0
 
 == Changelog ==
 = Version 0.1
@@ -736,5 +742,9 @@ Added Page Title For Woocommerce.
 = Version 2.9.8
 * Update Screenshot.
 
-= Version 2.9.9
+= Version 2.9.8
 * Inhanced WP Color Variables in Customizer.
+
+= Version 3.0.0
+* Added Customizer options to disable breadcrumbs on archive, single, page, and search views.
+* Update Screenshot.

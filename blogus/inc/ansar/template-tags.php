@@ -179,7 +179,15 @@ if (!function_exists('blogus_archive_page_title')) :
                 }
                 echo '</div>';
             }
-            do_action('blogus_breadcrumb_content'); ?>
+           $show_breadcrumb =
+                (get_theme_mod('enable_pages_bcrumb', true) && is_page()) ||
+                (get_theme_mod('enable_archive_bcrumb', true) && is_archive()) ||
+                (get_theme_mod('enable_search_bcrumb', true) && is_search()) ;
+
+            if ($show_breadcrumb) {
+                do_action('blogus_breadcrumb_content');
+            }
+            ?>
         </div>
     <?php
     }

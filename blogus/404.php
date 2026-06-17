@@ -9,7 +9,7 @@ get_header(); ?>
   <!--container--> 
     <!--row-->
     <div class="row">
-      <?php do_action('blogus_breadcrumb_content'); ?>
+      <?php if(get_theme_mod('enable_pages_bcrumb',true)) { do_action('blogus_breadcrumb_content'); } ?>
       <!--container-->
       <div class="col-lg-12 text-center bs-section"> 
         <!--mg-error-404-->

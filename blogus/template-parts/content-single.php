@@ -5,7 +5,7 @@
  */
 ?>
 <!--==================== breadcrumb section ====================-->
-<?php do_action('blogus_breadcrumb_content');
+<?php if(get_theme_mod('enable_single_bcrumb',true)) { do_action('blogus_breadcrumb_content'); } ;
 $blogus_single_page_layout = get_theme_mod('blogus_single_page_layout','single-align-content-right');
 if($blogus_single_page_layout == "single-align-content-left") { ?>
         <aside class="col-lg-3">
