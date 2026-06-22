@@ -174,11 +174,6 @@ function blogus_customize_register($wp_customize) {
             'selector'        => '.bs-card-box .relat-cls .title',
             'render_callback' => 'blogus_customize_blogus_related_post_title',
         ));
-
-        $wp_customize->selective_refresh->add_partial('blogus_menu_search', array(
-            'selector'        => '.bs-default .desk-header .msearch',
-            'render_callback' => 'blogus_customize_partial_blogus_menu_search',
-        ));
         
         $wp_customize->selective_refresh->add_partial('blogus_lite_dark_switcher', array(
             'selector'        => '.info-right.right-nav',
@@ -191,16 +186,7 @@ function blogus_customize_register($wp_customize) {
         $wp_customize->selective_refresh->add_partial('blogus_subsc_open_in_new', array(
             'selector'        => '.info-right.right-nav',
             'render_callback' => 'blogus_customize_partial_right_nav',
-        ));
-        $wp_customize->selective_refresh->add_partial('blogus_menu_search', array(
-            'selector'        => '.info-right.right-nav',
-            'render_callback' => 'blogus_customize_partial_right_nav',
-        ));
-        $wp_customize->selective_refresh->add_partial('blogus_menu_subscriber', array(
-            'selector'        => '.info-right.right-nav',
-            'render_callback' => 'blogus_customize_partial_right_nav',
-        ));
-        
+        ));        
         $wp_customize->selective_refresh->add_partial('blogus_footer_copyright', array(
             'selector'        => '.bs-footer-copyright p.mb-0 .copyright-text', 
             'render_callback' => 'blogus_customize_partial_copyright',
@@ -354,10 +340,6 @@ function blogus_customize_partial_footer_social_icon_enable() {
 
 function blogus_customize_partial_sidebar_menu() {
     return get_theme_mod( 'sidebar_menu' ); 
-}
-
-function blogus_customize_partial_blogus_menu_subscriber() {
-    return get_theme_mod( 'blogus_menu_subscriber' ); 
 }
 
 function blogus_customize_you_missed_title() {

@@ -201,3 +201,29 @@ if ( ! function_exists( 'blogus_sanitize_dimension' ) ) {
         return $sanitized;
     }
 }
+
+/**
+ * Sanitization callback logic for array/comma multi-choose selections.
+ *
+ * @param array|string $input Selected choices passed from Customizer engine.
+ * @return array              Filtered list of verified active keys.
+ */
+function blogus_sanitize_multi_choose( $input ) {
+    if ( is_string( $input ) ) {
+        $input = explode( ',', $input );
+    }
+    
+    // Whitelist covering all of your breakpoints and alignments across controls
+    $valid_choices = array( 'desktop', 'tablet', 'mobile' );
+    $sanitized     = array();
+
+    if ( is_array( $input ) ) {
+        foreach ( $input as $value ) {
+            $value = sanitize_key( $value );
+            if ( in_array( $value, $valid_choices, true ) ) {
+                $sanitized[] = $value;
+            }
+        }
+    }
+    return $sanitized;
+}

@@ -28,7 +28,7 @@
               </div>     
               <div class="col-md-3">
                 <div class="info-right right-nav d-flex align-items-center justify-content-center justify-content-md-end">
-                 <?php blogus_menu_btns(); ?>              
+                 <?php blogus_menu_btns(); ?>
                 </div>
               </div>
             </div>
@@ -60,11 +60,7 @@
                   </div>
                 </div>
                 <div class="right-nav"> 
-                  <!-- /navbar-toggle -->
-                  <?php $blogus_menu_search  = get_theme_mod('blogus_menu_search','true'); 
-                  if($blogus_menu_search == true) { ?>
-                    <a class="msearch ml-auto" href="#" data-bs-target="#exampleModal" data-bs-toggle="modal"> <i class="fa fa-search"></i> </a>
-                  <?php } ?>
+                 <?php blogus_menu_btns(); ?>
                 </div>
             </div>
             <!-- /Mobile Header -->

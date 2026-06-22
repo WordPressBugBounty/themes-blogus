@@ -107,6 +107,15 @@ function blogus_customize_options() {
 			$blogus_custom_css .= blogus_dimension_css( $selector, $default_val, $current_val, $property );
 		}
 	}
+	$blogus_custom_css .= '@media (max-width: 575px) { [displayON="desktop,tablet"] { display: none !important;} [displayON="tablet"] { display: none !important;}}';
+
+	$blogus_custom_css .= '@media (min-width: 576px) { [displayON="mobile"] { display: none !important;}}';
+
+	$blogus_custom_css .= '@media (min-width: 992px) { [displayON="tablet,mobile"] { display: none !important;} [displayON="tablet"] { display: none !important;}	}';
+
+	$blogus_custom_css .= '@media (max-width: 991px) { [displayON="desktop"] { display: none !important;}}';
+
+	$blogus_custom_css .= '@media (max-width: 991px) and (min-width: 576px) { [displayON="desktop,mobile"] { display: none !important;}	}';
 	
     if ( ! empty( $blogus_custom_css ) ) {
         wp_add_inline_style( 'blogus-style', $blogus_custom_css );

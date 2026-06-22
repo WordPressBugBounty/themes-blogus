@@ -44,11 +44,11 @@
     transition: color 0.1s;
 } 
 .customize-control-dimensions .responsive-switchers button.switch-device .dashicons {
-    font-size: 13px;
-    width: 13px;
-    height: 13px;
+    font-size: 17px;
+    width: 17px;
+    height: 17px;
     line-height: 1;
-} 
+}
 .customize-control-dimensions .responsive-switchers button.switch-device:hover,
 .customize-control-dimensions .responsive-switchers button.switch-device.active {
     color: var(--wp-admin-theme-color);
@@ -60,7 +60,7 @@
     gap: 5px;
 } 
 .customize-control-dimensions .unit-wrapper .input-wrapper select.dimension-unit {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     border: 0.5px solid #dcdcde;
@@ -135,6 +135,8 @@
     box-sizing: border-box;
     height: auto;
     transition: border-color 0.1s, background 0.1s, box-shadow 0.1s;
+    line-height: 1;
+    min-height: 38px;
 } 
 .customize-control-dimensions .blogus-dimension-wrapper .wrapper .control label input[type="number"]:focus {
     border-color: var(--wp-admin-theme-color);

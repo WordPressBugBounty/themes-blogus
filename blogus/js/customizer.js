@@ -385,4 +385,27 @@
  
     blogus_dimension_preview( 'blogus_logo_margin', '.bs-default .site-logo a.navbar-brand', 'margin' );
 
+
+	// Multi Choose 
+	function blogusMultiChoosePreview(settingId, selector, attribute) {
+        attribute = attribute || 'displayON';
+
+        wp.customize(settingId, function(value) {
+            value.bind(function(newVal) {
+                var attrValue = '';
+
+                if (Array.isArray(newVal)) {
+                    attrValue = newVal.join(',');
+                } else if (typeof newVal === 'string') {
+                    attrValue = newVal.trim();
+                }
+
+                $(selector).attr(attribute, attrValue);
+            });
+        });
+    }
+    blogusMultiChoosePreview('blogus_menu_search', '.right-nav .msearch');
+    blogusMultiChoosePreview('blogus_menu_subscriber', '.right-nav .subscribe-btn');
+    blogusMultiChoosePreview('blogus_lite_dark_switcher', '.right-nav .switch');
+
 } )( jQuery );

@@ -399,7 +399,6 @@ function blogus_custom_header_background() {
 add_action('wp_head','blogus_custom_header_background');
 
 if ( ! function_exists( 'blogus_dimension_css' ) ) {
-
     function blogus_dimension_css( $selector, $default_value, $output_value, $property ) {
 
         if ( empty( $selector ) || empty( $property ) ) {
@@ -409,6 +408,7 @@ if ( ! function_exists( 'blogus_dimension_css' ) ) {
         if ( ! is_array( $output_value ) ) {
             $output_value = json_decode( $output_value, true );
         }
+
         if ( ! is_array( $default_value ) ) {
             $default_value = json_decode( $default_value, true );
         }
@@ -425,30 +425,60 @@ if ( ! function_exists( 'blogus_dimension_css' ) ) {
 
             $device_value   = isset( $output_value[ $device ] ) && is_array( $output_value[ $device ] ) ? $output_value[ $device ] : array();
             $device_default = isset( $default_value[ $device ] ) && is_array( $default_value[ $device ] ) ? $default_value[ $device ] : array();
-            $values         = wp_parse_args( $device_value, $device_default );
 
-            $t = isset( $values['top'] )    && $values['top']    !== '' ? esc_attr( $values['top'] )    : '';
-            $r = isset( $values['right'] )  && $values['right']  !== '' ? esc_attr( $values['right'] )  : '';
-            $b = isset( $values['bottom'] ) && $values['bottom'] !== '' ? esc_attr( $values['bottom'] ) : '';
-            $l = isset( $values['left'] )   && $values['left']   !== '' ? esc_attr( $values['left'] )   : '';
+            $values = wp_parse_args( $device_value, $device_default );
+
+            $t = isset( $values['top'] ) ? trim( $values['top'] ) : '';
+            $r = isset( $values['right'] ) ? trim( $values['right'] ) : '';
+            $b = isset( $values['bottom'] ) ? trim( $values['bottom'] ) : '';
+            $l = isset( $values['left'] ) ? trim( $values['left'] ) : '';
 
             if ( $t === '' && $r === '' && $b === '' && $l === '' ) {
                 continue;
             }
 
-            $unit = isset( $values['unit'] ) && $values['unit'] !== '' ? $values['unit'] : 'px';
+            $unit = isset( $values['unit'] ) && ! empty( $values['unit'] ) ? $values['unit'] : 'px';
 
-            if ( $t === $r && $r === $b && $b === $l ) {
-                $shorthand = $t . $unit;
-            } elseif ( $t === $b && $r === $l ) {
-                $shorthand = $t . $unit . ' ' . $r . $unit;
-            } elseif ( $r === $l ) {
-                $shorthand = $t . $unit . ' ' . $r . $unit . ' ' . $b . $unit;
+            $rule = '';
+
+            // All values are present → use shorthand.
+            if ( $t !== '' && $r !== '' && $b !== '' && $l !== '' ) {
+
+                if ( $t === $r && $r === $b && $b === $l ) {
+                    $shorthand = $t . $unit;
+                } elseif ( $t === $b && $r === $l ) {
+                    $shorthand = $t . $unit . ' ' . $r . $unit;
+                } elseif ( $r === $l ) {
+                    $shorthand = $t . $unit . ' ' . $r . $unit . ' ' . $b . $unit;
+                } else {
+                    $shorthand = $t . $unit . ' ' . $r . $unit . ' ' . $b . $unit . ' ' . $l . $unit;
+                }
+
+                $rule = $selector . ' { ' . $property . ': ' . $shorthand . ' !important; }';
+
             } else {
-                $shorthand = $t . $unit . ' ' . $r . $unit . ' ' . $b . $unit . ' ' . $l . $unit;
-            }
 
-            $rule = $selector . ' { ' . $property . ': ' . $shorthand . ' !important; }';
+                // Partial values → use individual properties.
+                $properties = '';
+
+                if ( $t !== '' ) {
+                    $properties .= $property . '-top:' . $t . $unit . ' !important;';
+                }
+
+                if ( $r !== '' ) {
+                    $properties .= $property . '-right:' . $r . $unit . ' !important;';
+                }
+
+                if ( $b !== '' ) {
+                    $properties .= $property . '-bottom:' . $b . $unit . ' !important;';
+                }
+
+                if ( $l !== '' ) {
+                    $properties .= $property . '-left:' . $l . $unit . ' !important;';
+                }
+
+                $rule = $selector . ' { ' . $properties . ' }';
+            }
 
             if ( ! empty( $media_query ) ) {
                 $css .= $media_query . ' { ' . $rule . ' } ';
@@ -461,6 +491,32 @@ if ( ! function_exists( 'blogus_dimension_css' ) ) {
     }
 }
 
+function blogus_get_multi_choices( $setting_id ) {
+    // 1. Grab value/default directly using your custom function
+    $saved_value = blogus_get_option( $setting_id );
+
+    // 2. If it's an array, flatten it to a comma-separated string
+    if ( is_array( $saved_value ) ) {
+        return implode( ',', array_filter( $saved_value ) );
+    }
+
+    // 3. If it's already a string, clean up extra spaces or handle json/array strings
+    if ( is_string( $saved_value ) ) {
+        $saved_value = trim( $saved_value );
+        
+        // Safety Check: If it's a JSON stringified array from the Customizer engine, decode it
+        if ( strpos( $saved_value, '[' ) === 0 || strpos( $saved_value, '{' ) === 0 ) {
+            $decoded = json_decode( $saved_value, true );
+            if ( is_array( $decoded ) ) {
+                return implode( ',', array_filter( $decoded ) );
+            }
+        }
+        
+        return $saved_value;
+    }
+
+    return '';
+}
 
 if ( class_exists( 'WooCommerce' ) ) {
 

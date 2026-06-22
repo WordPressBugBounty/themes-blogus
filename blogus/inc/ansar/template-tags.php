@@ -79,36 +79,37 @@ if (!function_exists('blogus_post_meta')) :
 endif; 
 
 if (!function_exists('blogus_menu_search')) :
-    function blogus_menu_search() { $blogus_menu_search  = get_theme_mod('blogus_menu_search','true'); 
-        if($blogus_menu_search == true) { ?>
-            <a class="msearch ml-auto"  data-bs-target="#exampleModal"  href="#" data-bs-toggle="modal">
+    function blogus_menu_search() { 
+        $visibility = blogus_get_multi_choices( 'blogus_menu_search' );
+        if(!empty($visibility)) { ?>
+            <a class="msearch ml-auto" data-bs-target="#exampleModal"  href="#" data-bs-toggle="modal" displayON="<?php echo esc_attr($visibility)?>">
                 <i class="fa fa-search"></i>
             </a> 
-        <?php } 
+        <?php }
     }
 endif; 
 
 if (!function_exists('blogus_menu_subscriber')) :
-    function blogus_menu_subscriber() { 
-        $blogus_menu_subscriber  = get_theme_mod('blogus_menu_subscriber','true');
+    function blogus_menu_subscriber() {
         $blogus_subsc_link = get_theme_mod('blogus_subsc_link', '#'); 
         $blogus_subsc_open_in_new  = get_theme_mod('blogus_subsc_open_in_new', true);
-
-        if($blogus_menu_subscriber == true) { ?>
-          <a class="subscribe-btn" href="<?php echo esc_url($blogus_subsc_link); ?>" <?php if($blogus_subsc_open_in_new) { ?> target="_blank" <?php } ?>  ><i class="fas fa-bell"></i></a>
+        $visibility = blogus_get_multi_choices( 'blogus_menu_subscriber' );
+        if(!empty($visibility)) { ?>
+          <a class="subscribe-btn" href="<?php echo esc_url($blogus_subsc_link); ?>" <?php if($blogus_subsc_open_in_new) { ?> target="_blank" <?php } ?> displayON="<?php echo esc_attr($visibility)?>"><i class="fas fa-bell"></i></a>
         <?php } 
     }
 endif; 
 
 if (!function_exists('blogus_lite_dark_switcher')) :
-    function blogus_lite_dark_switcher() { $blogus_lite_dark_switcher = get_theme_mod('blogus_lite_dark_switcher', true);
-        if($blogus_lite_dark_switcher == true){  
+    function blogus_lite_dark_switcher() { 
+        $visibility = blogus_get_multi_choices( 'blogus_lite_dark_switcher' );
+        if(!empty($visibility)) {
             if ( isset( $_COOKIE["blogus-site-mode-cookie"] ) ) {
                 $blogus_skin_mode = $_COOKIE["blogus-site-mode-cookie"];
             } else {
                 $blogus_skin_mode = get_theme_mod( 'blogus_skin_mode', 'defaultcolor' );
             } ?>          
-            <label class="switch" for="switch">
+            <label class="switch" for="switch" displayON="<?php echo esc_attr($visibility)?>">
                 <input type="checkbox" name="theme" id="switch" class="<?php echo esc_attr( $blogus_skin_mode ); ?>" data-skin-mode="<?php echo esc_attr( $blogus_skin_mode ); ?>">
                 <span class="slider"></span>
             </label>

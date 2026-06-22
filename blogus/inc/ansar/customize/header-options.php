@@ -1,4 +1,5 @@
 <?php 
+$blogus_default = blogus_get_default_theme_options();
 // Add Header Options Panel.
 $wp_customize->add_panel('header_option_panel',
     array(
@@ -122,36 +123,55 @@ $wp_customize->add_control(
     )
 );
 
-$wp_customize->add_setting('blogus_menu_search',
-    array(
-        'default' => true,
-        'sanitize_callback' => 'blogus_sanitize_checkbox',
-        'transport' => 'postMessage',
-    )
-);
-$wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_menu_search', 
-    array(
-        'label' => esc_html__('Hide / Show Search', 'blogus'),
-        'type' => 'toggle',
-        'section' => 'menu_options',
-    )
-));
+$wp_customize->add_setting( 'blogus_menu_search', array(
+    'default'           => $blogus_default['blogus_menu_search'],
+    'sanitize_callback' => 'blogus_sanitize_multi_choose',
+    'transport'         => 'postMessage',
+) );
 
-$wp_customize->add_setting('blogus_menu_subscriber',
-    array(
-        'default' => true,
-        'sanitize_callback' => 'blogus_sanitize_checkbox',
-        'transport' => 'postMessage',
-    )
-);
-$wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_menu_subscriber', 
-    array(
-        'label' => esc_html__('Hide / Show Subscribe Button', 'blogus'),
-        'type' => 'toggle',
-        'section' => 'menu_options',
-    )
-));
+$wp_customize->add_control( new Blogus_Button_Group_Control( $wp_customize, 'blogus_menu_search', array(
+    'label'       => __( 'Search', 'blogus' ),
+    'section'     => 'menu_options',
+    'choices'     => array(
+        'desktop' => array(
+            'title' => __( 'On Desktop', 'blogus' ),
+            'icon'  => 'dashicons dashicons-desktop',
+        ),
+        'tablet' => array(
+            'title' => __( 'On Tablet', 'blogus' ),
+            'icon'  => 'dashicons dashicons-tablet',
+        ),
+        'mobile' => array(
+            'title' => __( 'On Mobile', 'blogus' ),
+            'icon'  => 'dashicons dashicons-smartphone',
+        ),
+    ),
+) ) );
 
+$wp_customize->add_setting( 'blogus_menu_subscriber', array(
+    'default'           => $blogus_default['blogus_menu_subscriber'],
+    'sanitize_callback' => 'blogus_sanitize_multi_choose',
+    'transport'         => 'postMessage',
+) );
+
+$wp_customize->add_control( new Blogus_Button_Group_Control( $wp_customize, 'blogus_menu_subscriber', array(
+    'label'       => __( 'Subscribe Button', 'blogus' ),
+    'section'     => 'menu_options',
+    'choices'     => array(
+        'desktop' => array(
+            'title' => __( 'On Desktop', 'blogus' ),
+            'icon'  => 'dashicons dashicons-desktop',
+        ),
+        'tablet' => array(
+            'title' => __( 'On Tablet', 'blogus' ),
+            'icon'  => 'dashicons dashicons-tablet',
+        ),
+        'mobile' => array(
+            'title' => __( 'On Mobile', 'blogus' ),
+            'icon'  => 'dashicons dashicons-smartphone',
+        ),
+    ),
+) ) );
 $wp_customize->add_setting('blogus_subsc_link',
     array(
         'default' => '#',
@@ -182,18 +202,26 @@ $wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_sub
         'section' => 'menu_options',
     )
 ));
-
-$wp_customize->add_setting('blogus_lite_dark_switcher',
-    array(
-        'default' => true,
-        'sanitize_callback' => 'blogus_sanitize_checkbox',
-        'transport' => 'postMessage',
-    )
-);
-$wp_customize->add_control(new Blogus_Toggle_Control( $wp_customize, 'blogus_lite_dark_switcher', 
-    array(
-        'label' => esc_html__('Hide / Show Dark and Lite Mode Switcher', 'blogus'),
-        'type' => 'toggle',
-        'section' => 'menu_options',
-    )
-));  
+$wp_customize->add_setting( 'blogus_lite_dark_switcher', array(
+    'default'           => $blogus_default['blogus_lite_dark_switcher'],
+    'sanitize_callback' => 'blogus_sanitize_multi_choose',
+    'transport'         => 'postMessage',
+) );
+$wp_customize->add_control( new Blogus_Button_Group_Control( $wp_customize, 'blogus_lite_dark_switcher', array(
+    'label'       => __( 'Dark and Lite Mode Switcher', 'blogus' ),
+    'section'     => 'menu_options',
+    'choices'     => array(
+        'desktop' => array(
+            'title' => __( 'On Desktop', 'blogus' ),
+            'icon'  => 'dashicons dashicons-desktop',
+        ),
+        'tablet' => array(
+            'title' => __( 'On Tablet', 'blogus' ),
+            'icon'  => 'dashicons dashicons-tablet',
+        ),
+        'mobile' => array(
+            'title' => __( 'On Mobile', 'blogus' ),
+            'icon'  => 'dashicons dashicons-smartphone',
+        ),
+    ),
+) ) );

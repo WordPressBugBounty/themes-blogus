@@ -18,6 +18,10 @@ function blogus_get_default_theme_options() {
 
     $defaults = array();
 
+    $defaults['blogus_menu_search'] = array( 'desktop', 'tablet', 'mobile' );
+    $defaults['blogus_menu_subscriber'] = array( 'desktop' );
+    $defaults['blogus_lite_dark_switcher'] = array( 'desktop' );
+
     // Frontpage Section.
     $defaults['show_main_news_section'] = 0;
     $defaults['select_main_banner_section_mode'] = 'default';
