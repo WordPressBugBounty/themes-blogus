@@ -126,7 +126,7 @@ $wp_customize->add_control( 'blogus_slider_overlay_text_color', array(
 
 $wp_customize->add_setting('blogus_slider_title_font_size',
     array(
-        'default'           => 38,
+        'default'           => 45,
         'capability'        => 'edit_theme_options',
         'sanitize_callback' => 'absint',
         'transport' => 'postMessage',

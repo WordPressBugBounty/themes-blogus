@@ -59,12 +59,9 @@ if (!function_exists('blogus_single_content')) :
                     <?php $tags = get_the_tags();
                     $blogus_single_post_category = esc_attr(get_theme_mod('blogus_single_post_category','true'));
                     if($blogus_single_post_category == true){ blogus_post_categories(); } ?>
-                    <h1 class="title"> 
-                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array('before' => esc_html_e('Permalink to: ','blogus'),'after'  => '') ); ?>">
-                            <?php the_title(); ?>
-                        </a>
+                    <h1 class="title" title="<?php the_title_attribute( array('before' => esc_html_e('Permalink to: ','blogus'),'after'  => '') ); ?>">             
+                        <?php the_title(); ?>                        
                     </h1>
-
                     <div class="bs-info-author-block">
                         <div class="bs-blog-meta mb-0"> 
                             <?php if($blogus_single_post_admin_details == true){ ?>

@@ -7,7 +7,7 @@ function theme_options_color() {
 	/*=================== Slider Overlay Color ===================*/
 	$blogus_slider_overlay_color = get_theme_mod('blogus_slider_overlay_color','#00000099');
 	$blogus_slider_overlay_text_color = get_theme_mod('blogus_slider_overlay_text_color','');
-	$blogus_slider_title_font_size = get_theme_mod('blogus_slider_title_font_size',50);
+	$blogus_slider_title_font_size = get_theme_mod('blogus_slider_title_font_size',45);
 
 	?>
 <style type="text/css">
