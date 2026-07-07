@@ -315,38 +315,79 @@ function blogus_header_color() {
     $blogus_logo_text_color = get_header_textcolor();
     $blogus_title_font_size = blogus_get_option('blogus_title_font_size',60); ?>
     <style type="text/css">
-        <?php if ( ! display_header_text() ) {  ?>
-            .site-title,
-            .site-description {
-                position: absolute;
-                clip: rect(1px, 1px, 1px, 1px);
-            }
-        <?php } else { ?>
-            .site-title a,
-            .site-description {
+            .site-title a, .site-description {
                 color: #<?php echo esc_attr( $blogus_logo_text_color ); ?>;
             }
-
             .site-branding-text .site-title a {
                 font-size: <?php echo esc_attr( $blogus_title_font_size,60 ); ?>px;
             }
-
             @media only screen and (max-width: 640px) {
                 .site-branding-text .site-title a {
                     font-size: 26px;
                 }
             }
-
             @media only screen and (max-width: 375px) {
                 .site-branding-text .site-title a {
                     font-size: 26px;
                 }
             }
-        <?php } ?>
     </style>
     <?php
 }
 endif;
+
+
+if ( ! function_exists( 'blogus_header_site_title_tagline' ) ) :
+
+   function blogus_header_site_title_tagline() {
+    $title   = display_header_text();
+    $tagline = get_theme_mod( 'display_header_tagline', false );
+
+    $hideTitle = ( ! $title  ) ? ' d-none' : '';
+    $hideTagline = ( ! $tagline ) ? ' d-none' : '';
+    ?>
+    
+    <div class="site-branding-text">
+        <?php if ( is_front_page() || is_home() ) : ?>
+            <h1 class="site-title<?php echo esc_attr( $hideTitle ); ?>">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                    <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+                </a>
+            </h1>
+        <?php else : ?>
+            <p class="site-title<?php echo esc_attr( $hideTitle ); ?>">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                    <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+                </a>
+            </p>
+        <?php endif; ?>
+        <p class="site-description<?php echo esc_attr( $hideTagline ); ?>">
+            <?php echo esc_html( get_bloginfo( 'description' ) ); ?>
+        </p>
+    </div>
+
+    <?php
+}
+endif;
+add_action('blogus_action_header_site_title_tagline','blogus_header_site_title_tagline');
+
+if ( ! function_exists( 'blogus_footer_site_title_tagline' ) ) :
+
+   function blogus_footer_site_title_tagline() {
+    $title   = display_header_text();
+    $tagline = get_theme_mod( 'display_header_tagline', false );
+  
+    $hideTitle = ( ! $title  ) ? ' d-none' : '';
+    $hideTagline = ( ! $tagline ) ? ' d-none' : '';
+    ?>    
+    <div class="site-branding-text">
+        <p class="site-title-footer<?php echo esc_attr( $hideTitle ); ?>"> <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo esc_html(get_bloginfo( 'name' )); ?></a></p>
+        <p class="site-description-footer<?php echo esc_attr( $hideTagline ); ?>"><?php echo esc_html(get_bloginfo( 'description' )); ?></p>
+    </div>
+    <?php
+}
+endif;
+add_action('blogus_action_footer_site_title_tagline','blogus_footer_site_title_tagline');
 
 //SCROLL TO TOP //
 if ( ! function_exists( 'blogus_scrolltoup' ) ) :

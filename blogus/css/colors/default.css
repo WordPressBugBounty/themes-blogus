@@ -32,6 +32,10 @@ input[type="search"]:focus, textarea:focus{
 .navbar-toggler:hover, .navbar-toggler:focus {
 	background: var(--grady-color);
 }
+/*==================== Site Title ====================*/
+.site-title a, .site-description{
+	color: var(--head-color);
+}
 /*==================== topbar ====================*/
 .switch input:checked + .slider{
   	background: #ccc;

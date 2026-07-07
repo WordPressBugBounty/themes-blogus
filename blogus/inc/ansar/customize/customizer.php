@@ -443,7 +443,25 @@ function blogus_theme_option( $wp_customize ) {
         'size_unit'    => array( 'px', '%', 'em', 'rem' ),
         'priority' => 9,
     )));
-        /*--- Site title Font size **/
+    $wp_customize->get_control( 'display_header_text')->label = __('Display Site Title', 'blogus');
+
+    $wp_customize->add_setting('display_header_tagline',
+        array(
+            'default' => false,
+            'transport' => 'postMessage',
+            'sanitize_callback' => 'blogus_sanitize_checkbox',
+        )
+    );
+    $wp_customize->add_control('display_header_tagline',
+        array(
+            'label' => __('Display Tagline', 'blogus'),
+            'section' => 'title_tagline',
+            'type' => 'checkbox',
+            'priority' => 50,
+
+        )
+    );
+    /*--- Site title Font size **/
     $wp_customize->add_setting('blogus_title_font_size',
         array(
             'default'           => 60,

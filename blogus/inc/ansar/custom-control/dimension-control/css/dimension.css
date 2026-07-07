@@ -74,6 +74,7 @@
     min-height: unset;
     line-height: 1.4;
     cursor: pointer;
+    text-align: center;
 } 
 .customize-control-dimensions .unit-wrapper .input-wrapper select.dimension-unit:focus {
     box-shadow: none;
