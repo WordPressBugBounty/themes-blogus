@@ -1,0 +1,208 @@
+/* ==========================================================================
+   1. Title & Top Area Layout
+   ========================================================================== */
+.custom-range-title-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 5px;
+}
+
+.custom-range-title-area .customize-control-title {
+    flex: 0 0 auto;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Unit Dropdown Styling */
+.custom-range-unit-select {
+    max-width: 140px;
+    height: 28px;
+    margin: 0 10px 0 0;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+/* Responsive Device Icons (Stacked vertically like the image) */
+.customize-control .responsive-switchers {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+
+}
+
+.customize-control .responsive-switchers li {
+    list-style: none;
+    margin: 0;
+}
+
+.customize-control .responsive-switchers li button { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; 
+    background-color: transparent; 
+    color: #a7aaad; /* Default WP grey */
+    border: 0; 
+    padding: 0;
+    outline: none; 
+    transition: color .2s ease; 
+    padding: 2px 3px;
+}
+
+.customize-control .responsive-switchers li button:hover,
+.customize-control .responsive-switchers li button.active { 
+    color: var(--wp-admin-theme-color, #2271b1); 
+}
+
+.customize-control .responsive-switchers li button i { 
+    font-size: 17px;
+    width: 17px;
+    height: 17px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   2. Slider & Bottom Area Layout
+   ========================================================================== */
+.range-slider {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.desktop-range,
+.tablet-range,
+.mobile-range {
+    display: none;
+    width: 100%;
+}
+
+/* Upgrade active state to flex for perfect vertical centering */
+.desktop-range.active,
+.tablet-range.active,
+.mobile-range.active {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* The Range Slider Track */
+.range-slider__range {
+    flex: 1 1 auto; /* Expands to fill all empty space */
+    height: 4px;
+    margin: 0 12px 0 0;
+    padding: 0;
+    background-color: #dcdcde;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none; /* Required for custom webkit styling */
+}
+
+/* Number Input Box */
+.customize-control input[type=number].range-slider-value {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 28px;
+    margin: 0 8px;
+    padding: 3px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3c434a;
+    border-radius: 3px;
+    border-color: #e1e1e1;
+}
+
+/* Remove up/down arrows from number input */
+.customize-control input[type=number].range-slider-value::-webkit-outer-spin-button,
+.customize-control input[type=number].range-slider-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Reset Button */
+.customize-control span.range-reset-slider {
+    flex: 0 0 28px; /* Fixed width/height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: #a7aaad;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.customize-control span.range-reset-slider:hover {
+    color: var(--wp-admin-theme-color, #2271b1);
+}
+
+.range-reset-slider .dashicons {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   3. Range Slider Thumb Styling (Cross-Browser)
+   ========================================================================== */
+/* Webkit (Chrome, Safari, Edge) */
+.range-slider__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--wp-admin-theme-color, #2271b1);
+    transition: transform 0.1s ease;
+}
+
+.range-slider__range::-webkit-slider-thumb:hover,
+.range-slider__range:active::-webkit-slider-thumb {
+    transform: scale(1.15); /* Slight pop effect on interaction */
+}
+
+/* Firefox */
+.range-slider__range::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--wp-admin-theme-color, #2271b1);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.range-slider__range::-moz-range-thumb:hover,
+.range-slider__range:active::-moz-range-thumb {
+    transform: scale(1.15);
+}
+
+.range-slider__range::-moz-focus-inner, 
+.range-slider__range::-moz-focus-outer {
+    border: 0;
+}
+.custom-range-control .custom-range-unit-select{
+    width: 35px;
+    height: auto;
+    min-height: unset;
+    margin: 0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    background-image: none;
+    padding: 2px 4px;
+    line-height: 1.4;
+    border-color: #e1e1e1;
+    text-align: center;
+    text-transform: uppercase;
+    background: #fff;
+    color: #3c434a;
+    border: 0.5px solid #dcdcde;
+}

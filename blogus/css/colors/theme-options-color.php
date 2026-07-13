@@ -116,6 +116,28 @@ function blogus_customize_options() {
 	$blogus_custom_css .= '@media (max-width: 991px) { [displayON="desktop"] { display: none !important;}}';
 
 	$blogus_custom_css .= '@media (max-width: 991px) and (min-width: 576px) { [displayON="desktop,mobile"] { display: none !important;}	}';
+
+	$rangeValue = array(
+
+		'.bs-default .site-logo a.navbar-brand' => array(
+			array( 'key' => 'side_main_logo_width', 'property' => 'width', 'media_query' => true, ),
+		),
+	);
+	
+	foreach ( $rangeValue as $selector => $properties ) {
+		foreach ( $properties as $setting ) {
+			$key         = $setting['key'];
+			$default_val = isset( $defaults[ $key ] ) ? $defaults[ $key ] : '';
+
+			$blogus_custom_css .= blogus_range_css(
+				$selector,
+				$default_val,
+				get_theme_mod( $key, $default_val ),
+				$setting['property'],
+				isset( $setting['media_query'] ) ? $setting['media_query'] : true
+			);
+		}
+	}
 	
     if ( ! empty( $blogus_custom_css ) ) {
         wp_add_inline_style( 'blogus-style', $blogus_custom_css );

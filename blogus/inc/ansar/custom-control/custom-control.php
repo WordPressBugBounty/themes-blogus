@@ -11,12 +11,15 @@ function blogus_register_custom_controls( $wp_customize ) {
     require_once  get_template_directory() . '/inc/ansar/custom-control/custom_tab_control/custom_tab_control_class.php';
     require_once  get_template_directory() . '/inc/ansar/custom-control/dimension-control/dimension_control_class.php';
     require_once  get_template_directory() . '/inc/ansar/custom-control/button-group/button_group_class.php';
+    require_once  get_template_directory() . '/inc/ansar/custom-control/range/class-range.php';
 
     $wp_customize->register_control_type( 'blogus_Toggle_Control' );
 
     $wp_customize->register_control_type( 'Dimension_Custom_Control' );
     
     $wp_customize->register_control_type( 'Blogus_Button_Group_Control' );
+
+    $wp_customize->register_control_type( 'Blogus_Range_Control' );
 
 }
 endif;

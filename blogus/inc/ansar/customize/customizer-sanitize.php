@@ -227,3 +227,35 @@ function blogus_sanitize_multi_choose( $input ) {
     }
     return $sanitized;
 }
+
+/**
+ * Sanitize values for range inputs.
+ *
+ * @param string $input Control input.
+ */
+function blogus_sanitize_range( $input ) {
+    if ( $input === '' ) { return ''; }
+
+    if ( is_string( $input ) ) {
+        $decoded = json_decode( $input, true );
+        
+        if ( is_array( $decoded ) ) {
+            $sanitized = array();
+            
+            $sanitized['desktop'] = ( isset( $decoded['desktop'] ) && is_numeric( $decoded['desktop'] ) ) ? floatval( $decoded['desktop'] ) : '';
+            $sanitized['tablet']  = ( isset( $decoded['tablet'] )  && is_numeric( $decoded['tablet'] ) )  ? floatval( $decoded['tablet'] )  : '';
+            $sanitized['mobile']  = ( isset( $decoded['mobile'] )  && is_numeric( $decoded['mobile'] ) )  ? floatval( $decoded['mobile'] )  : '';
+            
+            // NEW: Sanitize the unit
+            $sanitized['unit']    = isset( $decoded['unit'] ) ? sanitize_text_field( $decoded['unit'] ) : '';
+            
+            return wp_json_encode( $sanitized );
+        }
+    }
+    
+    return is_numeric( $input ) ? floatval( $input ) : '';
+}
+
+function blogus_json( $string ) {
+    return is_string( $string ) && is_array( json_decode( $string, true ) ) ? true : false;
+}

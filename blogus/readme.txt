@@ -758,3 +758,6 @@ Added Page Title For Woocommerce.
 
 = Version 3.0.3
 * Added Site Title and Tagline visibility options.
+
+= Version 3.0.4
+* Added Range Control for Site Logo Width.
