@@ -50,10 +50,7 @@ function blogus_header_default_section() { ?>
                 <div class="site-logo">
                     <?php if(get_theme_mod('custom_logo') !== ""){ the_custom_logo(); } ?>
                 </div>
-                <div class="site-branding-text <?php echo esc_attr( display_header_text() ? ' ' : 'd-none'); ?>">
-                  <div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo esc_html(get_bloginfo( 'name' )); ?></a></div>
-                  <p class="site-description"><?php echo esc_html(get_bloginfo( 'description' )); ?></p>
-                </div>
+                <?php do_action('blogus_action_header_responsive_site_title_tagline'); ?>
               </div>
               <div class="right-nav"> 
                 <?php blogus_menu_btns(); ?>
