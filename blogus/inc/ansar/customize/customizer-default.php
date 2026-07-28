@@ -88,13 +88,20 @@ function blogus_get_default_theme_options() {
             'mobile'  => array('top' => '',  'right' => '', 'bottom' => '',  'left' => '', 'unit' => 'px'),
         );
     
-    $defaults['side_main_logo_width'] = wp_json_encode( array( 'desktop' => '250', 'tablet'  => '200','mobile'  => '150', 'unit' => 'px',) ) ;
+    $defaults['side_main_logo_width'] = wp_json_encode(
+        array(
+            'desktop'      => '250',
+            'tablet'       => '200',
+            'mobile'       => '150',
+            'desktop_unit' => 'px',
+            'tablet_unit'  => 'px',
+            'mobile_unit'  => 'px',
+        )
+    );
 
-    $defaults = apply_filters('blogus_filter_default_theme_options', $defaults);
     // filter.
-
+    $defaults = apply_filters('blogus_filter_default_theme_options', $defaults);
 	return $defaults;
-
 }
 
 endif;

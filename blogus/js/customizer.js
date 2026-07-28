@@ -422,9 +422,15 @@
                 } catch ( e ) {
                     data = { desktop: to };
                 }
-                var unit = data.unit || '';
+                var getValue = function( device ) {
+                    return typeof data[ device ] !== 'undefined' ? data[ device ] : '';
+                };
 
-                var build = function( value ) {
+                var getUnit = function( device ) {
+                    return data[ device + '_unit' ] || data.unit || '';
+                };
+
+                var build = function( value, unit ) {
 
                     if ( value === '' ) {
                         return '';
@@ -439,11 +445,11 @@
                     return css;
                 };
 
-                var css = selector + '{' + build( data.desktop || '' ) + '}';
+                var css = selector + '{' + build( getValue( 'desktop' ), getUnit( 'desktop' ) ) + '}';
 
                 if ( media_query ) {
-                    css += '@media (max-width:991px){' + selector + '{' + build( data.tablet || '' ) + '}}';
-                    css += '@media (max-width:575px){' + selector + '{' + build( data.mobile || '' ) + '}}';
+                    css += '@media (max-width:991px){' + selector + '{' + build( getValue( 'tablet' ), getUnit( 'tablet' ) ) + '}}';
+                    css += '@media (max-width:575px){' + selector + '{' + build( getValue( 'mobile' ), getUnit( 'mobile' ) ) + '}}';
                 }
 
                 var style = 'customizer-' + setting;
@@ -457,7 +463,7 @@
 
     }
 
-    range_live_load( 'side_main_logo_width', '.site-logo a.navbar-brand', [ 'width' ] );
+    range_live_load( 'side_main_logo_width', '.bs-default .site-logo a.navbar-brand', [ 'width' ] );
 
 
 } )( jQuery );

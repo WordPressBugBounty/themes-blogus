@@ -2,6 +2,7 @@
    1. Title & Top Area Layout
    ========================================================================== */
 .custom-range-title-area {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,6 +14,12 @@
     flex: 0 0 auto;
     margin: 0;
     line-height: 1.2;
+}
+.custom-range-title-left,.custom-range-title-right {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
 }
 
 /* Unit Dropdown Styling */
@@ -26,6 +33,7 @@
 
 /* Responsive Device Icons (Stacked vertically like the image) */
 .customize-control .responsive-switchers {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
@@ -38,8 +46,35 @@
 }
 
 .customize-control .responsive-switchers li {
+    display: none;
     list-style: none;
     margin: 0;
+}
+
+.customize-control .responsive-switchers li.active,
+.customize-control .responsive-switchers.open li {
+    display: block;
+}
+
+.customize-control .responsive-switchers.open {
+    position: absolute;
+    right: -33px;
+    top: -7px;
+    z-index: 10;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    padding: 3px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
+}
+
+.customize-control .responsive-switchers.open li button {
+    width: 24px;
+    height: 24px;
 }
 
 .customize-control .responsive-switchers li button { 
@@ -189,6 +224,7 @@
     border: 0;
 }
 .custom-range-control .custom-range-unit-select{
+    display: none;
     width: 35px;
     height: auto;
     min-height: unset;
@@ -205,4 +241,8 @@
     background: #fff;
     color: #3c434a;
     border: 0.5px solid #dcdcde;
+}
+
+.custom-range-control .custom-range-unit-select.active {
+    display: block;
 }

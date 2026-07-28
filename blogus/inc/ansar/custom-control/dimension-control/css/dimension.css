@@ -24,17 +24,20 @@
     padding: 7px 0px;
 } 
 .customize-control-dimensions .dimension-label-unit-wrapper .label-switcher-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 /* ── Device switcher ── */
 .customize-control-dimensions .responsive-switchers {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 1px;
 } 
 .customize-control-dimensions .responsive-switchers button.switch-device {
+    display: none;
     border: none;
     background: none;
     cursor: pointer;
@@ -43,6 +46,30 @@
     color: #a7aaad;
     transition: color 0.1s;
 } 
+.customize-control-dimensions .responsive-switchers button.switch-device.active,
+.customize-control-dimensions .responsive-switchers.open button.switch-device {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.customize-control-dimensions .responsive-switchers.open {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    z-index: 10;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    padding: 3px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
+}
+.customize-control-dimensions .responsive-switchers.open button.switch-device {
+    width: 24px;
+    height: 24px;
+}
 .customize-control-dimensions .responsive-switchers button.switch-device .dashicons {
     font-size: 17px;
     width: 17px;

@@ -33,10 +33,13 @@ class Blogus_Range_Control extends WP_Customize_Control {
 		$json = parent::json();
 
 		$defaults = array(
-			'desktop' => '',
-			'tablet'  => '',
-			'mobile'  => '',
-			'unit'    => '',
+			'desktop'      => '',
+			'tablet'       => '',
+			'mobile'       => '',
+			'unit'         => '',
+			'desktop_unit' => '',
+			'tablet_unit'  => '',
+			'mobile_unit'  => '',
 		);
 
 		// Default values.
@@ -52,6 +55,14 @@ class Blogus_Range_Control extends WP_Customize_Control {
 		// Fallback unit.
 		if ( empty( $defaults['unit'] ) && ! empty( $this->size_unit ) ) {
 			$defaults['unit'] = $this->size_unit[0];
+		}
+
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+			$unit_key = "{$device}_unit";
+
+			if ( empty( $defaults[ $unit_key ] ) ) {
+				$defaults[ $unit_key ] = $defaults['unit'];
+			}
 		}
 
 		// Current values start as defaults.
@@ -83,9 +94,24 @@ class Blogus_Range_Control extends WP_Customize_Control {
 		$json['mobile_value']  = $values['mobile'];
 		$json['unit']          = $values['unit'];
 
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+			$unit_key = "{$device}_unit";
+
+			if ( empty( $values[ $unit_key ] ) ) {
+				$values[ $unit_key ] = ! empty( $values['unit'] ) ? $values['unit'] : $defaults[ $unit_key ];
+			}
+		}
+
+		$json['desktop_unit'] = $values['desktop_unit'];
+		$json['tablet_unit']  = $values['tablet_unit'];
+		$json['mobile_unit']  = $values['mobile_unit'];
+
 		$json['desktop_default'] = $defaults['desktop'];
 		$json['tablet_default']  = $defaults['tablet'];
 		$json['mobile_default']  = $defaults['mobile'];
+		$json['desktop_unit_default'] = $defaults['desktop_unit'];
+		$json['tablet_unit_default']  = $defaults['tablet_unit'];
+		$json['mobile_unit_default']  = $defaults['mobile_unit'];
 
 		$json['media_query'] = $this->media_query;
 		$json['size_unit']   = $this->size_unit;
@@ -107,25 +133,41 @@ class Blogus_Range_Control extends WP_Customize_Control {
         <div class="custom-range-control">
         <# if ( data.label ) { #>
             <div class="custom-range-title-area">
-                <span class="customize-control-title">
-                    <span>{{{ data.label }}}</span>
-                </span>
-  				<# if ( data.media_query ) { #>
+                <div class="custom-range-title-left">                
+                    <span class="customize-control-title">
+                        <span>{{{ data.label }}}</span>
+                    </span>
+                <# if ( data.media_query ) { #>
                     <ul class="responsive-switchers responsive-switchers-open">
-                        <li class="desktop"><button type="button" class="preview-desktop active" data-device="desktop"><i class="dashicons dashicons-desktop"></i></button></li>
+                        <li class="desktop active"><button type="button" class="preview-desktop active" data-device="desktop"><i class="dashicons dashicons-desktop"></i></button></li>
                         <li class="tablet"><button type="button" class="preview-tablet" data-device="tablet"><i class="dashicons dashicons-tablet"></i></button></li>
                         <li class="mobile"><button type="button" class="preview-mobile" data-device="mobile"><i class="dashicons dashicons-smartphone"></i></button></li>
                     </ul>
                 <# } #>
+                </div>
+                <div class="custom-range-title-right">                    
                 <# if ( data.size_unit && data.size_unit.length ) { #>
-                    <select class="custom-range-unit-select">
+                    <select class="custom-range-unit-select desktop-unit active" data-query="desktop" data-default="{{data.desktop_unit_default}}">
                         <# _.each( data.size_unit, function( unit ) { #>
-                            <option value="{{ unit }}" <# if ( data.unit === unit ) { #>selected<# } #>>{{{ unit }}}</option>
+                            <option value="{{ unit }}" <# if ( data.desktop_unit === unit ) { #>selected<# } #>>{{{ unit }}}</option>
                         <# }); #>
                     </select>
+                    <# if ( data.media_query ) { #>
+                        <select class="custom-range-unit-select tablet-unit" data-query="tablet" data-default="{{data.tablet_unit_default}}">
+                            <# _.each( data.size_unit, function( unit ) { #>
+                                <option value="{{ unit }}" <# if ( data.tablet_unit === unit ) { #>selected<# } #>>{{{ unit }}}</option>
+                            <# }); #>
+                        </select>
+                        <select class="custom-range-unit-select mobile-unit" data-query="mobile" data-default="{{data.mobile_unit_default}}">
+                            <# _.each( data.size_unit, function( unit ) { #>
+                                <option value="{{ unit }}" <# if ( data.mobile_unit === unit ) { #>selected<# } #>>{{{ unit }}}</option>
+                            <# }); #>
+                        </select>
+                    <# } #>
                 <# } #>
                 <span class="range-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 
+                </div>
             </div>
         <# } #>
 

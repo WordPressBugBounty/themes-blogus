@@ -29,6 +29,7 @@
             }
 
             // --- Device Switching Management ---
+            const deviceSwitcher = container.querySelector('.responsive-switchers');
             const deviceButtons = container.querySelectorAll('.switch-device');
 
             function switchDeviceUI( targetDevice ) {
@@ -43,6 +44,10 @@
                 deviceButtons.forEach( btn => {
                     btn.classList.toggle( 'active', btn.dataset.device === targetDevice );
                 });
+
+                if ( deviceSwitcher ) {
+                    deviceSwitcher.classList.remove( 'open' );
+                }
 
                 // 2. Toggle visibility on wrappers + unit selects
                 container.querySelectorAll('.wrapper, .dimension-unit').forEach( el => {
@@ -76,6 +81,11 @@
                 button.addEventListener( 'click', (e) => {
                     e.preventDefault();
                     const device = button.dataset.device;
+
+                    if ( button.classList.contains( 'active' ) && deviceSwitcher && ! deviceSwitcher.classList.contains( 'open' ) ) {
+                        deviceSwitcher.classList.add( 'open' );
+                        return;
+                    }
 
                     // Update our UI immediately
                     switchDeviceUI( device );

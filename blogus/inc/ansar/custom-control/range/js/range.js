@@ -16,8 +16,9 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
 
         control.elements = {
             collector      : container.querySelector( '.range-collector' ),
-            unitSelect     : container.querySelector( '.custom-range-unit-select' ),
+            unitSelects    : container.querySelectorAll( '.custom-range-unit-select' ),
             resetButton    : container.querySelector( '.range-reset-slider' ),
+            deviceSwitcher : container.querySelector( '.responsive-switchers' ),
             deviceButtons  : container.querySelectorAll( '.responsive-switchers button' ),
             numberInputs   : container.querySelectorAll( '.range-slider-value' ),
             sliders        : container.querySelectorAll( '.range-slider__range' ),
@@ -48,7 +49,7 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
         };
 
         /**
-         * Collect the current value of every slider (+ unit, if present)
+         * Collect the current value of every slider (+ per-device unit, if present)
          * scoped to this control only.
          */
         control.getSliderValues = function () {
@@ -59,9 +60,9 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
                 values[ slider.dataset.query ] = slider.value;
             } );
 
-            if ( control.elements.unitSelect ) {
-                values.unit = control.elements.unitSelect.value;
-            }
+            control.elements.unitSelects.forEach( function ( select ) {
+                values[ select.dataset.query + '_unit' ] = select.value;
+            } );
 
             return values;
         };
@@ -94,7 +95,7 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
 
             var newValue;
 
-            if ( control.hasMediaQuery || control.elements.unitSelect ) {
+            if ( control.hasMediaQuery || control.elements.unitSelects.length ) {
                 newValue = JSON.stringify( values );
             } else {
                 newValue = values.desktop;
@@ -149,12 +150,14 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
          */
         control.bindUnitEvents = function () {
 
-            if ( ! control.elements.unitSelect ) {
+            if ( ! control.elements.unitSelects.length ) {
                 return;
             }
 
-            control.elements.unitSelect.addEventListener( 'change', function () {
-                control.updateValues();
+            control.elements.unitSelects.forEach( function ( select ) {
+                select.addEventListener( 'change', function () {
+                    control.updateValues();
+                } );
             } );
         };
 
@@ -183,6 +186,10 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
                     }
                 } );
 
+                control.elements.unitSelects.forEach( function ( select ) {
+                    select.value = select.dataset.default;
+                } );
+
                 control.updateValues();
             } );
         };
@@ -199,6 +206,18 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
 
             control.elements.deviceButtons.forEach( function ( button ) {
                 button.classList.toggle( 'active', button.dataset.device === device );
+
+                if ( button.parentElement ) {
+                    button.parentElement.classList.toggle( 'active', button.dataset.device === device );
+                }
+            } );
+
+            if ( control.elements.deviceSwitcher ) {
+                control.elements.deviceSwitcher.classList.remove( 'open' );
+            }
+
+            control.elements.unitSelects.forEach( function ( select ) {
+                select.classList.toggle( 'active', select.dataset.query === device );
             } );
 
             Object.keys( control.elements.deviceWrappers ).forEach( function ( key ) {
@@ -225,6 +244,11 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
                     e.preventDefault();
 
                     var device = button.dataset.device;
+
+                    if ( button.classList.contains( 'active' ) && control.elements.deviceSwitcher && ! control.elements.deviceSwitcher.classList.contains( 'open' ) ) {
+                        control.elements.deviceSwitcher.classList.add( 'open' );
+                        return;
+                    }
 
                     control.switchDeviceUI( device );
 
