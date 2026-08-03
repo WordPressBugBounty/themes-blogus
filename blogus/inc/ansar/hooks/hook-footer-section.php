@@ -97,6 +97,7 @@ if( ! function_exists( 'blogus_footer_copyright' ) ) :
   function blogus_footer_copyright() { 
     $hide_copyright = esc_attr(get_theme_mod('hide_copyright',true));
     $blogus_footer_copyright = get_theme_mod( 'blogus_footer_copyright','Copyright &copy; All rights reserved' );
+    $themeName = !empty(BLOGUS_THEMEURI) ? '<a href="' . esc_url( BLOGUS_THEMEURI ) . '" target="_blank">' . esc_html( BLOGUS_THEME_NAME ) . '</a>': esc_html( BLOGUS_THEME_NAME );
     if ($hide_copyright == true ) { ?>
       <div class="bs-footer-overlay-copyright">
           <div class="container">
@@ -106,7 +107,7 @@ if( ! function_exists( 'blogus_footer_copyright' ) ) :
                     <p class="mb-0">
                     <span class="copyright-text"><?php echo esc_html($blogus_footer_copyright); ?></span>
                       <span class="sep"> | </span>
-                      <?php  printf(esc_html__('%1$s by %2$s.', 'blogus'), '<a href="https://themeansar.com/free-themes/blogus/" target="_blank">Blogus</a>', '<a href="https://themeansar.com" target="_blank">Themeansar</a>'); ?>
+                      <?php  printf(esc_html__('%1$s by %2$s.', 'blogus'), $themeName, '<a href="https://themeansar.com" target="_blank">Themeansar</a>'); ?>
                        </a>
                       </p>
                   </div>
@@ -124,7 +125,7 @@ if( ! function_exists( 'blogus_footer_copyright' ) ) :
                     <p class="mb-0">
                     <span class="copyright-text"><?php echo esc_html($blogus_footer_copyright); ?></span>
                       <span class="sep"> | </span>
-                      <?php  printf(esc_html__('%1$s by %2$s.', 'blogus'), '<a href="https://themeansar.com/free-themes/blogus/" target="_blank">Blogus</a>', '<a href="https://themeansar.com" target="_blank">Themeansar</a>'); ?>
+                      <?php  printf(esc_html__('%1$s by %2$s.', 'blogus'), $themeName, '<a href="https://themeansar.com" target="_blank">Themeansar</a>'); ?>
                        </a>
                       </p>
                   </div>

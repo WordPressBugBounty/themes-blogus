@@ -22,8 +22,16 @@
 
 	// Theme version.
 	$blogus_theme = wp_get_theme();
-	define( 'BLOGUS_THEME_VERSION', $blogus_theme->get( 'Version' ) );
-	define ( 'BLOGUS_THEME_NAME', $blogus_theme->get( 'Name' ) );
+	
+	if ( ! defined( 'BLOGUS_THEME_VERSION' ) ) {
+		define( 'BLOGUS_THEME_VERSION', $blogus_theme->get( 'Version' ) );
+	}
+	if ( ! defined( 'BLOGUS_THEME_NAME' ) ) {
+		define( 'BLOGUS_THEME_NAME', $blogus_theme->get( 'Name' ) );
+	}
+	if ( ! defined( 'BLOGUS_THEMEURI' ) ) {
+		define( 'BLOGUS_THEMEURI', $blogus_theme->get( 'ThemeURI' ) );
+	}
 
 	/*-----------------------------------------------------------------------------------*/
 	/*	Enqueue scripts and styles.
