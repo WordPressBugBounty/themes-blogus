@@ -1,6 +1,6 @@
 wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
 
-    ready: function () {
+     ready: function () {
 
         'use strict';
 
@@ -154,11 +154,42 @@ wp.customize.controlConstructor['blogus-range'] = wp.customize.Control.extend({
                 return;
             }
 
-            control.elements.unitSelects.forEach( function ( select ) {
-                select.addEventListener( 'change', function () {
+            function updateSliderSettings( select ) {
+
+                var device  = select.dataset.query,
+                    unit    = select.value,
+                    wrapper = control.elements.deviceWrappers[ device ],
+                    slider  = wrapper && wrapper.querySelector( '.range-slider__range' ),
+                    input   = wrapper && wrapper.querySelector( '.range-slider-value' ),
+                    step    = ['rem', 'em'].includes( unit ) ? 0.01 : control.params.step,
+                    max     = unit === '%' ? 100 : ['vw', 'vh', 'rem', 'em'].includes( unit ) ? 200 : control.params.max;
+
+                if ( ! slider || ! input ) {
+                    return;
+                }
+
+                slider.step = input.step = step;
+                slider.max  = input.max  = max;
+
+                if ( +slider.value > max ) {
+                    slider.value = input.value = max;
                     control.updateValues();
+                }
+            }
+            control.elements.unitSelects.forEach( function ( select ) {
+
+                // Set the correct step on initial load.
+                updateSliderSettings( select );
+
+                select.addEventListener( 'change', function () {
+
+                    updateSliderSettings( select );
+                    control.updateValues();
+
                 } );
+
             } );
+
         };
 
         /**

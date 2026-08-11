@@ -4,8 +4,8 @@ Author: Themeansar
 Requires PHP: 7.4
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 3.0.7
-Version: 3.0.7
+Stable tag: 3.0.8
+Version: 3.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -771,3 +771,6 @@ Added Page Title For Woocommerce.
 = Version 3.0.7
 * Added theme URI support.
 * Improved theme information retrieval.
+
+= Version 3.0.8
+* Fixed Range and Dimensions Controls Steps.

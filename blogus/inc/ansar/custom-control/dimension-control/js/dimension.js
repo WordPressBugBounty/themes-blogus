@@ -16,12 +16,18 @@
             };
 
             /**
-             * Update max attribute + clamp existing values for all inputs of a device.
+             * Update max and step attributes + clamp existing values for all inputs of a device.
              */
-            function applyUnitMax( device, unit ) {
+            function applyUnitConstraints( device, unit ) {
                 const max = unitMaxMap[ unit ] !== undefined ? unitMaxMap[ unit ] : 999;
+                
+                // Set step to 0.01 for em/rem, otherwise 1
+                const step = ( unit === 'em' || unit === 'rem' ) ? '0.01' : '1';
+
                 container.querySelectorAll( `input[data-device="${device}"]` ).forEach( input => {
                     input.setAttribute( 'max', max );
+                    input.setAttribute( 'step', step ); // Apply the step attribute
+                    
                     if ( input.value !== '' && parseFloat( input.value ) > max ) {
                         input.value = String( max );
                     }
@@ -72,8 +78,8 @@
                 const unitSelect = container.querySelector( `.dimension-unit.unit-${targetDevice}` );
                 if ( unitSelect ) unitSelect.value = deviceValues.unit || 'px';
 
-                // 4. Apply correct max for active unit
-                applyUnitMax( targetDevice, deviceValues.unit || 'px' );
+                // 4. Apply correct max and step for active unit
+                applyUnitConstraints( targetDevice, deviceValues.unit || 'px' );
             }
 
             // --- Our control button clicks ---
@@ -98,9 +104,6 @@
             });
 
             // --- Two-way sync with WP toolbar device buttons (bottom of customizer) ---
-            // Use api.bind('ready') to guarantee previewedDevice exists before we bind to it.
-            // This is the key fix: wp toolbar changes fire on previewedDevice,
-            // but the value may not be available until after the customizer fully loads.
             function bindPreviewedDevice() {
                 if ( ! api.previewedDevice ) return;
 
@@ -135,8 +138,8 @@
                     const device = this.dataset.device;
                     const unit   = this.value;
 
-                    // Update max + clamp values
-                    applyUnitMax( device, unit );
+                    // Update max, step + clamp values
+                    applyUnitConstraints( device, unit );
 
                     // Re-persist clamped values before saving unit
                     ['top', 'right', 'bottom', 'left'].forEach( side => {
@@ -249,13 +252,22 @@
 
             ['desktop', 'tablet', 'mobile'].forEach( device => {
                 const deviceDefaults = defaults[ device ] || { top: '', right: '', bottom: '', left: '', unit: 'px' };
+                const deviceUnit = deviceDefaults.unit || 'px';
 
                 const selectElement = container.querySelector( `.dimension-unit.unit-${device}` );
-                if ( selectElement ) selectElement.value = deviceDefaults.unit || 'px';
+                if ( selectElement ) selectElement.value = deviceUnit;
+
+                // Make sure max and step are reset according to the default unit
+                const max = (deviceUnit === 'px') ? 999 : (deviceUnit === 'vw' || deviceUnit === 'vh' ? 200 : 100);
+                const step = (deviceUnit === 'em' || deviceUnit === 'rem') ? '0.01' : '1';
 
                 ['top', 'right', 'bottom', 'left'].forEach( side => {
                     const input = container.querySelector( `input[data-device="${device}"][data-side="${side}"]` );
-                    if ( input ) input.value = deviceDefaults[ side ] !== undefined ? deviceDefaults[ side ] : '';
+                    if ( input ) {
+                        input.value = deviceDefaults[ side ] !== undefined ? deviceDefaults[ side ] : '';
+                        input.setAttribute( 'max', max );
+                        input.setAttribute( 'step', step );
+                    }
                 });
             });
         }

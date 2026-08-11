@@ -9,7 +9,6 @@
     margin-bottom: 12px;
     gap: 5px;
 }
-
 .custom-range-title-area .customize-control-title {
     flex: 0 0 auto;
     margin: 0;
@@ -21,7 +20,6 @@
     gap: 5px;
     position: relative;
 }
-
 /* Unit Dropdown Styling */
 .custom-range-unit-select {
     max-width: 140px;
@@ -30,7 +28,6 @@
     border-radius: 3px;
     font-size: 13px;
 }
-
 /* Responsive Device Icons (Stacked vertically like the image) */
 .customize-control .responsive-switchers {
     position: relative;
@@ -42,20 +39,16 @@
     gap: 4px;
     margin: 0;
     padding: 0;
-
 }
-
 .customize-control .responsive-switchers li {
     display: none;
     list-style: none;
     margin: 0;
 }
-
 .customize-control .responsive-switchers li.active,
 .customize-control .responsive-switchers.open li {
     display: block;
 }
-
 .customize-control .responsive-switchers.open {
     position: absolute;
     right: -33px;
@@ -71,12 +64,10 @@
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
 }
-
 .customize-control .responsive-switchers.open li button {
     width: 24px;
     height: 24px;
 }
-
 .customize-control .responsive-switchers li button { 
     display: flex;
     align-items: center;
@@ -90,19 +81,16 @@
     transition: color .2s ease; 
     padding: 2px 3px;
 }
-
 .customize-control .responsive-switchers li button:hover,
 .customize-control .responsive-switchers li button.active { 
     color: var(--wp-admin-theme-color, #2271b1); 
 }
-
 .customize-control .responsive-switchers li button i { 
     font-size: 17px;
     width: 17px;
     height: 17px;
     line-height: 1;
 }
-
 /* ==========================================================================
    2. Slider & Bottom Area Layout
    ========================================================================== */
@@ -110,14 +98,12 @@
     width: 100%;
     box-sizing: border-box;
 }
-
 .desktop-range,
 .tablet-range,
 .mobile-range {
     display: none;
     width: 100%;
 }
-
 /* Upgrade active state to flex for perfect vertical centering */
 .desktop-range.active,
 .tablet-range.active,
@@ -126,7 +112,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 /* The Range Slider Track */
 .range-slider__range {
     flex: 1 1 auto; /* Expands to fill all empty space */
@@ -139,7 +124,6 @@
     outline: none;
     -webkit-appearance: none; /* Required for custom webkit styling */
 }
-
 /* Number Input Box */
 .customize-control input[type=number].range-slider-value {
     flex: 0 0 52px;
@@ -154,14 +138,12 @@
     border-radius: 3px;
     border-color: #e1e1e1;
 }
-
 /* Remove up/down arrows from number input */
 .customize-control input[type=number].range-slider-value::-webkit-outer-spin-button,
 .customize-control input[type=number].range-slider-value::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
 /* Reset Button */
 .customize-control span.range-reset-slider {
     flex: 0 0 28px; /* Fixed width/height */
@@ -174,16 +156,13 @@
     cursor: pointer;
     transition: all .2s ease;
 }
-
 .customize-control span.range-reset-slider:hover {
     color: var(--wp-admin-theme-color, #2271b1);
 }
-
 .range-reset-slider .dashicons {
     font-size: 13px;
     line-height: 1.5;
 }
-
 /* ==========================================================================
    3. Range Slider Thumb Styling (Cross-Browser)
    ========================================================================== */
@@ -197,12 +176,10 @@
     background-color: var(--wp-admin-theme-color, #2271b1);
     transition: transform 0.1s ease;
 }
-
 .range-slider__range::-webkit-slider-thumb:hover,
 .range-slider__range:active::-webkit-slider-thumb {
     transform: scale(1.15); /* Slight pop effect on interaction */
 }
-
 /* Firefox */
 .range-slider__range::-moz-range-thumb {
     width: 16px;
@@ -213,12 +190,10 @@
     cursor: pointer;
     transition: transform 0.1s ease;
 }
-
 .range-slider__range::-moz-range-thumb:hover,
 .range-slider__range:active::-moz-range-thumb {
     transform: scale(1.15);
 }
-
 .range-slider__range::-moz-focus-inner, 
 .range-slider__range::-moz-focus-outer {
     border: 0;
@@ -242,7 +217,6 @@
     color: #3c434a;
     border: 0.5px solid #dcdcde;
 }
-
 .custom-range-control .custom-range-unit-select.active {
     display: block;
 }

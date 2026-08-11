@@ -127,15 +127,13 @@ function blogus_customize_options() {
 	foreach ( $rangeValue as $selector => $properties ) {
 		foreach ( $properties as $setting ) {
 			$key         = $setting['key'];
-			$default_val = isset( $defaults[ $key ] ) ? $defaults[ $key ] : '';
+			$property    = $setting['property'];
 
-			$blogus_custom_css .= blogus_range_css(
-				$selector,
-				$default_val,
-				get_theme_mod( $key, $default_val ),
-				$setting['property'],
-				isset( $setting['media_query'] ) ? $setting['media_query'] : true
-			);
+			$current_val = blogus_get_option( $key );
+			$default_val = isset( $all_defaults[$key] ) ? $all_defaults[$key] : array();
+			$media_query = isset( $setting['media_query'] ) ? $setting['media_query'] : true;
+
+			$blogus_custom_css .= blogus_range_css( $selector, $default_val, $current_val, $property, $media_query );
 		}
 	}
 	
