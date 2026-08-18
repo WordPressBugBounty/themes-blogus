@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 3.0.8
+Version: 3.0.9
 Tested up to: 7.0
 Requires PHP: 7.4
 Requires at least: 6.0
@@ -18,7 +18,10 @@ Text Domain: blogus
 	--bxshover: 0 4px 60px 0 rgba(0, 0, 0, 0.2);
 	--bstras: 0 4px 60px 0 rgba(0, 0, 0, 0.2);
 	--headFont: 'Josefin Sans', sans-serif;
+	--headWeight: 700;
 	--bodyFont: 'Rubik', sans-serif;
+	--bodyWeight: 400;
+	--radius: 0px;
 }
 
 /*---------------------------------------
@@ -31,7 +34,7 @@ body {
 	margin: 0;
 	font-family: var(--bodyFont);
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: var(--bodyWeight);
 	line-height: 1.78;
 	text-decoration: none;
 }
@@ -102,7 +105,7 @@ select {
 	background-clip: padding-box;
 	background-color: #fff;
 	border: 2px solid #ccc;
-	border-radius: 0;
+	border-radius: var(--radius);
 	color: #444;
 	display: block;
 	font-weight: 400;
@@ -138,7 +141,7 @@ select {
 	background: var(--box-color);
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 	border: 2px solid #e5e5e5;
-	border-radius: 0;
+	border-radius: var(--radius);
 	display: block;
 	padding: 13px 16px;
 	width: 100%;
@@ -167,7 +170,7 @@ input[type="submit"],
 input[type="reset"] {
 	padding: 10px 35px;
 	line-height: 30px;
-	border-radius: 0;
+	border-radius: var(--radius);
 	font-weight: bold;
 	font-size: 14px;
 	border-width: 2px;
@@ -245,7 +248,7 @@ td {
 	border: 1px solid #e9e9e9;
 }
 .form-control {
-	border-radius: 0;
+	border-radius: var(--radius);
 	margin-bottom: 20px;
 	box-shadow: inherit;
 	padding: 6px 12px;
@@ -408,13 +411,14 @@ fieldset p {
 	height: 100%;
 	position: absolute;
 	border: none;
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .bs-card-box {
 	background: var(--bg-color);
 	color: var(--text-color);
 	box-shadow: var(--bxsh);
 	overflow: hidden;
+	border-radius: var(--radius);
 }
 .wrapper {
 	overflow: hidden;
@@ -423,6 +427,7 @@ fieldset p {
 	padding: 20px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 	margin-bottom: 50px;
+	border-radius: var(--radius);
 }
 .modal .btn-close {
 	line-height: 1;
@@ -470,7 +475,7 @@ h6, .h6 {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	font-family: var(--headFont);
-	font-weight: 800;
+	font-weight: var(--headWeight);
 	color: var(--head-color);
 	font-feature-settings: "lnum";
 	font-variant-numeric: lining-nums;
@@ -541,13 +546,12 @@ blockquote p {
 	line-height: 30px;
 	overflow: hidden;
 	position: relative;
-	border-radius: 0;
 	font-weight: 500;
 	display: inline-block;
 	transition: all 0.2s ease 0s;
 	border-width: 2px;
 	border-style: solid;
-	border-radius: 0;
+	border-radius: var(--radius);
 	font-size: 14px;
 }
 .btn-theme:hover,
@@ -562,16 +566,16 @@ blockquote p {
 -----------------------------------------*/
 .pagination>li:first-child>a,
 .pagination>li:first-child>span {
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .pagination>li:last-child>a,
 .pagination>li:last-child>span {
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .pagination>li>a,
 .pagination>li>span {
 	margin: 0 6px 10px;
-	border-radius: 0;
+	border-radius: var(--radius);
 	border: none;
 	width: 40px;
 	height: 40px;
@@ -594,9 +598,7 @@ blockquote p {
 	display: flex;
 	flex-wrap: wrap;
 }
-.navigation.pagination .nav-links .page-numbers,
-.navigation.pagination .nav-links a,
-.post-nav-links a {
+.navigation.pagination .nav-links .page-numbers, .navigation.pagination .nav-links a, .post-nav-links a {
 	cursor: pointer;
 	display: inline-block;
 	transition: all 0.3s ease 0s;
@@ -612,14 +614,14 @@ blockquote p {
 	transition: all 0.3s ease 0s;
 	text-decoration: none;
 	position: relative;
-	border-radius: 0;
+	border-radius: var(--radius);
 	font-weight: 500;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 	text-align: center;
 }
 .navigation.pagination>li:first-child>a,
 .navigation.pagination>li:first-child>span {
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .single-nav-links {
 	text-align: center;
@@ -866,7 +868,7 @@ pre.wp-block-code a,
 	margin: 0;
 	z-index: 999;
 	transition: all 1s ease-out;
-	border-radius: 0;
+	border-radius: var(--radius);
 	height: auto;
 }
 .bs-default .navbar-header {
@@ -879,6 +881,7 @@ pre.wp-block-code a,
 .bs-default .navbar-wp .navbar-nav>li>a {
 	padding: 15px 15px;
 	font-weight: 500;
+	border-radius: var(--radius);
 }
 .bs-default .navbar-wp .navbar-nav>li>a:hover,
 .bs-default .navbar-wp .navbar-nav>li>a:focus,
@@ -926,13 +929,14 @@ pre.wp-block-code a,
 .bs-default .navbar-wp {
 	margin: 0;
 	padding: 0;
-	border-radius: 0;
+	border-radius: var(--radius);
 	z-index: 1000;
 	background: transparent;
 	margin: 30px 0;
 }
 .bs-default .navbar-collapse ul {
 	box-shadow: var(--bxsh);
+	border-radius: var(--radius);
 }
 .navbar-brand {
 	font-size: 26px;
@@ -1012,7 +1016,7 @@ pre.wp-block-code a,
 	justify-content: center;
 }
 .navbar-toggle {
-	border-radius: 0;
+	border-radius: var(--radius);
 	margin: 10px auto;
 	position: absolute;
 	right: 5%;
@@ -1031,7 +1035,7 @@ pre.wp-block-code a,
 	min-width: 200px;
 	padding: 0;
 	border: none;
-	border-radius: 0;
+	border-radius: var(--radius);
 	z-index: 10;
 	right: auto;
 	left: 0;
@@ -1245,7 +1249,7 @@ html {
 	}
 }
 .site-branding-text .site-title {
-	font-weight: 700;
+	font-weight: var(--headWeight);
 	font-size: 60px;
 	line-height: 1.2;
 	margin-bottom: 0;
@@ -1308,7 +1312,6 @@ html {
 	padding: 5px 0;
 	position: relative;
 	font-size: 20px;
-	font-weight: 700;
 	line-height: 1.4;
 	text-transform: capitalize;
 }
@@ -1376,7 +1379,7 @@ html {
 	margin: 0 5px 9px 0;
 	padding: 6px 12px;
 	transition: all 0.4s ease-in-out 0s;
-	border-radius: 0;
+	border-radius: var(--radius);
 	text-transform: capitalize;
 	border-width: 1px;
 	border-style: solid;
@@ -1391,7 +1394,7 @@ html {
 	margin: 0 5px 9px 0;
 	padding: 6px 12px;
 	transition: all 0.4s ease-in-out 0s;
-	border-radius: 0;
+	border-radius: var(--radius);
 	text-transform: capitalize;
 	border-width: 1px;
 	border-style: solid;
@@ -1521,7 +1524,7 @@ html {
 	margin-bottom: 30px;
 	box-shadow: var(--bxsh);
 	overflow: hidden;
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .bs-blog-post.lg {
 	position: relative;
@@ -1535,6 +1538,7 @@ html {
 .bs-blog-post.three.md {
 	width: 100%;
 	height: 200px;
+	border-radius: var(--radius);
 }
 .bs-blog-post.text-start .bs-blog-category {
 	justify-content: flex-start;
@@ -1553,7 +1557,7 @@ html {
 	min-height: 20px;
 	overflow: hidden;
 	max-width: 100%;
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .link-div {
 	display: block;
@@ -1656,6 +1660,7 @@ html {
 	padding: 45px;
 	gap: 25px;
 	transition: 0.3s;
+	border-radius: var(--radius);
 }
 .list-blog .bs-blog-thumb {
 	width: 40.333333%;
@@ -1663,6 +1668,7 @@ html {
 	min-width: 40.333333%;
 	height: 300px;
 	min-height: 250px;
+	border-radius: var(--radius);
 }
 .list-blog p,
 .bs-blog-post.grid p {
@@ -1775,7 +1781,7 @@ html {
 	margin-left: 25px;
 	overflow: hidden;
 	position: relative;
-	border-radius: 0;
+	border-radius: var(--radius);
 	transition: all .3s ease-out;
 }
 .small-post-content {
@@ -1837,7 +1843,7 @@ html {
 	align-items: center;
 	margin-bottom: 0;
 	position: relative;
-	border-radius: 0;
+	border-radius: var(--radius);
 	overflow: hidden;
 }
 .bs-slide:before {
@@ -1911,13 +1917,13 @@ html {
 	line-height: 1;
 	font-weight: 600;
 	cursor: pointer;
-	border-radius: 0;
 	margin-left: 0px;
 	margin-right: 0px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	display: inline-flex;
 	align-items: center;
+	border-radius: var(--radius);
 }
 .bs-blog-category a i {
 	font-size: 10px;
@@ -1927,7 +1933,6 @@ html {
 }
 .bs-blog-post.single .bs-header .title {
 	font-size: 38px;
-	font-weight: 800;
 }
 .bs-blog-post.single .small p {
 	margin-bottom: 30px;
@@ -2039,6 +2044,7 @@ html {
 }
 .bs-blog-post .single .nav-links {
 	padding: 2rem;
+	border-radius: var(--radius);
 }
 .bs-blog-post .single .nav-links div {
 	box-sizing: border-box;
@@ -2077,6 +2083,7 @@ html {
 .bs-info-author-block {
 	display: flex;
 	box-shadow: var(--bxsh);
+	border-radius: var(--radius);
 }
 .bs-info-author-block .flex-grow-1 p:empty{
 	display: none;
@@ -2103,7 +2110,7 @@ html {
 	min-height: 120px;
 	overflow-wrap: break-word;
 	word-wrap: break-word;
-	border-radius: 3px;
+	border-radius: var(--radius);
 	z-index: 0;
 	margin-bottom: 25px;
 	border-bottom: 1px solid rgba(225, 225, 225, 0.9);
@@ -2128,7 +2135,7 @@ html {
 	padding: 5px 17px;
 	font-weight: bold;
 	transition: 0.3s ease-in-out 0s;
-	border-radius: 0;
+	border-radius: var(--radius);
 	display: inline-block;
 	border-width: 1px;
 	border-style: solid;
@@ -2185,6 +2192,7 @@ html {
 	padding: 10px 0;
 	position: relative;
 	box-shadow: var(--bxsh);
+	border-radius: var(--radius);
 }
 .bs-breadcrumb-section .breadcrumb span {
 	word-break: break-word;
@@ -2264,13 +2272,13 @@ html {
 .bs-sidebar .bs-widget .btn {
 	padding: 2px 12px;
 	border: none;
-	border-radius: 0;
+	border-radius: var(--radius);
 	height: 40px;
 }
 .bs-sidebar .bs-widget {
 	margin-bottom: 30px;
 	padding: 15px 15px 5px 15px;
-	border-radius: 0;
+	border-radius: var(--radius);
 	box-shadow: var(--bxsh);
 }
 .bs-sidebar .widget_search {
@@ -2315,7 +2323,7 @@ html {
 }
 .bs-sidebar .bs-widget.widget_search .btn {
 	border: medium none;
-	border-radius: 0;
+	border-radius: var(--radius);
 	height: 40px;
 	line-height: 25px;
 	padding: 5px 15px;
@@ -2337,7 +2345,7 @@ html {
 	margin: 0 5px 9px 0;
 	padding: 6px 12px;
 	transition: all 0.4s ease-in-out 0s;
-	border-radius: 0;
+	border-radius: var(--radius);
 	text-transform: capitalize;
 	border-width: 1px;
 	border-style: solid;
@@ -2458,13 +2466,13 @@ html {
 .bs-sidebar .bs-widget.widget_product_search .btn {
 	padding: 2px 12px;
 	height: 40px;
-	border-radius: 0;
+	border-radius: var(--radius);
 	margin-left: -1px;
 }
 
 /*----left-menu-widget----*/
 .bs-sidebar .bs-left-menu-widget ul li {
-	border-radius: 0;
+	border-radius: var(--radius);
 	margin: 0;
 	padding: 10px 20px;
 }
@@ -2540,7 +2548,7 @@ footer .site-title {
 footer .site-branding-text .site-title-footer a {
 	font-size: 30px;
 	font-family: var(--headFont);
-	font-weight: 600;
+	font-weight: var(--headWeight);
 }
 
 footer .site-branding-text .site-title-footer {
@@ -2567,7 +2575,7 @@ footer .bs-widget {
 	background: unset;
 }
 .footer-logo {
-	border-radius: 0%;
+	border-radius: 0;
 	overflow: hidden;
 	padding: 10px 0;
 	display: block;
@@ -2701,7 +2709,7 @@ footer .bs-footer-copyright .info-right {
 /*----product----*/
 .woocommerce .products span.onsale,
 .woocommerce span.onsale {
-	border-radius: 0;
+	border-radius: var(--radius);
 	display: block;
 	font-size: 13px;
 	font-weight: normal;
@@ -2718,7 +2726,7 @@ footer .bs-footer-copyright .info-right {
 	text-align: center;
 	padding-bottom: 20px;
 	transition: all 0.4s ease 0s;
-	border-radius: 0;
+	border-radius: var(--radius);
 	border-width: 1px;
 	border-style: solid;
 	border-color: #eaeaea;
@@ -2756,7 +2764,7 @@ footer .bs-footer-copyright .info-right {
 	padding: 12px 15px 12px 10px;
 	color: #A0A0A0;
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .woocommerce-page .products .product>a:first-child {
 	position: relative;
@@ -2766,7 +2774,7 @@ footer .bs-footer-copyright .info-right {
 .woocommerce-page .products a.button {
 	display: inline-block;
 	text-align: center;
-	border-radius: 0;
+	border-radius: var(--radius);
 	margin: 10px;
 	font-size: 15px;
 	border: none;
@@ -2815,7 +2823,7 @@ footer .bs-footer-copyright .info-right {
 	display: inline-block;
 	text-align: center;
 	padding: 10px 20px 10px 20px;
-	border-radius: 0;
+	border-radius: var(--radius);
 	border: none;
 	font-size: 12px;
 	margin: 0;
@@ -2856,11 +2864,11 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 	border-style: solid;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
-	border-radius: 0;
+	border-radius: var(--radius);
 	background: transparent;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
-	border-radius: 0;
+	border-radius: var(--radius);
 	background: transparent;
 	border: none;
 }
@@ -2905,7 +2913,7 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 	margin-bottom: 20px;
 	border: 2px solid #ebebeb;
 	color: #ccc;
-	border-radius: 0px;
+	border-radius: var(--radius);
 	padding: 6px 12px;
 }
 .select2-container .select2-choice {
@@ -2915,14 +2923,14 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 
 /*woocommerce-cart*/
 .woocommerce table.shop_table {
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .woocommerce .cart .button,
 .woocommerce .cart input.button {
 	float: none;
 	line-height: 30px;
 	padding: 5px 35px;
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .woocommerce .cart .button:hover,
 .woocommerce .cart input.button:hover {
@@ -2931,10 +2939,10 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button {
 	line-height: 30px;
 	padding: 5px 35px;
-	border-radius: 0;
+	border-radius: var(--radius);
 }
 .woocommerce-cart table.cart td.actions .coupon .input-text {
-	border-radius: 0;
+	border-radius: var(--radius);
 	height: 40px;
 	border-width: 1px;
 	border-style: solid;
@@ -2948,7 +2956,7 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 /*woocommerce-messages*/
 .woocommerce-page .woocommerce-message {
 	margin: 0px 0 40px;
-	border-radius: 3px;
+	border-radius: var(--radius);
 	list-style: none;
 }
 .woocommerce-page .woocommerce-message a {
@@ -2959,7 +2967,7 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 	list-style: none;
 	padding: 10px 0 10px 50px;
 	margin: 0px 0 40px;
-	border-radius: 3px;
+	border-radius: var(--radius);
 	border: none;
 	float: left;
 	width: 100%;
@@ -2972,7 +2980,7 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 	list-style: none;
 	padding: 0;
 	margin: 0px 0 40px;
-	border-radius: 3px;
+	border-radius: var(--radius);
 	border: none;
 	float: left;
 	width: 100%;
@@ -2988,7 +2996,7 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 	padding: 15px 0 15px 50px;
 }
 .woocommerce-page .woocommerce .woocommerce-info {
-	border-radius: 3px;
+	border-radius: var(--radius);
 	border: none;
 	padding: 15px 0 15px 50px;
 	margin-bottom: 40px;
@@ -3020,7 +3028,7 @@ footer .blogus-widget .woocommerce ul.product_list_widget li img {
 	transition: all 0.3s ease 0s;
 	text-decoration: none;
 	position: relative;
-	border-radius: 0;
+	border-radius: var(--radius);
 	font-weight: 500;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 	text-align: center;
@@ -3306,7 +3314,7 @@ td {
 }
 .bs-widget .wp-block-search__label {
 	font-size: 20px;
-	font-weight: 700;
+	font-weight: var(--headWeight);
 	margin-bottom: 20px;
 	padding: 5px 0;
 	position: relative;
@@ -3321,7 +3329,6 @@ td {
 	padding: 5px 0;
 	position: relative;
 	font-size: 20px;
-	font-weight: 700;
 	line-height: 1.4;
 	display: flex;
 	width: 100%;
@@ -3341,7 +3348,7 @@ td {
 }
 .wp-block-search__label {
 	font-size: 20px;
-	font-weight: 700;
+	font-weight: var(--headWeight);
 	line-height: 1;
 	position: relative;
 	padding: 5px 0;
@@ -3514,7 +3521,7 @@ a,
 		display: none;
 	}
 	.bs-default .site-branding-text .site-title {
-		font-weight: bold;
+		font-weight: var(--headWeight);
 		font-size: 40px;
 		line-height: 1.2;
 	}
