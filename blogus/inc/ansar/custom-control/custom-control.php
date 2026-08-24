@@ -21,6 +21,7 @@ function blogus_register_custom_controls( $wp_customize ) {
 
     $wp_customize->register_control_type( 'Blogus_Range_Control' );
 
+
 }
 endif;
 add_action( 'customize_register', 'blogus_register_custom_controls' );

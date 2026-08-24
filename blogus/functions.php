@@ -6,7 +6,13 @@
  *
  * @package Blogus
  */
-
+    // Global variables define
+	if ( ! defined( 'BLOGUS_THEME_DIR' ) ) {
+		define( 'BLOGUS_THEME_DIR', get_template_directory() . '/' );
+	}
+	if ( ! defined( 'BLOGUS_THEME_URI' ) ) {
+		define( 'BLOGUS_THEME_URI', get_template_directory_uri() . '/' );
+	}
  	$blogus_theme_path = get_template_directory() . '/inc/ansar/';
 
 	require( $blogus_theme_path . '/blogus-custom-navwalker.php' );
@@ -14,7 +20,7 @@
 	require( $blogus_theme_path . '/font/font.php');
 	require( $blogus_theme_path . '/template-tags.php');
 	require( $blogus_theme_path . '/template-functions.php');
-	require( $blogus_theme_path. '/widgets/widgets-common-functions.php');
+	require( $blogus_theme_path.  '/widgets/widgets-common-functions.php');
 	require( $blogus_theme_path . '/custom-control/custom-control.php');
 	require( $blogus_theme_path . '/custom-control/font/font-control.php');
 	require_once get_template_directory() . '/inc/ansar/customizer-admin/blogus-admin-plugin-install.php';

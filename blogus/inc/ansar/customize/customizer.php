@@ -46,11 +46,6 @@ require get_template_directory().'/inc/ansar/customize/customizer-callback.php';
 require get_template_directory().'/inc/ansar/customize/customizer-default.php';
 
 
-$repeater_path = trailingslashit( get_template_directory() ) . '/inc/ansar/customizer-repeater/functions.php';
-if ( file_exists( $repeater_path ) ) {
-require_once( $repeater_path );
-}
-
 function banner_slider_option($control) {
 
     $banner_slider_option = $control->manager->get_setting('banner_options_main')->value();
@@ -107,8 +102,6 @@ function overlay_text($control){
  */
 function blogus_customize_register($wp_customize) {
 
-	// Load customize controls.
-	require get_template_directory().'/inc/ansar/customize/customizer-control.php';
 
     // Load customize sanitize.
 	require get_template_directory().'/inc/ansar/customize/customizer-sanitize.php';
@@ -290,8 +283,6 @@ function blogus_customize_register($wp_customize) {
     $default = blogus_get_default_theme_options();
 
 	/*Theme option panel info*/
-
-    require get_template_directory().'/inc/ansar/customize/header-options.php';
 
 	require get_template_directory().'/inc/ansar/customize/theme-options.php';
     
