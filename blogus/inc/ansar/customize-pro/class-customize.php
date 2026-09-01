@@ -40,7 +40,12 @@ final class Blogus_Customize {
 		// Register panels, sections, settings, controls, and partials.
 		add_action( 'customize_register', array( $this, 'sections' ) );
 
+		// Loads Customizer helper functions.
+		add_action( 'after_setup_theme', array( $this, 'customize_helpers' ) );
+
 		add_action( 'customize_register', array( $this, 'customize_controls' ), 10 );
+
+		add_action( 'customize_preview_init', array( $this, 'customize_preview_js' ) );
 
 		add_action( 'customize_register', array( $this, 'customize_options' ) );
 
@@ -85,6 +90,19 @@ final class Blogus_Customize {
 
 		require BLOGUS_THEME_DIR . 'inc/ansar/customizer-repeater/customizer-repeater-control.php';
 	}
+	 /**
+	 * Loads Customizer helper functions and sanitization callbacks.
+	 *
+	 * @since 1.0.0
+	 */
+	public function customize_helpers() {
+
+		// Load customize default values.
+		require BLOGUS_THEME_DIR . '/inc/ansar/customize/customizer-callback.php';
+		require BLOGUS_THEME_DIR . '/inc/ansar/customize/selective-refresh-and-partial.php';
+		require BLOGUS_THEME_DIR . '/inc/ansar/customize/customizer-default.php';
+		require BLOGUS_THEME_DIR . '/inc/ansar/customize/customizer-sanitize.php';
+	}
 	/**
 	 * Sets up the customizer options.
 	*/
@@ -97,6 +115,12 @@ final class Blogus_Customize {
 		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/header/search.php';
 		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/header/subscribe.php';
 		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/header/dark-mode.php';
+
+		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/customize-global.php';
+		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/theme-options.php';
+		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/theme-layout.php';
+		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/frontpage-featured.php';
+		require BLOGUS_THEME_DIR . 'inc/ansar/customize/settings/frontpage-options.php';
 	}
 	/**
 	 * Loads theme customizer CSS.
@@ -106,8 +130,17 @@ final class Blogus_Customize {
 	 * @return void
 	 */
 	public function enqueue_control_scripts() {
-		wp_enqueue_script( 'blogus-customize-controls', trailingslashit( BLOGUS_THEME_URI ) . 'inc/ansar/customize-pro/customize-controls.js', array( 'customize-controls' ) );
-		wp_enqueue_style( 'blogus-customize-controls', trailingslashit( BLOGUS_THEME_URI ) . 'inc/ansar/customize-pro/customize-controls.css' );
+		wp_enqueue_script( 'blogus-customize-controls', BLOGUS_THEME_URI . 'inc/ansar/customize-pro/customize-controls.js', array( 'customize-controls' ) );
+		wp_enqueue_style( 'blogus-customize-controls', BLOGUS_THEME_URI . 'inc/ansar/customize-pro/customize-controls.css' );
+	}
+	/**
+	 * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+	 */
+	public function customize_preview_js() {
+
+		wp_enqueue_style('blogus-custom-css', BLOGUS_THEME_URI . 'inc/ansar/customize/assets/css/customizer.css', array(), BLOGUS_THEME_VERSION, 'all');
+
+		wp_enqueue_script( 'blogus-customizer',	BLOGUS_THEME_URI . 'inc/ansar/customize/assets/js/customizer.js', array( 'customize-preview' ), BLOGUS_THEME_VERSION, true	);
 	}
 }
 // Doing this customizer thang!
