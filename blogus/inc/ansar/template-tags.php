@@ -126,44 +126,58 @@ if (!function_exists('blogus_menu_btns')) :
 endif; 
 
 if (!function_exists('get_archive_title')) :
+function get_archive_title($title) {
 
-    function get_archive_title($title) {
-        if (class_exists('WooCommerce')) {
-            if (is_shop()) {
-                $title = 'Shop';
-            } elseif (is_product_category()) {
-                $title = single_term_title('', false);
-            } elseif (is_product_tag()) {
-                $title = single_term_title('', false);
-            }
-        }
-    
-        if (is_category()) {
-            $title = single_cat_title('', false);
-        } elseif (is_tag()) {
-            $title = single_tag_title('', false);
-        } elseif (is_author()) {
-            $title = get_the_author();
-        } elseif (is_year()) {
-            $title = get_the_date('Y');
-        } elseif (is_month()) {
-            $title = get_the_date('F Y');
-        } elseif (is_day()) {
-            $title = get_the_date('F j, Y');
-        } elseif (is_post_type_archive()) {
-            $title = post_type_archive_title('', false);
-        } elseif (is_single()) {
-            $title = '';
-        } elseif(is_search()){   
-            /* translators: %s: search term */
-            $title = sprintf( esc_html__( 'Search Results for: %s', 'blogus' ), esc_html( get_search_query() ) );
-        } else {
-            $title = get_the_title();
-        }
-        
-        return $title;
+    // WooCommerce.
+    if (class_exists('WooCommerce') && is_shop()) {
+        $title = 'Shop';
+
+    } elseif (class_exists('WooCommerce') && is_product_category()) {
+        $title = single_term_title('', false);
+
+    } elseif (class_exists('WooCommerce') && is_product_tag()) {
+        $title = single_term_title('', false);
+
+    } elseif (class_exists('WooCommerce') && is_product()) {
+        $title = '';
+
+    // WordPress archives.
+    } elseif (is_category()) {
+        $title = single_cat_title('', false);
+
+    } elseif (is_tag()) {
+        $title = single_tag_title('', false);
+
+    } elseif (is_author()) {
+        $title = get_the_author();
+
+    } elseif (is_year()) {
+        $title = get_the_date('Y');
+
+    } elseif (is_month()) {
+        $title = get_the_date('F Y');
+
+    } elseif (is_day()) {
+        $title = get_the_date('F j, Y');
+
+    } elseif (is_post_type_archive()) {
+        $title = post_type_archive_title('', false);
+
+    } elseif (is_single()) {
+        $title = '';
+
+    } elseif (is_search()) {
+        /* translators: %s: search term */
+        $title = sprintf(
+            esc_html__('Search Results for: %s', 'blogus'),
+            esc_html(get_search_query())
+        );
+    } else {
+        $title = get_the_title();
     }
-    
+
+    return $title;
+}
 endif;
 
 add_filter('get_the_archive_title', 'get_archive_title');
@@ -180,10 +194,18 @@ if (!function_exists('blogus_archive_page_title')) :
                 }
                 echo '</div>';
             }
-           $show_breadcrumb =
-                (get_theme_mod('enable_pages_bcrumb', true) && is_page()) ||
-                (get_theme_mod('enable_archive_bcrumb', true) && is_archive()) ||
-                (get_theme_mod('enable_search_bcrumb', true) && is_search()) ;
+            $is_woo_page = class_exists('WooCommerce') && (
+                is_woocommerce() ||
+                is_cart() ||
+                is_checkout() ||
+                is_account_page() ||
+                is_order_received_page()
+            );
+            $show_breadcrumb =
+                ($is_woo_page && get_theme_mod('enable_woo_bcrumb', true)) ||
+                (!$is_woo_page && get_theme_mod('enable_pages_bcrumb', true) && is_page()) ||
+                (!$is_woo_page && get_theme_mod('enable_archive_bcrumb', true) && is_archive()) ||
+                (!$is_woo_page && get_theme_mod('enable_search_bcrumb', true) && is_search());
 
             if ($show_breadcrumb) {
                 do_action('blogus_breadcrumb_content');
