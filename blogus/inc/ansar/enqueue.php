@@ -22,6 +22,10 @@ function blogus_scripts() {
 	wp_enqueue_style('animate',get_template_directory_uri().'/css/animate.css');
 	
 
+	if (class_exists('WooCommerce')) {
+		wp_enqueue_style('blogus-woocommerce-style', BLOGUS_THEME_URI . 'css/woocommerce.css', array(), BLOGUS_THEME_VERSION);
+	}
+
 	/* Js script */
 
 	wp_enqueue_script( 'blogus-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'));
