@@ -1,9 +1,7 @@
 <?php 
 function blogus_scripts() {
 
-	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
-
-	wp_style_add_data('bootstrap', 'rtl', 'replace' );
+	wp_enqueue_style('bootstrap', BLOGUS_THEME_URI . 'css/bootstrap.css', array(), BLOGUS_THEME_VERSION);
 
 	wp_enqueue_style( 'blogus-style', get_stylesheet_uri() );
 
@@ -21,7 +19,6 @@ function blogus_scripts() {
 
 	wp_enqueue_style('animate',get_template_directory_uri().'/css/animate.css');
 	
-
 	if (class_exists('WooCommerce')) {
 		wp_enqueue_style('blogus-woocommerce-style', BLOGUS_THEME_URI . 'css/woocommerce.css', array(), BLOGUS_THEME_VERSION);
 	}
@@ -51,6 +48,7 @@ function blogus_scripts() {
 	blogus_customize_options();
 }
 add_action('wp_enqueue_scripts', 'blogus_scripts');
+
 function blogus_admin_enqueue( $hook ) {
 
 	wp_enqueue_script( 'media-upload' );
@@ -129,4 +127,3 @@ function enable_custom_typography() {
     }
 }
 add_action('wp_footer','enable_custom_typography');
-?>
