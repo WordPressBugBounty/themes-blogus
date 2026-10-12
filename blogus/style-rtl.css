@@ -4,8 +4,8 @@ Theme URI: https://themeansar.com/free-themes/blogus-free-blog-wordpress-theme/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Blogus is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Blogus is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Blogus is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demos.themeansar.com/blogus-demos/ and documentation at https://docs.themeansar.com/docs/blogus/
-Version: 3.1.6
-Tested up to: 7.0
+Version: 3.1.7
+Tested up to: 7.1
 Requires PHP: 7.4
 Requires at least: 6.0
 Tags: two-columns, three-columns, left-sidebar, right-sidebar, translation-ready, custom-background, custom-logo, featured-images, footer-widgets, full-width-template, blog, e-commerce, entertainment
@@ -18,7 +18,6 @@ Text Domain: blogus
 	--bxshover: 0 4px 60px 0 rgba(0, 0, 0, 0.2);
 	--bstras: 0 4px 60px 0 rgba(0, 0, 0, 0.2);
 	--headFont: 'Josefin Sans', sans-serif;
-	--bodyFont: 'Rubik', sans-serif;
 	--headWeight: 700;
 	--bodyFont: 'Rubik', sans-serif;
 	--bodyWeight: 400;
@@ -35,7 +34,7 @@ body {
 	margin: 0;
 	font-family: var(--bodyFont);
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: var(--bodyWeight);
 	line-height: 1.78;
 	text-decoration: none;
 	direction: rtl;
@@ -45,12 +44,6 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: top center;
-}
-.boxed {
-	width: 1170px;
-	margin: 0 auto;
-	position: relative;
-	box-shadow: 0 0 10px 0 rgba(48, 48, 48, 0.5);
 }
 
 /* width */
@@ -77,10 +70,6 @@ body {
 a {
 	text-decoration: inherit;
 	transition: all .3s ease-out;
-}
-
-a:hover {
-	text-decoration: none;
 }
 
 a:focus {
@@ -118,7 +107,7 @@ select {
 	background-clip: padding-box;
 	background-color: #fff;
 	border: 2px solid #ccc;
-	border-radius: 0;
+	border-radius: var(--radius);
 	color: #444;
 	display: block;
 	font-weight: 400;
@@ -205,6 +194,65 @@ button:focus {
 	outline: none;
 	box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.5);
 }
+
+table {
+	border-collapse: collapse;
+	margin: 0 0 24px;
+	width: 100%;
+	word-wrap: break-word;
+}
+
+table,
+th,
+td {
+	border: 1px solid #e9e9e9;
+}
+
+th {
+	background: #f6f6f6;
+	color: #01012f;
+	padding: 8px 11px;
+	text-align: left;
+}
+
+td {
+	padding: 8px 11px;
+}
+
+table,
+th,
+td {
+	border: 1px solid #e9e9e9;
+}
+.content table,
+.single table {
+	border-collapse: collapse;
+	margin: 0 0 24px;
+	width: 100%;
+	word-wrap: break-word;
+}
+.content th,
+.single th,
+.wp-block-calendar table th {
+	background: #f6f6f6;
+	padding: 8px 11.2px;
+	text-align: left;
+	font-weight: 700;
+}
+.wp-block-quote {
+	border-width: 0 0 0 5px;
+	border-style: solid;
+}
+.content td,
+.single td {
+	padding: 8px 11.2px;
+}
+.content table,
+.single table .content th,
+.single th .content td,
+.single td {
+	border: 1px solid #e9e9e9;
+}
 .form-control {
 	border-radius: var(--radius);
 	margin-bottom: 20px;
@@ -235,7 +283,7 @@ mark,
 ins,
 .mark {
 	padding: 2px 5px;
-	border-radius: var(--radius);
+	border-radius: 3px;
 }
 
 hr {
@@ -298,13 +346,6 @@ mark {
 
 code {
 	color: #444444;
-}
-.content table,
-.single table {
-	border-collapse: collapse;
-	margin: 0 0 24px;
-	width: 100%;
-	word-wrap: break-word;
 }
 
 legend {
@@ -391,7 +432,7 @@ fieldset p {
 .wd-back {
 	padding: 20px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	border-radius: var(--radius);
 }
 .modal .btn-close {
@@ -400,12 +441,17 @@ fieldset p {
 	margin-left: -0.5rem;
 	margin-right: auto;
 }
+.modal .form-control {
+	height: 55px;
+}
 .attachment-full.size-full {
 	width: 100%;
 	height: auto;
 }
-.modal .form-control {
-	height: 55px;
+
+#wp-custom-header img {
+	width: 100%;
+	display: block;
 }
 
 /*---------------------------------------
@@ -441,8 +487,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	color: var(--head-color);
 	font-feature-settings: "lnum";
 	font-variant-numeric: lining-nums;
-	letter-spacing: 0;
 	line-height: 1.3;
+	letter-spacing: 0;
 	text-size-adjust: 100%;
 	text-rendering: optimizeSpeed;
 }
@@ -475,8 +521,6 @@ blockquote::before {
 	margin-top: -10px;
 	font-weight: 900;
 	width: 6%;
-	transform: rotateY(180deg);
-	text-align: end;
 }
 
 blockquote p {
@@ -566,10 +610,13 @@ blockquote p {
 	transition: all 0.3s ease 0s;
 }
 .navigation.pagination .nav-links {
-	display: flex;
+	display: flex;	
+	flex-wrap: wrap;
 }
 .navigation.pagination .nav-links .page-numbers, .navigation.pagination .nav-links a, .post-nav-links a {
 	cursor: pointer;
+	display: inline-block;
+	transition: all 0.3s ease 0s;
 	font-size: 18px;
 	line-height: 40px;
 	margin: 0 3px 10px;
@@ -584,12 +631,12 @@ blockquote p {
 	transition: all 0.3s ease 0s;
 	text-decoration: none;
 	position: relative;
-	float: left;
 	font-weight: 500;
+	text-align: center;
 }
 .navigation.pagination>li:first-child>a,
 .navigation.pagination>li:first-child>span {
-	border-radius: 30px;
+	border-radius: var(--radius);
 }
 .single-nav-links {
 	text-align: center;
@@ -619,7 +666,7 @@ blockquote p {
 .nav-links a,
 .single-nav-links a {
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: 500;
 	letter-spacing: -.02em;
 	line-height: 1.2;
 	width: 100%;
@@ -641,14 +688,37 @@ button.mfp-close:focus {
 .navigation p {
 	margin-bottom: 10px;
 }
+
+#cancel-comment-reply-link,
+.comment-reply-link {
+	margin-left: 10px;
+}
+.post-items ul:not(.post-categories) li a,
+.post-items ol:not(.post-categories) li a,
+.post-items table a,
+strong a,
+blockquote a,
+code a,
+.navigation.posts-navigation .nav-links a:hover,
+.navigation.posts-navigation .nav-links a:hover,
+#cancel-comment-reply-link,
+.comment-reply-link,
+.mg-blog-post-box a,
+.widget_text a:not(.more-link):not(.button),
+.comment-content a,
+.theme-custom-block a,
+.comment-detail .edit-link a,
+.comment-detail .reply a,
+pre.wp-block-code a,
+#cancel-comment-reply-link,
+.comment-reply-link {
+	text-decoration: underline;
+}
 .comments-area .reply a {
 	text-decoration: none;
 }
 .comments-area .comments-title {
 	word-break: break-word;
-}
-.comments-area .comment-meta .fn a {
-	display: inline-block;
 }
 
 /*---------------------------------------
@@ -658,6 +728,7 @@ button.mfp-close:focus {
 	padding: 0px;
 	margin: 0;
 	display: flex;
+	flex-wrap: wrap;
 }
 .bs-social li {
 	display: inline-flex;
@@ -849,11 +920,11 @@ button.mfp-close:focus {
 }
 .bs-default .navbar-header {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 	flex-direction: column;
-	justify-content: center;
-	gap: 10px
+	gap: 10px;
 }
 .bs-default .bs-header-main .inner {
 	height: auto;
