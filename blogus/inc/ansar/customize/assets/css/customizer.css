@@ -1,16 +1,6 @@
 /* ==========================================================================
    CSS for Customizer Custom Controls
    ========================================================================== */
-li.customize-control-section-title {
-	background-color: #e2e2e2;
-	padding: 0 10px;
-	margin-top: 15px;
-}
-
-li.customize-control-section-title h3{
-	color: #707070;
-
-}
 
 .wp-customizer .select2-container--default .selection .select2-selection--multiple {
 	border: none;
@@ -33,41 +23,6 @@ li.customize-control-section-title h3{
 
 .wp-customizer .select2-container .select2-dropdown {
 	z-index: 900000;
-}
-
-.customize-control select:active,
-.customize-control select:focus {
-	outline: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.customizer-repeater-box-content-hidden input[type=checkbox]{
-	margin-bottom: 0 !important;
-}
-input[type="text"],
-input[type="number"],
-input[type="url"],
-input[type="email"],
-input[type="date"] {
-	background: #fcfcff;
-	position: relative;
-	border-radius: 0;
-	border: 1px solid #eee;
-	height: 30px;
-	line-height: 30px;
-	outline: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-input[type="text"]:active,
-input[type="text"]:focus,
-input[type="number"]:active,
-input[type="number"]:focus {
-	outline: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
 }
 
 .simple-notice-custom-control .customize-control-description {
@@ -405,16 +360,6 @@ input#_customize-input-post_image_type-radio-blogus_post_img_hei,
 input#_customize-input-post_image_type-radio-blogus_post_img_acc  {
     display: inline-block;
 }
-
-li.customize-control-section-title {
-    background-color: #ffffff;
-    margin-top: 15px;
-    border-bottom: 1px solid #ddd;
-    border-left: 4px solid var(--wp-admin-theme-color);
-    box-shadow: 0 1px 1px rgba(0,0,0,.04);
-}
-
-
 
 /* Top bar widget Title */
 .customize-pane-child>li[id=customize-control-topbar_widget_title_text_transform]{ 
