@@ -232,6 +232,7 @@
             }
         });
     });
+	
 	function customizePreviewStyle(settingId, target, property, unit = '') {
 		wp.customize(settingId, function(value) {
 			value.bind(function(newVal) {
@@ -467,3 +468,27 @@
 
 
 } )( jQuery );
+
+
+(function (api) {
+  var seen = {}, s = { tf: '', tw: '400', mf: '' };
+  var clean = v => String(v || '').split(',')[0].replace(/['"]/g, '').trim();
+  var st = (k, v) => s[k] = k === 'tw' ? String(v || '400') : clean(v);
+
+  function load(f, w) {
+    w = parseInt(w, 10);
+    if (!f || !(w >= 100 && w <= 900) || (seen[f] = seen[f] || {})[w]) return;
+    seen[f][w] = 1;
+    document.head.appendChild(Object.assign(document.createElement('link'), {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(f).replace(/%20/g, '+') +
+            ':wght@' + Object.keys(seen[f]).sort((a, b) => a - b).join(';') + '&display=swap'
+    }));
+  }
+
+  [['site_title_fontfamily', 'tf'], ['site_title_fontweight', 'tw'], ['blogus_menu_fontfamily', 'mf']]
+    .forEach(([id, k]) => api(id, o => {
+      st(k, o.get());
+      o.bind(v => { st(k, v); load(s.tf, s.tw); load(s.mf, 400); });
+    }));
+})(wp.customize);
